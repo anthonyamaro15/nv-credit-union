@@ -1,0 +1,44 @@
+.Header {
+  color: #333;
+  background: url("../imgs/headerimg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 3rem solid #8c9091;
+
+  .Header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    .small-description {
+      max-width: 600px;
+      text-align: center;
+      h1 {
+        font-size: 5.1rem;
+        font-weight: normal;
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      p {
+        font-size: 2rem;
+        text-align: center;
+        letter-spacing: 2px;
+        padding: 0 2rem;
+        margin-bottom: 2rem;
+      }
+
+      button {
+        font-size: 1.5rem;
+        font-weight: normal;
+        padding: 0.8rem 2rem;
+        text-transform: uppercase;
+        color: #333;
+        margin-bottom: 0.5rem;
+        background: none;
+        border: 1px solid #333;
+      }
+    }
+  }
+}
