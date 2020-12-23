@@ -1,8 +1,13 @@
 import React from 'react';
+import Header from './marketingPage/Header';
+import Navbar from './marketingPage/Navbar';
 
 const MainApp = () => {
    return (
-      <div>hh</div>
+      <div>
+         <Navbar />
+         <Header />
+      </div>
    )
 }
 
