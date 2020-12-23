@@ -11,7 +11,7 @@
         margin: 0 auto;
         display: flex;
         justify-content: flex-end;
-        height: 4vh;
+        padding: 1.4rem 0;
         align-items: center;
         font-size: 0.7rem;
       }
@@ -21,6 +21,13 @@
         color: white;
         &:last-child {
           margin: 0;
+        }
+
+        span {
+          display: inline-block;
+          margin-right: 0.2rem;
+          font-size: 0.8rem;
+          margin-bottom: -1rem;
         }
       }
     }
