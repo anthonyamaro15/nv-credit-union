@@ -6,37 +6,35 @@ import { FaCarAlt } from "react-icons/fa";
 import { BsFillHouseFill } from "react-icons/bs";
 import { BsBagFill } from "react-icons/bs";
 import { GrCalculator } from "react-icons/gr";
-import logoImg from '../../imgs/loanheader.png';
+import creditCardImg from '../../../imgs/creditcard.png';
 
 
-const Loans = () => {
+const CreditCardLoan = () => {
    return (
       <div className="Loans-wrapper">
          <div className="Loans">
             <section className="loan-section">
                <div className="right-side">
                   <div className="img-container">
-                     <img src={logoImg} alt=""/>
+                     <img src={creditCardImg} alt=""/>
                   </div>
                   <div className="small-description">
-                     <h2>Easy borrowing for all of life's stages.</h2>
-                     <button>check your application status</button>
+                     <h2>Great Rates, Great Rewards, Great Styles.</h2>
+                     {/* <button>check your application status</button> */}
                      <p>
-                        As a Member-Owned Financial Institution, we are able to keep our interest rates low and offer several types of lending services to help along the way. Check out all of the options we have for credit cards, auto loans, personal loans and more.
+                        With so many credit cards out there today, we wanted to offer credit card options that get right to the point and allow you to stand out in the crowd. We have some of the lowest rates around and offer the CURewards® program to reward you for using your card.
                      </p>
                   </div>
                   <nav>
                      <div className="share-icons">
-                        <HiCreditCard />
-                        <Link to="/loans/credit-card">credit cards</Link> 
+                        <Link to="/loans/credit-card/visa-signature-credit-card">Visa® Signature Rewards Credit Cards</Link> 
                      </div> 
                      {/* <div className="share-icons">
                         <FaUserAlt />
                         <Link to="/personal-loan">personal loans</Link> 
                      </div>  */}
                      <div className="share-icons">
-                        <FaCarAlt />
-                        <Link to="/loans/car-loan">vehicle loans</Link> 
+                        <Link to="/loans/credit-card/visa-platium-credit-card">Visa® Platinum Rewards Credit Card</Link> 
                      </div> 
                      {/* <div className="share-icons">
                         <BsFillHouseFill />
@@ -52,10 +50,6 @@ const Loans = () => {
                         <BsBagFill />
                         <Link to="/commercial-loan">commercial real state loans</Link> 
                      </div>  */}
-                     <div className="share-icons">
-                        <GrCalculator />
-                        <Link to="/calculator">calculators</Link> 
-                     </div> 
                   </nav>
                   <p className="apr-info">
                      APRs can increase after consummation of the loan if the loan terms allow an APR to increase.
@@ -74,7 +68,7 @@ const Loans = () => {
                <nav>
                   <div className="share-icons">
                      <HiCreditCard />
-                     <Link to="/credit-card">credit cards</Link> 
+                     <Link to="/loans/credit-card">credit cards</Link> 
                   </div> 
                   {/* <div className="share-icons">
                      <FaUserAlt />
@@ -109,4 +103,4 @@ const Loans = () => {
    )
 }
 
-export default Loans;
+export default CreditCardLoan;

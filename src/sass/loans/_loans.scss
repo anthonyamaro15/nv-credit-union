@@ -1,0 +1,131 @@
+.Loans-wrapper {
+  background: #8c9091;
+  .Loans {
+    max-width: 1150px;
+
+    margin: 0 auto;
+    padding: 2rem 0;
+    //  border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    .loan-section {
+      width: 750px;
+      // border: 1px solid red;
+
+      .right-side {
+        background: white;
+        //   border: 1px solid red;
+
+        .img-container {
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      .small-description {
+        padding: 3rem 2rem 0;
+
+        h2 {
+          font-size: 1.7rem;
+          font-weight: normal;
+          margin-bottom: 1rem;
+        }
+        button {
+          text-transform: uppercase;
+          font-size: 0.8rem;
+          padding: 0.4rem 0.5rem;
+          font-family: "Raleway", sans-serif;
+          font-weight: 300;
+          margin-bottom: 2rem;
+          background: #b22b2e;
+          color: white;
+          border: none;
+          border-radius: 4px;
+        }
+
+        p {
+          line-height: 1.6;
+          font-size: 1.1rem;
+          //  border: 1px solid red;
+          margin-bottom: 2rem;
+        }
+      }
+      nav {
+        padding: 0 2rem 2rem;
+        //   border: 1px solid blue;
+        .share-icons {
+          font-size: 1.2rem;
+          margin-bottom: 0.4rem;
+          color: #0076d6;
+
+          a {
+            font-weight: 300;
+            margin-left: 1rem;
+            text-transform: capitalize;
+            color: #0076d6;
+          }
+        }
+      }
+      .apr-info {
+        padding: 0 2rem 2.5rem;
+        font-size: 0.7rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    .application-process {
+      margin: 2rem 0 0;
+      padding: 2rem 2rem;
+      background: white;
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      button {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.5rem;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;
+        background: #b22b2e;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .right-side-nav {
+    width: 370px;
+    padding: 2.7rem;
+    height: 100%;
+    background: white;
+
+    h3 {
+      text-transform: uppercase;
+      font-weight: normal;
+      letter-spacing: 2px;
+      border-bottom: 1px solid grey;
+      padding-bottom: 0.5rem;
+    }
+
+    nav {
+      .share-icons {
+        border-bottom: 1px solid grey;
+        padding: 0.7rem 0.5rem;
+        font-size: 1.1rem;
+        color: #0076d6;
+
+        a {
+          text-transform: capitalize;
+          margin-left: 0.5rem;
+          font-size: 1rem;
+          color: #0076d6;
+        }
+      }
+    }
+  }
+}

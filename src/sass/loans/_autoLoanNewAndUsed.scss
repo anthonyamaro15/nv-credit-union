@@ -1,0 +1,26 @@
+.Loans {
+  .loan-section {
+    .right-side {
+      .small-description {
+        .loan-rates {
+          font-size: 0.7rem;
+          margin-bottom: 0.5rem;
+        }
+
+        h3 {
+          margin-bottom: 0.5rem;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  .right-side-nav {
+    nav {
+      .credit {
+        a {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

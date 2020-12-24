@@ -11,6 +11,7 @@
 body {
   font-family: "Comfortaa", sans-serif;
   font-family: "Raleway", sans-serif;
+  color: #373a36;
 }
 
 button,
@@ -25,4 +26,9 @@ a {
 button,
 a {
   cursor: pointer;
+}
+
+span,
+a {
+  display: inline-block;
 }

@@ -6,29 +6,34 @@ import { FaCarAlt } from "react-icons/fa";
 import { BsFillHouseFill } from "react-icons/bs";
 import { BsBagFill } from "react-icons/bs";
 import { GrCalculator } from "react-icons/gr";
-import logoImg from '../../imgs/loanheader.png';
+import autoLoanImg from '../../../imgs/autoloan.png';
 
-
-const Loans = () => {
+const AutoLoan = () => {
    return (
       <div className="Loans-wrapper">
          <div className="Loans">
             <section className="loan-section">
                <div className="right-side">
                   <div className="img-container">
-                     <img src={logoImg} alt=""/>
+                     <img src={autoLoanImg} alt=""/>
                   </div>
                   <div className="small-description">
-                     <h2>Easy borrowing for all of life's stages.</h2>
-                     <button>check your application status</button>
+                     <h2>Get 90 Days No Payment</h2>
+                     {/* <button>check your application status</button> */}
                      <p>
-                        As a Member-Owned Financial Institution, we are able to keep our interest rates low and offer several types of lending services to help along the way. Check out all of the options we have for credit cards, auto loans, personal loans and more.
+                        Sure, it’s always fun to walk on a dealership lot and drive off with a new car that day. What’s not so fun is all the time and hassle of figuring out the financing details at the dealership.
+                     </p>
+                     <p>
+                        Save time, money, and hassle on your next ride by getting pre-approved. You’ll walk on the lot knowing exactly how much you can afford. Plus, when you finance directly with us, you’re eligible for no payments for 90 days.
+                     </p>
+                     <p>
+                        Find out how much you can afford today and start shopping.
                      </p>
                   </div>
                   <nav>
                      <div className="share-icons">
                         <HiCreditCard />
-                        <Link to="/loans/credit-card">credit cards</Link> 
+                        <Link to="/loans/auto-loan">auto loans - new and used</Link> 
                      </div> 
                      {/* <div className="share-icons">
                         <FaUserAlt />
@@ -36,7 +41,7 @@ const Loans = () => {
                      </div>  */}
                      <div className="share-icons">
                         <FaCarAlt />
-                        <Link to="/loans/car-loan">vehicle loans</Link> 
+                        <Link to="/loans/auto-refinance">refinance your auto loan</Link> 
                      </div> 
                      {/* <div className="share-icons">
                         <BsFillHouseFill />
@@ -65,7 +70,7 @@ const Loans = () => {
                   <p>
                   Have you already applied for an auto loan, credit card, or personal loan with One Nevada? 
                   </p>
-                  <button>check your application status</button>
+                  <button>apply now</button>
                </div>
             </section>
 
@@ -109,4 +114,4 @@ const Loans = () => {
    )
 }
 
-export default Loans;
+export default AutoLoan;

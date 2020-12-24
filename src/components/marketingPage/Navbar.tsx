@@ -4,9 +4,7 @@ import { MdLocationOn } from "react-icons/md";
 import { ImUserPlus } from "react-icons/im";
 import { FaUsers } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-
-
-
+import { BsFillLockFill } from "react-icons/bs";
 import logo from '../../imgs/logo.jpg';
 
 const Navbar = () => {
@@ -39,7 +37,7 @@ const Navbar = () => {
                   <Link to="/mortage">Mortage</Link>
                   <Link to="/servicer">Services</Link>
                   <Link to="/support">Support</Link>
-                  <Link to="/login">Log in</Link>
+                  <Link to="/login"><span><BsFillLockFill /></span> Log in</Link>
                </div>
             </nav>
          </div>
