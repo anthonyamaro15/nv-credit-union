@@ -12,6 +12,7 @@ import Footer from './marketingPage/Footer';
 import Header from './marketingPage/Header';
 import LowerContent from './marketingPage/LowerContent';
 import Navbar from './marketingPage/Navbar';
+import LoanApplication from './loans/LoanAppication';
 
 const MainApp = () => {
    return (
@@ -42,7 +43,9 @@ const MainApp = () => {
          <Route path="/loans/auto-refinance" exact>
             <RefinanceAutoLoan />
          </Route>
-
+         <Route path="/loans/application/:loanType">
+            <LoanApplication />
+         </Route>
          <LowerContent />
          <Footer />
       </div>
