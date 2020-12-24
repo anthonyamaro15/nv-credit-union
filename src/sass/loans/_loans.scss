@@ -1,17 +1,20 @@
 .Loans-wrapper {
   background: #8c9091;
   .Loans {
-    max-width: 1200px;
+    max-width: 1150px;
 
     margin: 0 auto;
     padding: 2rem 0;
+    //  border: 1px solid red;
     display: flex;
     justify-content: space-between;
     .loan-section {
       width: 750px;
+      // border: 1px solid red;
 
       .right-side {
         background: white;
+        //   border: 1px solid red;
 
         .img-container {
           img {
@@ -21,7 +24,7 @@
       }
 
       .small-description {
-        padding: 3rem 2rem 2rem;
+        padding: 3rem 2rem 0;
 
         h2 {
           font-size: 1.7rem;
@@ -44,11 +47,13 @@
         p {
           line-height: 1.6;
           font-size: 1.1rem;
+          //  border: 1px solid red;
+          margin-bottom: 2rem;
         }
       }
       nav {
         padding: 0 2rem 2rem;
-
+        //   border: 1px solid blue;
         .share-icons {
           font-size: 1.2rem;
           margin-bottom: 0.4rem;
@@ -94,8 +99,8 @@
   }
 
   .right-side-nav {
-    width: 390px;
-    padding: 3rem;
+    width: 370px;
+    padding: 2.7rem;
     height: 100%;
     background: white;
 
