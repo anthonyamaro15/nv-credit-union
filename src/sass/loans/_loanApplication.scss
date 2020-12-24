@@ -1,0 +1,249 @@
+.bg-color {
+  background: #7c8ba5;
+  padding: 5rem 0;
+  .LoanApplication {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+
+    .application-header {
+      padding: 3rem 2rem;
+      position: relative;
+
+      h1 {
+        font-weight: normal;
+        text-transform: capitalize;
+        margin-bottom: 2rem;
+        color: #2c5794;
+        &:first-child {
+          text-align: center;
+          font-size: 2.5rem;
+          font-weight: 300;
+          margin-bottom: 5rem;
+        }
+      }
+
+      h2 {
+        text-transform: capitalize;
+        font-size: 1.6rem;
+        color: #2c5794;
+
+        span {
+          font-size: 1.3rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+
+    form {
+      padding: 0 1rem;
+
+      h3 {
+        text-transform: capitalize;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: black;
+      }
+
+      label {
+        font-family: "Raleway", sans-serif;
+        // border: 1px solid red;
+        text-transform: capitalize;
+        font-weight: bold;
+
+        input {
+          font-family: "Raleway", sans-serif;
+          background: #eaeaea;
+          display: block;
+          width: 100%;
+          padding: 0.7rem 0.2rem;
+          font-size: 1rem;
+          font-weight: 300;
+          border-radius: 4px;
+          border: 1px solid #d6d6d6;
+          margin: 0.5rem 0 1rem;
+        }
+        select {
+          font-family: "Raleway", sans-serif;
+          text-transform: capitalize;
+          background: #eaeaea;
+
+          display: block;
+          width: 100%;
+          font-size: 1rem;
+          font-weight: 300;
+          padding: 0.7rem 0.2rem;
+          border-radius: 4px;
+          border: 1px solid #d6d6d6;
+          margin: 0.5rem 0 1rem;
+        }
+      }
+
+      .ssn-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          text-transform: uppercase;
+        }
+
+        .ssn-icons {
+          span {
+            text-transform: none;
+            margin-right: 0.5rem;
+            cursor: pointer;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      .date-of-birth {
+        span {
+          display: block;
+          text-transform: capitalize;
+          font-weight: bold;
+        }
+
+        .dof-wrapper {
+          display: flex;
+          justify-content: space-between;
+          label {
+            width: 100%;
+            input {
+              // display: inline-block;
+              width: 97%;
+            }
+          }
+        }
+      }
+
+      .contact-information {
+        margin-top: 3rem;
+
+        // border: 1px solid red;
+        h2 {
+          text-transform: capitalize;
+          margin-bottom: 1rem;
+          font-size: 1.8rem;
+          color: #2c5794;
+        }
+      }
+
+      .current-address {
+        margin-top: 3rem;
+
+        // border: 1px solid blue;
+        h2 {
+          text-transform: capitalize;
+          margin-bottom: 1rem;
+          font-size: 1.8rem;
+          color: #2c5794;
+        }
+      }
+
+      .occupancy-duration {
+        // border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+
+        label {
+          width: 100%;
+          select {
+            width: 97%;
+          }
+        }
+      }
+
+      .identification {
+        // border: 1px solid blue;
+        margin-top: 3rem;
+        h2 {
+          text-transform: capitalize;
+          margin-bottom: 1rem;
+          font-size: 1.8rem;
+          color: #2c5794;
+        }
+
+        .id-expiration-date {
+          //   display: flex;
+          //   justify-content: space-between;
+
+          span {
+            display: block;
+          }
+
+          .input-wrapper {
+            display: flex;
+            justify-content: space-between;
+            label {
+              width: 100%;
+              input {
+                // display: inline-block;
+                width: 97%;
+              }
+            }
+          }
+        }
+      }
+
+      .financial-information {
+        margin-top: 3rem;
+        margin-bottom: 7rem;
+        // border: 1px solid red;
+
+        h2 {
+          text-transform: capitalize;
+          margin-bottom: 1rem;
+          font-size: 1.8rem;
+          color: #2c5794;
+        }
+      }
+
+      .btn-wrapper {
+        // border: 1px solid blue;
+        text-align: center;
+        button {
+          background: #2c5794;
+          color: white;
+          width: 500px;
+          padding: 0.8rem;
+          text-transform: capitalize;
+          font-size: 1.2rem;
+          border-radius: 4px;
+          border: 1px solid grey;
+        }
+      }
+    }
+    .form-footer {
+      //  border: 1px solid red;
+      background: #2c5794;
+      color: white;
+      margin-top: 2rem;
+      text-align: center;
+
+      span {
+        &:first-child {
+          padding: 0.5rem 0;
+          font-weight: bold;
+        }
+
+        &:last-child {
+          font-size: 0.7rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      a {
+        color: white;
+
+        font-size: 0.8rem;
+        text-decoration: underline;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
