@@ -1,14 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaUserAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { AiFillQuestionCircle } from "react-icons/ai";
+import ReactTooltip from 'react-tooltip';
+
+
+type FormValues = {
+   firstName: string;
+   middleName?: string;
+   lastName: string;
+   ssn: string;
+   birthMonth: string;
+   birthDay: string;
+   birthYear: string;
+   memberNumber?: string;
+   referenceFirstName?: string;
+   referenceLastName?: string;
+   referenceEmail?: string;
+   referencePhone?: string;
+   referenceRelationship?: string;
+   citizenship: string;
+   contactMethod: string;
+   contactEmail: string;
+   homePhone?: string;
+   cellPhone?: string;
+   workPhone?: string;
+   address: string;
+   zip: string;
+   city: string;
+   state: string;
+   occupancyStatus: string;
+   occupancyYears: string;
+   occupancyMonths: string;
+   idType: string;
+   idNumber: string;
+   idState: string;
+   expirationMonth: string;
+   expirationDay: string;
+   expirationYear: string;
+   monthlyIncome: string;
+   employmentStatus: string;
+   jobTitle: string;
+   employer: string;
+   employmentYears: string;
+   employmentMonths: string;
+   monthlyExpenses: string;
+}
 
 const LoanApplication = () => {
-   const { register, handleSubmit } = useForm();
+   const { register, errors, handleSubmit } = useForm<FormValues>();
+   const [toogleSsn, setToggleSsn] = useState(false);
 
    const onSubmit = (values: any) => {
       console.log(values);
+   }
+
+   const toogleSSN = () => {
+      setToggleSsn(!toogleSsn);
    }
 
    return (
@@ -23,81 +72,117 @@ const LoanApplication = () => {
                </h2>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-               <label htmlFor="firstName">first name
-                  <input type="text" id="firstName" name="firstName" ref={register} />
+               <label htmlFor="firstName">
+                  first name 
+                  <span className="require">*</span>
+                  <input type="text" id="firstName" name="firstName" ref={register({required: true})} />
+                  <p className="error">{errors.firstName && "Required field"}</p>
                </label>
+
                <label htmlFor="middleName">middle name
                   <input type="text" id="middleName" name="middleName" ref={register} />
                </label>
-               <label htmlFor="lastName">last name
-                  <input type="text" id="lastName" name="lastName" ref={register} />
+               <label htmlFor="lastName">last name <span className="require">*</span>
+                  <input type="text" id="lastName" name="lastName" ref={register({ required: true})} />
+                  <p className="error">{errors.lastName && "Required field"}</p>
                </label>
                <div className="ssn-wrapper">
-                  <span>ssn</span>
+                  <div>
+                     <span>ssn</span>
+                     <span className="require">*</span>
+                  </div>
                   <div className="ssn-icons">
-                     <span className="show">Show SSN</span>
-                     <span className="icon"><AiFillQuestionCircle /></span>
+                     <span 
+                        className="show" 
+                        onClick={toogleSSN}>{toogleSsn ? "Hide SSN" : "Show SSN"}
+                     </span>
+                     {/* <span className="icon"><AiFillQuestionCircle /></span> */}
+                      <span 
+                         className="icon" 
+                         data-tip="Your Social Security Number (SSN) is used for identification purposes and to determine your account opening eligibility.">
+                         <AiFillQuestionCircle />
+                         <ReactTooltip />
+                         </span>
                      <span className="lock-icon"><FaLock /></span>
                   </div>
                </div>
                <label htmlFor="ssn">
-                  <input type="password" id="ssn" name="ssn" ref={register} />
+                  <input type={toogleSsn ? "text" : "password"} id="ssn" name="ssn" ref={register({ required: true})} />
+                  <p className="error-backup">{errors.ssn && "Required field"}</p>
                </label>
                <div className="date-of-birth">
-                  <span>date of birth</span>
+                  <div>
+                     <span>date of birth</span>
+                     <span className="require">*</span>
+                  </div>
                   <div className="dof-wrapper">
-                     <label htmlFor="month">
-                        <input type="text" id="month" name="month" placeholder="mm" ref={register} />
+                     <label htmlFor="birthMonth">
+                        <input type="text" id="birthMonth" name="birthMonth" placeholder="mm" ref={register({ required: true})} />
+                        <p className="error-backup">{errors.birthMonth && "Required field"}</p>
                      </label>
-                     <label htmlFor="day">
-                        <input type="text" id="day" name="day" placeholder="dd" ref={register} />
+                     <label htmlFor="birthDay">
+                        <input type="text" id="birthDay" name="birthDay" placeholder="dd" ref={register({ required: true})} />
+                        {/* <p className="error">{errors.birthDay && "Required field"}</p> */}
                      </label>
-                     <label htmlFor="year">
-                        <input type="text" id="year" name="year" placeholder="yyyy" ref={register} />
+                     <label htmlFor="birthYear">
+                        <input type="text" id="birthYear" name="birthYear" placeholder="yyyy" ref={register({ required: true})} />
+                        {/* <p className="error">{errors.birthYear && "Required field"}</p> */}
                      </label>
                   </div>
 
                   </div>
-               <label htmlFor="memberNumber">
+               <label htmlFor="memberNumber">member number
                   <input type="text" name="memberNumber" id="memberNumber" ref={register} />
                </label>
-               <label htmlFor="citizenship">citizenship status
-                  <select name="citizenship" id="citizenship" ref={register}>
+               <label htmlFor="citizenship">
+                  citizenship status
+                  <span className="require">*</span>
+                  <select name="citizenship" id="citizenship" ref={register({ required: true})}>
                      <option value="">US Citizen</option>
                      <option value="permResident">Perm Resident</option>
                      <option value="usCitizen">US Citizen</option>
                   </select>
+                  <p className="error">{errors.citizenship&& "Required field"}</p>
                </label>
                <h3>reference information</h3>
-               <label htmlFor="firstName">first name
-                  <input type="text" id="firstName" name="firstName" ref={register} />
+               <label htmlFor="referenceFirstName">first name
+                  <input type="text" id="referenceFirstName" name="referenceFirstName" ref={register} />
                </label>
-               <label htmlFor="lastName">last name
-                  <input type="text" id="lastName" name="lastName" ref={register} />
+               <label htmlFor="referenceLastName">last name
+                  <input type="text" id="referenceLastName" name="referenceLastName" ref={register} />
                </label>
-               <label htmlFor="email">email
-                  <input type="text" id="email" name="email" ref={register} />
+               <label htmlFor="referenceEmail">email 
+                  <input type="text" id="referenceEmail" name="referenceEmail" ref={register} />
                </label>
-               <label htmlFor="phone">phone (xxx) xxx-xxxx
-                  <input type="text" id="phone" name="phone" ref={register} />
+               <label htmlFor="referencePhone">
+                  phone 
+                   
+                  (xxx) xxx-xxxx
+                  <input type="text" id="referencePhone" name="referencePhone" ref={register} />
                </label>
-               <label htmlFor="relationship">relationship
-                  <input type="text" id="relationship" name="relationship" ref={register} />
+               <label htmlFor="referenceRelationship">relationship
+                  <input type="text" id="referenceRelationship" name="referenceRelationship" ref={register} />
                </label>
 
                <div className="contact-information">
                   <h2>contact information</h2>
-                  <label htmlFor="contactMethod">Preferred Contact Method
-                     <select name="contactMethod" id="contactMethod" ref={register}>
+                  <label htmlFor="contactMethod">
+                     Preferred Contact Method
+                     <span className="require">*</span>
+                     <select name="contactMethod" id="contactMethod" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
                         <option value="email">email</option>
                         <option value="homePhone">home phone</option>
                         <option value="cellPhone">cell phone</option>
                         <option value="workPhone">work phone</option>
                      </select>
+                     <p className="error">{errors.contactMethod&& "Required field"}</p>
                   </label>
-                  <label htmlFor="email">email
-                     <input type="text" id="email" name="email" ref={register} />
+                  <label htmlFor="contactEmail">
+                     email
+                     <span className="require">*</span> 
+                     <input type="text" id="contactEmail" name="contactEmail" ref={register({ required: true})} />
+                     <p className="error">{errors.contactEmail && "Required field"}</p>
                   </label>
                   <label htmlFor="homePhone">home phone (xxx) xxx-xxxx
                      <input type="text" id="homePhone" name="homePhone" ref={register} />
@@ -111,46 +196,69 @@ const LoanApplication = () => {
                </div>
                <div className="current-address">
                   <h2>current physical address</h2>
-                  <label htmlFor="address">address
-                     <input type="text" id="address" name="address" ref={register} />  
+                  <label htmlFor="address">
+                     address
+                     <span className="require">*</span>
+                     <input type="text" id="address" name="address" ref={register({ required: true})} />
+                     <p className="error">{errors.address && "Required field"}</p>  
                   </label>
-                  <label htmlFor="zip">zip
-                     <input type="text" id="zip" name="zip" ref={register} />  
+                  <label htmlFor="zip">
+                     zip
+                     <span className="require">*</span>
+                     <input type="text" id="zip" name="zip" ref={register({ required: true})} />
+                     <p className="error">{errors.zip && "Required field"}</p>
                   </label>
-                  <label htmlFor="city">city
-                     <input type="text" id="city" name="city" ref={register} />  
+                  <label htmlFor="city">
+                     city
+                     <span className="require">*</span>
+                     <input type="text" id="city" name="city" ref={register({ required: true})} />
+                     <p className="error">{errors.city && "Required field"}</p>
                   </label>
-                  <label htmlFor="state">state
-                     <select name="state" id="state" ref={register}>
+                  <label htmlFor="state">
+                     state
+                     <span className="require">*</span>
+                     <select name="state" id="state" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
                         <option value="alabama">alabama</option>
-                     </select>               
+                     </select>
+                     <p className="error">{errors.state && "Required field"}</p>              
                   </label>
-                  <label htmlFor="occupancyStatus">occupancy status
-                     <select name="occupancyStatus" id="occupancyStatus" ref={register}>
+                  <label htmlFor="occupancyStatus">
+                     occupancy status
+                     <span className="require">*</span>
+                     <select name="occupancyStatus" id="occupancyStatus" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
                         <option value="buyingOwnWithMortage">Buying/Own with mortage</option>
                         <option value="liveWithParents">live with parents</option>
                         <option value="rent">rent</option>
                         <option value="governmentQuarterst">government quarters</option>
                         <option value="other">other</option>
-                     </select>              
+                     </select>
+                     <p className="error">{errors.occupancyStatus && "Required field"}</p>          
                   </label>
                   <div className="occupancy-duration">
-                     <label htmlFor="years">occupancy duration
-                        <select name="years" id="years" ref={register}>
-                           <option value="">years</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                        </select>
-                     </label>
-                     <label htmlFor="months">months
-                        <select name="months" id="months">
-                           <option value="">months</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                        </select>
-                     </label>
+                     <div>
+                        <span>occupancy duration</span>
+                        <span className="require">*</span>
+                     </div>
+                     <div className="duration-wrapper">
+                        <label htmlFor="occupancyYears">
+                           <select name="occupancyYears" id="occupancyYears" ref={register({ required: true})}>
+                              <option value="">years</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                           </select>
+                           <p className="error">{errors.occupancyYears && "Required field"}</p>
+                        </label>
+                        <label htmlFor="occupancyMonths">
+                           <select name="occupancyMonths" id="occupancyMonths" ref={register({ required: true })}>
+                              <option value="">months</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                           </select>
+                           {/* <p className="error">{errors.occupancyMonths && "Required field"}</p> */}
+                        </label>
+                     </div>
                   </div>
                </div>
                {/* <div className="previous-address">
@@ -171,72 +279,104 @@ const LoanApplication = () => {
                </div> */}
                <div className="identification">
                   <h2>identification</h2>
-                  <label htmlFor="idType">ID Type
-                     <select name="idType" id="idType">
+                  <label htmlFor="idType">
+                     ID Type
+                     <span className="require">*</span>
+                     <select name="idType" id="idType" ref={register({ required: true })}>
                         <option value="">drivers license</option>
                         <option value="employerId">employer id</option>
                      </select>
+                     <p className="error">{errors.idType && "Required field"}</p>
                   </label>
-                  <label htmlFor="idNumber">ID Number
-                     <input type="text" id="idNumber" name="idNumber" ref={register} />  
+                  <label htmlFor="idNumber">
+                     ID Number
+                     <span className="require">*</span>
+                     <input type="text" id="idNumber" name="idNumber" ref={register({ required: true})} />
+                     <p className="error">{errors.idNumber && "Required field"}</p> 
                   </label>
-                  <label htmlFor="idState">ID state 
-                     <select name="idState" id="idState" ref={register}>
+                  <label htmlFor="idState">
+                     ID state
+                     <span className="require">*</span> 
+                     <select name="idState" id="idState" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
                         <option value="alabama">alabama</option>
                      </select>
+                     <p className="error">{errors.idState && "Required field"}</p>
                   </label>
                   <div className="id-expiration-date">
                      <span>ID Expiration Date</span>
+                     <span className="require">*</span>
                      <div className="input-wrapper">
                         <label htmlFor="expirationMonth">
-                           <input type="text" id="expirationMonth" name="expirationMonth" placeholder="mm" ref={register} />
+                           <input type="text" id="expirationMonth" name="expirationMonth" placeholder="mm" ref={register({ required: true})} />
+                           <p className="error">{errors.expirationMonth && "Required field"}</p>
                         </label>
                         <label htmlFor="expirationDay">
-                           <input type="text" id="expirationDay" name="expirationDay" placeholder="dd" ref={register} />
+                           <input type="text" id="expirationDay" name="expirationDay" placeholder="dd" ref={register({ required: true})} />
                         </label>
                         <label htmlFor="expirationYear">
-                           <input type="text" id="expirationYear" name="expirationYear" placeholder="yyyy" ref={register} />
+                           <input type="text" id="expirationYear" name="expirationYear" placeholder="yyyy" ref={register({ required: true})} />
                         </label>
                      </div>
                   </div>
                </div>
                <div className="financial-information">
                   <h2>financial information</h2>
-                  <label htmlFor="monthlyIncome">Gross Monthly Income (before taxes)
-                     <input type="text" id="monthlyIncome" name="monthlyIncome" ref={register} />
+                  <label htmlFor="monthlyIncome">
+                     Gross Monthly Income (before taxes)
+                     <span className="require">*</span>
+                     <input type="text" id="monthlyIncome" name="monthlyIncome" ref={register({ required: true})} />
+                     <p className="error">{errors.monthlyIncome && "Required field"}</p>
                   </label>
-                  <label htmlFor="employmentStatus">employment status
-                     <select name="employmentStatus" id="employmentStatus" ref={register}>
+                  <label htmlFor="employmentStatus">
+                     employment status
+                     <span className="require">*</span>
+                     <select name="employmentStatus" id="employmentStatus" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
                         <option value="employed">employed</option>
                      </select>
+                     <p className="error">{errors.employmentStatus && "Required field"}</p>
                   </label>
-                  <label htmlFor="jobTitle">Profession/Job Title
-                     <input type="text" id="jobTitle" name="jobTitle" ref={register} />
+                  <label htmlFor="jobTitle">
+                     Profession/Job Title
+                     <span className="require">*</span>
+                     <input type="text" id="jobTitle" name="jobTitle" ref={register({ required: true})} />
+                     <p className="error">{errors.jobTitle && "Required field"}</p>
                   </label>
-                  <label htmlFor="employer">employer
-                     <input type="text" id="employer" name="employer" ref={register} />
+                  <label htmlFor="employer">
+                     employer
+                     <span className="require">*</span>
+                     <input type="text" id="employer" name="employer" ref={register({ required: true})} />
                   </label>
                   <div className="employment-duration">
-                     <label htmlFor="employmentYears">employment duration
-                        <select name="employmentYears" id="years" ref={register}>
-                           <option value="">Years</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                        </select>
-                     </label>
-                     <label htmlFor="employmentMonths">months
-                        <select name="employmentMonths" id="employmentMonths">
-                           <option value="">Months</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                        </select>
-                     </label>
+                     <div>
+                        <span>employment duration</span>
+                        <span className="require">*</span>
+                     </div>
+                     <div className="duration-wrapper">
+                        <label htmlFor="employmentYears">
+                           <select name="employmentYears" id="years" ref={register({ required: true})}>
+                              <option value="">Years</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                           </select>
+                           <p className="error-backup">{errors.employmentYears && "Required field"}</p>
+                        </label>
+                        <label htmlFor="employmentMonths">
+                           <select name="employmentMonths" id="employmentMonths">
+                              <option value="">Months</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                           </select>
+                        </label>
+                     </div>
                   </div>
                   <h3>monthy expenses</h3>
-                  <label htmlFor="monthlyExpenses">Monthly Mortgage/Rent Payment
-                  <input type="text" id="monthlyExpenses" name="monthlyExpenses" ref={register} /> 
+                  <label htmlFor="monthlyExpenses">
+                     Monthly Mortgage/Rent Payment
+                     <span className="require">*</span>
+                  <input type="text" id="monthlyExpenses" name="monthlyExpenses" ref={register({ required: true})} /> 
+                  <p className="error">{errors.monthlyExpenses && "Required field"}</p>
                   </label>
                </div>
                <div className="btn-wrapper">
