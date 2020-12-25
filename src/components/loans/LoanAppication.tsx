@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaUserAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import ReactTooltip from 'react-tooltip';
+import logo from '../../imgs/logo.jpg';
 
 
 type FormValues = {
@@ -51,9 +53,11 @@ type FormValues = {
 const LoanApplication = () => {
    const { register, errors, handleSubmit } = useForm<FormValues>();
    const [toogleSsn, setToggleSsn] = useState(false);
+   const history = useHistory();
 
-   const onSubmit = (values: any) => {
+   const onSubmit = (values: FormValues) => {
       console.log(values);
+      history.push('/loans/application/visa-platium/confirmation');
    }
 
    const toogleSSN = () => {
@@ -64,7 +68,8 @@ const LoanApplication = () => {
       <div className="bg-color">
          <div className="LoanApplication">
             <div className="application-header">
-               <h1>Apply in 3 Steps</h1>
+               <img src={logo} alt=""/>
+               <h1 className="application-title">Apply in 3 Steps</h1>
                <h1>tell us about yourself</h1>
                <h2>
                   <span><FaUserAlt /></span>

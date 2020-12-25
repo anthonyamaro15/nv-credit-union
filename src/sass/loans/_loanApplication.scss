@@ -9,18 +9,26 @@
     .application-header {
       padding: 3rem 2rem;
       position: relative;
+      position: relative;
+
+      img {
+        width: 230px;
+        position: absolute;
+        top: 0;
+        left: 1rem;
+      }
 
       h1 {
         font-weight: normal;
         text-transform: capitalize;
         margin-bottom: 2rem;
         color: #2c5794;
-        &:first-child {
-          text-align: center;
-          font-size: 2.5rem;
-          font-weight: 300;
-          margin-bottom: 5rem;
-        }
+      }
+      .application-title {
+        text-align: center;
+        font-size: 2.7rem;
+        font-weight: 300;
+        margin-bottom: 5rem;
       }
 
       h2 {
@@ -162,10 +170,6 @@
       }
 
       .occupancy-duration {
-        //   border: 1px solid red;
-        //   display: flex;
-        //   justify-content: space-between;
-
         .duration-wrapper {
           display: flex;
           justify-content: space-between;

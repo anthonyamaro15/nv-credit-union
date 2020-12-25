@@ -1,0 +1,149 @@
+.bg-color {
+  background: #7c8ba5;
+  padding: 5rem 0;
+  .LoanApplication {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding-top: 4rem;
+
+    .review-form-header {
+      padding: 0 1rem;
+      // border: 1px solid red;
+      position: relative;
+
+      img {
+        width: 230px;
+        position: absolute;
+        top: 0;
+        left: 1rem;
+      }
+
+      h1 {
+        font-weight: normal;
+        text-transform: capitalize;
+        margin-bottom: 2rem;
+        color: #2c5794;
+      }
+      .application-title {
+        text-align: center;
+        font-size: 2.7rem;
+        font-weight: 300;
+        margin-bottom: 5rem;
+      }
+    }
+
+    .application-information {
+      // border: 1px solid red;
+      padding: 0 1rem;
+
+      .share-classes {
+        //   border: 1px solid blue;
+        margin-bottom: 2rem;
+
+        h3 {
+          font-size: 1rem;
+          text-transform: capitalize;
+          margin-bottom: 0.5rem;
+          color: #2c5794;
+        }
+
+        .information-wrapper {
+          background: rgb(243, 243, 243);
+          display: flex;
+          justify-content: space-around;
+          padding: 0.5rem 0;
+
+          .lef-side-wrapper,
+          .right-side-wrapper {
+            .description {
+              font-weight: bold;
+              text-transform: capitalize;
+              margin-right: 0.5rem;
+              color: #2c5794;
+              font-size: 0.9rem;
+            }
+
+            .value {
+              font-size: 0.9rem;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+
+    .choose-branch-location {
+      label {
+        font-weight: normal;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #2c5794;
+      }
+
+      .agreement {
+        // border: 1px solid red;
+        padding: 0 1rem;
+        margin-top: 4rem;
+
+        h1 {
+          font-size: 1.8rem;
+          margin-bottom: 1rem;
+          color: #2c5794;
+        }
+
+        p {
+          font-weight: 300;
+          font-size: 0.9rem;
+        }
+
+        .small-desc {
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .btn-wrapper {
+        // border: 1px solid red;
+        text-align: center;
+        margin-top: 4rem;
+
+        p {
+          .require {
+            display: inline-block;
+          }
+        }
+
+        span {
+          display: block;
+          margin: 0.5rem 0;
+        }
+
+        button[type="submit"] {
+          background: #2c5794;
+          color: white;
+          width: 500px;
+          padding: 0.8rem;
+          text-transform: capitalize;
+          font-size: 1.2rem;
+          border-radius: 4px;
+          border: 1px solid grey;
+        }
+
+        .goback {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          text-transform: capitalize;
+          border-radius: 4px;
+          border: 1px solid #2c5794;
+          color: #2c5794;
+          background: none;
+          width: 150px;
+        }
+      }
+    }
+  }
+}
