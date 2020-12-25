@@ -13,6 +13,7 @@ import Header from './marketingPage/Header';
 import LowerContent from './marketingPage/LowerContent';
 import Navbar from './marketingPage/Navbar';
 import LoanApplication from './loans/LoanAppication';
+import ReviewApplication from './loans/ReviewApplication';
 
 const MainApp = () => {
    return (
@@ -43,8 +44,11 @@ const MainApp = () => {
          <Route path="/loans/auto-refinance" exact>
             <RefinanceAutoLoan />
          </Route>
-         <Route path="/loans/application/:loanType">
+         <Route path="/loans/application/:loanType" exact>
             <LoanApplication />
+         </Route>
+         <Route path="/loans/application/:loanType/confirmation" exact>
+            <ReviewApplication />
          </Route>
          <LowerContent />
          <Footer />
