@@ -50,6 +50,8 @@
         // border: 1px solid red;
         text-transform: capitalize;
         font-weight: bold;
+        position: relative;
+        width: 100%;
 
         input {
           font-family: "Raleway", sans-serif;
@@ -61,7 +63,7 @@
           font-weight: 300;
           border-radius: 4px;
           border: 1px solid #d6d6d6;
-          margin: 0.5rem 0 1rem;
+          margin: 0.5rem 0 1.2rem;
         }
         select {
           font-family: "Raleway", sans-serif;
@@ -77,11 +79,25 @@
           border: 1px solid #d6d6d6;
           margin: 0.5rem 0 1rem;
         }
+
+        .error {
+          color: red;
+          font-weight: normal;
+          font-size: 0.9rem;
+          position: absolute;
+          top: 4.6rem;
+          left: 0;
+          //  border: 1px solid red;
+          display: block;
+          width: 200px;
+        }
       }
 
       .ssn-wrapper {
+        //   border: 1px solid red;
         display: flex;
         justify-content: space-between;
+        position: relative;
 
         span {
           text-transform: uppercase;
@@ -101,8 +117,9 @@
       }
 
       .date-of-birth {
+        //   border: 1px solid red;
         span {
-          display: block;
+          //  display: block;
           text-transform: capitalize;
           font-weight: bold;
         }
@@ -145,9 +162,22 @@
       }
 
       .occupancy-duration {
-        // border: 1px solid red;
-        display: flex;
-        justify-content: space-between;
+        //   border: 1px solid red;
+        //   display: flex;
+        //   justify-content: space-between;
+
+        .duration-wrapper {
+          display: flex;
+          justify-content: space-between;
+
+          label {
+            width: 100%;
+
+            select {
+              width: 97%;
+            }
+          }
+        }
 
         label {
           width: 100%;
@@ -171,9 +201,9 @@
           //   display: flex;
           //   justify-content: space-between;
 
-          span {
-            display: block;
-          }
+          //  span {
+          //    display: block;
+          //  }
 
           .input-wrapper {
             display: flex;
@@ -192,13 +222,33 @@
       .financial-information {
         margin-top: 3rem;
         margin-bottom: 7rem;
-        // border: 1px solid red;
+        //   border: 1px solid red;
 
         h2 {
           text-transform: capitalize;
           margin-bottom: 1rem;
           font-size: 1.8rem;
           color: #2c5794;
+        }
+      }
+
+      .employment-duration {
+        //   border: 1px solid red;
+        margin-bottom: 1rem;
+        span {
+          display: inline-block;
+        }
+        .duration-wrapper {
+          display: flex;
+          justify-content: space-between;
+
+          label {
+            width: 100%;
+
+            select {
+              width: 97%;
+            }
+          }
         }
       }
 
@@ -246,4 +296,21 @@
       }
     }
   }
+}
+
+.require {
+  color: red;
+  font-size: 1.3rem;
+  margin-left: 0.3rem;
+}
+
+.error-backup {
+  //   border: 1px solid red;
+  position: absolute;
+  top: 3.3rem;
+  font-weight: normal;
+  color: red;
+  left: 0;
+  width: 200px;
+  font-size: 0.9rem;
 }
