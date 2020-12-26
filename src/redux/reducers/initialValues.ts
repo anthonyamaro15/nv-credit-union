@@ -44,5 +44,5 @@ const values =  {
 
 export const initialValues = {
    tt: 'not empty',
-   creditCardApplication: {}
+   creditCardApplication: values
 };

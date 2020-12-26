@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaUserAlt } from "react-icons/fa";
@@ -10,25 +10,23 @@ import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
 import { useDispatch } from 'react-redux';
 import { CREDIT_CARD_APPLICATION } from '../../redux/actions';
 
-interface CreditCardReducerProps {
-   creditCardAppliation: any;
-   tt: string; 
+interface Props {
+   applicationData: any;
 }
 
-interface ReducerProps {
-   creditCardReducer: CreditCardReducerProps;
-}
-
-const LoanApplication = () => {
-   const { register, errors, handleSubmit } = useForm<FormCreditCardProps>();
+const LoanApplication: React.FC<Props> = ({ applicationData }) => {
+   const { register, errors, handleSubmit } = useForm({
+      defaultValues: applicationData
+   });
    const [toogleSsn, setToggleSsn] = useState(false);
    const history = useHistory();
    const dispatch = useDispatch();
    const { loanType } = useParams<{loanType: string}>();
 
    const onSubmit = (values: FormCreditCardProps) => {
-      // console.log(values);
-      dispatch({type: CREDIT_CARD_APPLICATION, payload: {...values, loanType}});
+      const updatedValues = {...values, loanType };
+      dispatch({type: CREDIT_CARD_APPLICATION, payload: updatedValues});
+      localStorage.setItem("application", JSON.stringify({...updatedValues, ssn: ""}));
       history.push('/loans/application/visa-platium/confirmation');
    }
 

@@ -39,4 +39,6 @@ export interface FormCreditCardProps  {
    employmentMonths: string;
    monthlyExpenses: string;
    loanType: string;
+   hasOneNevadaCreditCard?: string;
+   preferredLocation?: string;
 }
