@@ -2,9 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoaderComponent from './LoaderComponent';
 import logo from '../../imgs/logo.jpg';
+import { useSelector } from 'react-redux';
+import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
+
+interface CreditCardReducerProps {
+   creditCardApplication: FormCreditCardProps;  
+}
+
+interface ReducerProps {
+   creditCardReducer: CreditCardReducerProps;
+}
 
 const ResultApplication = () => {
 const [result, setResult] = useState(true);
+const { creditCardApplication } = useSelector((state: ReducerProps) => state.creditCardReducer);
 const history = useHistory();
 
    useEffect(() => {
@@ -34,7 +45,7 @@ const history = useHistory();
                   <h1>thank you</h1>
                </div>
                <div className="application-result">
-                  <p>{`Lisa, thank you for submitting you loan appliation. Your application number is 477361. You will reveive an email notification when your application has been updated or you may login to check the status online. If you have any questions or need additional information, please contact our Member Services Contact Center at (800) 388-3000.`}</p>
+                  <p>{`${creditCardApplication.firstName}, thank you for submitting you loan appliation. Your application number is 477361. You will reveive an email notification when your application has been updated or you may login to check the status online. If you have any questions or need additional information, please contact our Member Services Contact Center at (800) 388-3000.`}</p>
                   <div className="btn-wrapper">
                      <button type="submit" onClick={returnToWebsite}>return to our website</button>
                   </div>

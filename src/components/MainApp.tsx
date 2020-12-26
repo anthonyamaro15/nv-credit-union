@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import AutoLoan from './loans/autoLoans/AutoLoan';
 import AutoLoanNewAndUsed from './loans/autoLoans/AutoLoanNewAndUsed';
@@ -15,8 +15,21 @@ import Navbar from './marketingPage/Navbar';
 import LoanApplication from './loans/LoanAppication';
 import ReviewApplication from './loans/ReviewApplication';
 import ResultApplication from './loans/ResultApplication';
+// import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
+   const [applicationData, setApplicationData] = useState();
+
+   useEffect(() => {
+      getLocalStoreData();
+   },[]);
+
+   function getLocalStoreData() {
+      const data = localStorage.getItem('application');
+      if(data) {
+         setApplicationData(JSON.parse(data))
+      }
+   }
    return (
       <div>
          <Navbar />
@@ -46,10 +59,10 @@ const MainApp = () => {
             <RefinanceAutoLoan />
          </Route>
          <Route path="/loans/application/:loanType" exact>
-            <LoanApplication />
+            <LoanApplication applicationData={applicationData} />
          </Route>
          <Route path="/loans/application/:loanType/confirmation" exact>
-            <ReviewApplication />
+            <ReviewApplication getLocalStoreData={getLocalStoreData} />
          </Route>
          <Route path="/loans/result-application" exact>
             <ResultApplication />

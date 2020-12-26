@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
-import { FaUserAlt } from "react-icons/fa";
+// import { FaUserAlt } from "react-icons/fa";
 import { FaCarAlt } from "react-icons/fa";
-import { BsFillHouseFill } from "react-icons/bs";
-import { BsBagFill } from "react-icons/bs";
+// import { BsFillHouseFill } from "react-icons/bs";
+// import { BsBagFill } from "react-icons/bs";
 import { GrCalculator } from "react-icons/gr";
 import autoLoanImg from '../../../imgs/autoloan.png';
 

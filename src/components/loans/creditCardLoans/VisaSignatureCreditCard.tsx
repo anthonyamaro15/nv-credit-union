@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { HiCreditCard } from "react-icons/hi";
-import { FaCarAlt } from "react-icons/fa";
-import { GrCalculator } from "react-icons/gr";
+// import { HiCreditCard } from "react-icons/hi";
+// import { FaCarAlt } from "react-icons/fa";
+// import { GrCalculator } from "react-icons/gr";
 
 const VisaSignatureCreditCard = () => {
    const history = useHistory();

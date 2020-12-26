@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../../imgs/logo.jpg';
 import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
 
@@ -17,8 +18,14 @@ interface ReducerProps {
    creditCardReducer: CreditCardReducerProps;
 }
 
-const ReviewApplication = () => {
+interface Props {
+   getLocalStoreData: () => void;
+}
+
+const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
    const { register, errors, handleSubmit } = useForm<FormValues>();
+   const history = useHistory();
+   const { pathname } = useLocation();
    const  { creditCardApplication }  = useSelector((state: ReducerProps ) => state.creditCardReducer);
 
    const {
@@ -29,18 +36,18 @@ const ReviewApplication = () => {
       birthMonth,
       birthDay,
       birthYear,
-      memberNumber,
-      referenceFirstName,
-      referenceLastName,
-      referenceEmail,
-      referencePhone,
-      referenceRelationship,
+      // memberNumber,
+      // referenceFirstName,
+      // referenceLastName,
+      // referenceEmail,
+      // referencePhone,
+      // referenceRelationship,
       citizenship,
       contactMethod,
       contactEmail,
       homePhone,
-      cellPhone,
-      workPhone,
+      // cellPhone,
+      // workPhone,
       address,
       zip,
       city,
@@ -57,15 +64,30 @@ const ReviewApplication = () => {
       monthlyIncome,
       employmentStatus,
       jobTitle,
-      employer,
+      // employer,
       employmentYears,
-      employmentMonths,
+      // employmentMonths,
       monthlyExpenses,
       loanType,
    } = creditCardApplication;
 
-   const onSubmit = (values: any) => {
-      console.log(values);
+   // console.log(pathname.split('/').slice(0, -1).join('/'));
+
+   const onSubmit = (values: FormValues) => {
+      // const { hasOneNevadaCreditCard, preferredLocation } = values;
+      // const updateNewValues = {
+      //    ...creditCardApplication,
+      //    hasOneNevadaCreditCard,
+      //    preferredLocation
+      // }
+      history.push("/loans/result-application");
+      localStorage.clear();
+   }
+
+   const goBackToApplication = () => {
+      getLocalStoreData();
+      const previousPath = pathname.split('/').slice(0, -1).join('/');
+      history.push(previousPath);
    }
 
    return (
@@ -234,7 +256,7 @@ const ReviewApplication = () => {
                   <p><span className="require">*</span>Required Field(s)</p>
                   <button type="submit">I Agree</button>
                   <span>Or</span>
-                  <button className="goback">go back</button>
+                  <button className="goback" onClick={goBackToApplication}>go back</button>
                </div>
             </form>
             <div className="form-footer">
