@@ -1,14 +1,68 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import logo from '../../imgs/logo.jpg';
+import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
 
 type FormValues = {
    preferredLocation: string;
    hasOneNevadaCreditCard: string;
 }
 
+interface CreditCardReducerProps {
+   creditCardApplication: FormCreditCardProps;  
+}
+
+interface ReducerProps {
+   creditCardReducer: CreditCardReducerProps;
+}
+
 const ReviewApplication = () => {
    const { register, errors, handleSubmit } = useForm<FormValues>();
+   const  { creditCardApplication }  = useSelector((state: ReducerProps ) => state.creditCardReducer);
+
+   const {
+      firstName,
+      middleName,
+      lastName,
+      ssn,
+      birthMonth,
+      birthDay,
+      birthYear,
+      memberNumber,
+      referenceFirstName,
+      referenceLastName,
+      referenceEmail,
+      referencePhone,
+      referenceRelationship,
+      citizenship,
+      contactMethod,
+      contactEmail,
+      homePhone,
+      cellPhone,
+      workPhone,
+      address,
+      zip,
+      city,
+      state,
+      occupancyStatus,
+      occupancyYears,
+      occupancyMonths,
+      idType,
+      idNumber,
+      idState,
+      expirationMonth,
+      expirationDay,
+      expirationYear,
+      monthlyIncome,
+      employmentStatus,
+      jobTitle,
+      employer,
+      employmentYears,
+      employmentMonths,
+      monthlyExpenses,
+      loanType,
+   } = creditCardApplication;
 
    const onSubmit = (values: any) => {
       console.log(values);
@@ -28,7 +82,7 @@ const ReviewApplication = () => {
                   <div className="information-wrapper">
                      <div className="left-side-wrapper">
                         <span className="description">credit card type</span>
-                        <span className="value">credit card</span>
+                        <span className="value">{loanType}</span>
                      </div>
                   </div> 
                </div>
@@ -37,21 +91,21 @@ const ReviewApplication = () => {
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">full name</span>
-                        <span className="value">lisa smith</span>
+                        <span className="value">{`${firstName} ${middleName} ${lastName}`}</span>
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">SSN </span>
-                        <span className="value">***1111</span>
+                        <span className="value">{`${ssn}`}</span>
                      </div>
                   </div> 
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">date of birth</span>
-                        <span className="value">01/13/1994</span>
+                        <span className="value">{`${birthMonth}/${birthDay}/${birthYear}`}</span>
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">citizenship satatus</span>
-                        <span className="value">perm resident</span>
+                        <span className="value">{citizenship}</span>
                      </div>
                   </div> 
                </div>
@@ -60,17 +114,17 @@ const ReviewApplication = () => {
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">email</span>
-                        <span className="value">lisa@gmail.com</span>
+                        <span className="value">{contactEmail}</span>
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">home phone </span>
-                        <span className="value">(702) 232-34-22</span>
+                        <span className="value">{homePhone}</span>
                      </div>
                   </div> 
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">preferred contact method</span>
-                        <span className="value">email</span>
+                        <span className="value">{contactMethod}</span>
                      </div>
                   </div> 
                </div>
@@ -79,11 +133,11 @@ const ReviewApplication = () => {
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">current physical address</span>
-                        <span className="value">4450 e karen ave las vegas NV 89121</span>
+                        <span className="value">{`${address} ${city} ${state} ${zip}`}</span>
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">occupancy status </span>
-                        <span className="value">rent</span>
+                        <span className="value">{occupancyStatus}</span>
                      </div>
                   </div> 
                  <div className="information-wrapper">
@@ -93,7 +147,7 @@ const ReviewApplication = () => {
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">occupancy duration</span>
-                        <span className="value">4 yers 2 monts</span>
+                        <span className="value">{`${occupancyYears} yrs ${occupancyMonths} months`}</span>
                      </div>
                   </div> 
                </div>
@@ -102,40 +156,50 @@ const ReviewApplication = () => {
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">ID Type</span>
-                        <span className="value">DRIVERS LICENSE</span>
+                        <span className="value">{idType}</span>
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">ID Number</span>
-                        <span className="value">324324242424233</span>
+                        <span className="value">{idNumber}</span>
                      </div>
-                  </div>  
+                  </div> 
+                  <div className="information-wrapper">
+                     <div className="lef-side-wrapper">
+                        <span className="description">ID State</span>
+                        <span className="value">{idState}</span>
+                     </div>
+                     <div className="right-side-wrapper">
+                        <span className="description">ID Expiration Date</span>
+                        <span className="value">{`${expirationMonth}/${expirationDay}/${expirationYear}`}</span>
+                     </div>
+                  </div> 
                </div>
                <div className="share-classes">
                   <h3>financial information</h3>
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">empoyment status</span>
-                        <span className="value">unemployed</span>
+                        <span className="value">{employmentStatus}</span>
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">profession/Job Title</span>
-                        <span className="value">chef</span>
+                        <span className="value">{jobTitle}</span>
                      </div>
                   </div> 
                  <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">employment duration</span>
-                        <span className="value">1 yers</span>
+                        <span className="value">{`${employmentYears}`}</span>
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">gross monthly income </span>
-                        <span className="value">$ 4,000.00</span>
+                        <span className="value">{`$ ${monthlyIncome}`}</span>
                      </div>
                   </div> 
                  <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">montly mortage/rent</span>
-                        <span className="value">$ 300.00</span>
+                        <span className="value">{`$ ${monthlyExpenses}`}</span>
                      </div>
                   </div> 
                </div>

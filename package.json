@@ -20,6 +20,7 @@
     "react-spinners": "^0.9.0",
     "react-tooltip": "^4.2.11",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
@@ -48,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-redux": "^7.1.14",
     "@types/react-router-dom": "^5.1.6"
   }
 }
