@@ -14,6 +14,7 @@ import LowerContent from './marketingPage/LowerContent';
 import Navbar from './marketingPage/Navbar';
 import LoanApplication from './loans/LoanAppication';
 import ReviewApplication from './loans/ReviewApplication';
+import ResultApplication from './loans/ResultApplication';
 
 const MainApp = () => {
    return (
@@ -49,6 +50,9 @@ const MainApp = () => {
          </Route>
          <Route path="/loans/application/:loanType/confirmation" exact>
             <ReviewApplication />
+         </Route>
+         <Route path="/loans/result-application" exact>
+            <ResultApplication />
          </Route>
          <LowerContent />
          <Footer />
