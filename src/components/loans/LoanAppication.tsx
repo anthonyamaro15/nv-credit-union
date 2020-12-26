@@ -1,62 +1,34 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaUserAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import ReactTooltip from 'react-tooltip';
 import logo from '../../imgs/logo.jpg';
+import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
+import { useDispatch } from 'react-redux';
+import { CREDIT_CARD_APPLICATION } from '../../redux/actions';
 
+interface CreditCardReducerProps {
+   creditCardAppliation: any;
+   tt: string; 
+}
 
-type FormValues = {
-   firstName: string;
-   middleName?: string;
-   lastName: string;
-   ssn: string;
-   birthMonth: string;
-   birthDay: string;
-   birthYear: string;
-   memberNumber?: string;
-   referenceFirstName?: string;
-   referenceLastName?: string;
-   referenceEmail?: string;
-   referencePhone?: string;
-   referenceRelationship?: string;
-   citizenship: string;
-   contactMethod: string;
-   contactEmail: string;
-   homePhone?: string;
-   cellPhone?: string;
-   workPhone?: string;
-   address: string;
-   zip: string;
-   city: string;
-   state: string;
-   occupancyStatus: string;
-   occupancyYears: string;
-   occupancyMonths: string;
-   idType: string;
-   idNumber: string;
-   idState: string;
-   expirationMonth: string;
-   expirationDay: string;
-   expirationYear: string;
-   monthlyIncome: string;
-   employmentStatus: string;
-   jobTitle: string;
-   employer: string;
-   employmentYears: string;
-   employmentMonths: string;
-   monthlyExpenses: string;
+interface ReducerProps {
+   creditCardReducer: CreditCardReducerProps;
 }
 
 const LoanApplication = () => {
-   const { register, errors, handleSubmit } = useForm<FormValues>();
+   const { register, errors, handleSubmit } = useForm<FormCreditCardProps>();
    const [toogleSsn, setToggleSsn] = useState(false);
    const history = useHistory();
+   const dispatch = useDispatch();
+   const { loanType } = useParams<{loanType: string}>();
 
-   const onSubmit = (values: FormValues) => {
-      console.log(values);
+   const onSubmit = (values: FormCreditCardProps) => {
+      // console.log(values);
+      dispatch({type: CREDIT_CARD_APPLICATION, payload: {...values, loanType}});
       history.push('/loans/application/visa-platium/confirmation');
    }
 

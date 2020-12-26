@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 import { FaCarAlt } from "react-icons/fa";
 import { GrCalculator } from "react-icons/gr";
 
 const VisaSignatureCreditCard = () => {
+   const history = useHistory();
+
+   const apply = () => {
+      history.push('/loans/application/visa-signature');
+   }
+
    return (
       <div className="Loans-wrapper">
          <div className="Loans">
@@ -30,7 +36,7 @@ const VisaSignatureCreditCard = () => {
                      <li>Free auto rental insurance with damage waiver.</li>
                      <li>Free cell phone protection.</li>
                   </ul>
-                  <button className="apply">apply now</button>
+                  <button className="apply" onClick={apply}>apply now</button>
                   <p className="apr-info">
                      APR = Annual Percentage Rate and are listed "as low as." Mortgage rates excluded, call for APR. APRs can increase after consummation of the loan if the loan terms allow an APR to increase. Currently Visa® variable APRs are between 8.25% and 17.25%, depending on your credit history and other factors. Rates may change periodically based on the Prime Rate. View Visa® Credit Card Rates, Fees and Cost Information
                      Rates valid as of 12/24/20.
