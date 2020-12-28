@@ -15,6 +15,7 @@ import Navbar from './marketingPage/Navbar';
 import LoanApplication from './loans/LoanAppication';
 import ReviewApplication from './loans/ReviewApplication';
 import ResultApplication from './loans/ResultApplication';
+import CheckApplicationStatus from './loans/CheckApplicationStatus';
 // import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
@@ -66,6 +67,9 @@ const MainApp = () => {
          </Route>
          <Route path="/loans/result-application" exact>
             <ResultApplication />
+         </Route>
+         <Route path="/application-status">
+            <CheckApplicationStatus />
          </Route>
          <LowerContent />
          <Footer />
