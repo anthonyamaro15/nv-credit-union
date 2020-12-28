@@ -72,6 +72,7 @@ const CheckApplicationStatus = () => {
                </label>
 
                <div className="app-status-btn-wrapper">
+                  <p><span className="require">*</span>Required Field(s)</p>
                   <button type="submit">get status</button>
                </div>
             </form>

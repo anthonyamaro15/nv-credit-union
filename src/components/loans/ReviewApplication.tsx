@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../../imgs/logo.jpg';
+import { CREDIT_CARD_APPLICATION } from '../../redux/actions';
+import { preferredLocations } from '../../seedData';
 import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
 
 type FormValues = {
@@ -23,8 +25,10 @@ interface Props {
 }
 
 const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
+   const [hashSSN, setHashSSN] = useState('');
    const { register, errors, handleSubmit } = useForm<FormValues>();
    const history = useHistory();
+   const dispatch = useDispatch();
    const { pathname } = useLocation();
    const  { creditCardApplication }  = useSelector((state: ReducerProps ) => state.creditCardReducer);
 
@@ -71,15 +75,27 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
       loanType,
    } = creditCardApplication;
 
+   useEffect(() => {
+      setHashSSN('****' + ssn.slice(5));
+   })
+
    // console.log(pathname.split('/').slice(0, -1).join('/'));
 
+   const generateRandomNumber = () => {
+      return Math.floor(Math.random() * 1000000);
+   }
+
+   // console.log("what is this number?? ", generateRandomNumber());
+
    const onSubmit = (values: FormValues) => {
-      // const { hasOneNevadaCreditCard, preferredLocation } = values;
-      // const updateNewValues = {
-      //    ...creditCardApplication,
-      //    hasOneNevadaCreditCard,
-      //    preferredLocation
-      // }
+      const { hasOneNevadaCreditCard, preferredLocation } = values;
+      const updateNewValues = {
+         ...creditCardApplication,
+         hasOneNevadaCreditCard,
+         preferredLocation,
+         applicationNumber: generateRandomNumber()
+      }
+      dispatch({type: CREDIT_CARD_APPLICATION, payload: updateNewValues })
       history.push("/loans/result-application");
       localStorage.clear();
    }
@@ -102,7 +118,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                <div className="share-classes">
                   <h3>credit card information</h3>
                   <div className="information-wrapper">
-                     <div className="left-side-wrapper">
+                     <div className="lef-side-wrapper">
                         <span className="description">credit card type</span>
                         <span className="value">{loanType}</span>
                      </div>
@@ -117,7 +133,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">SSN </span>
-                        <span className="value">{`${ssn}`}</span>
+                        <span className="value">{`${hashSSN}`}</span>
                      </div>
                   </div> 
                   <div className="information-wrapper">
@@ -233,7 +249,9 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                   <span className="require">*</span>
                   <select name="preferredLocation" id="preferredLocation" ref={register({ required: true })}>
                      <option value="">--Please Select--</option>
-                     <option value="location-one">location one</option>
+                     {preferredLocations.map((location: string, i) => (
+                        <option value={location} key={i}>{location}</option>
+                     ))}
                   </select>
                   <p className="error">{errors.preferredLocation && "Require field"}</p>
                </label>

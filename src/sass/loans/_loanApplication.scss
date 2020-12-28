@@ -268,6 +268,7 @@
           font-size: 1.2rem;
           border-radius: 4px;
           border: 1px solid grey;
+          margin-top: 0.5rem;
         }
       }
     }
@@ -309,12 +310,11 @@
 }
 
 .error-backup {
-  //   border: 1px solid red;
   position: absolute;
   top: 3.3rem;
   font-weight: normal;
   color: red;
   left: 0;
-  width: 200px;
+  width: 350px;
   font-size: 0.9rem;
 }
