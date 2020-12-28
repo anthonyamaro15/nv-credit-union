@@ -1,0 +1,82 @@
+.BecomeAMember {
+  .BecomeAMember-wrapper {
+    .account-header {
+      padding: 3rem 2rem 2rem;
+
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .open-acc-description {
+      padding: 0 2rem;
+
+      button {
+        font-size: 1rem;
+        font-weight: 300;
+        padding: 0.7rem 1.5rem;
+        //   margin-left: 1rem;
+        text-transform: uppercase;
+        border: 1px solid #b22b2e;
+        background: #b22b2e;
+        color: white;
+        border-radius: 4px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;
+      }
+
+      p {
+        margin: 2rem 0;
+        font-size: 1.1rem;
+        line-height: 1.5;
+      }
+
+      ol {
+        // list-style: square;
+        margin-left: 2rem;
+        margin-bottom: 3rem;
+
+        li {
+          margin-bottom: 0.5rem;
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .account-requirements {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem 2rem;
+
+      .membership-eligibility,
+      .require-information {
+        background: rgb(238, 238, 238);
+        //   border: 1px solid blue;
+        padding: 0.5rem;
+        width: 48%;
+
+        h3 {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+        h4 {
+          margin-bottom: 1rem;
+        }
+        ul {
+          list-style: square;
+          margin-left: 2rem;
+
+          li {
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+      .agree-to {
+        h4 {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+}

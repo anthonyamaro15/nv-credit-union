@@ -1,14 +1,20 @@
 import React from 'react';
 import tempImg from '../../imgs/video.jpg';
 import { ImUserPlus } from "react-icons/im";
+import { useHistory } from 'react-router-dom';
 
 const Content = () => {
+   const history = useHistory();
+
+   const redirect = () => {
+      history.push("/banking/checking");
+   }
    return (
       <>
          <section className="Content">
             <h3>
                become a one nevada member
-               <button>
+               <button onClick={redirect}>
                   open a new account
                   <span> <ImUserPlus /> </span>
                </button>
