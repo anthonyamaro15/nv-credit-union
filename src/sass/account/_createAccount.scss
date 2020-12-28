@@ -1,0 +1,21 @@
+.CreateAccount {
+  border: 1px solid red;
+
+  .CreateAccount-wrapper {
+    max-width: 1150px;
+    margin: 0 auto;
+    border: 1px solid green;
+
+    .CreateAccountNavbar {
+      border: 1px solid blue;
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+
+      a {
+        text-transform: capitalize;
+      }
+    }
+  }
+}

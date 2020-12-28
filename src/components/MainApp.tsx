@@ -16,6 +16,9 @@ import LoanApplication from './loans/LoanAppication';
 import ReviewApplication from './loans/ReviewApplication';
 import ResultApplication from './loans/ResultApplication';
 import CheckApplicationStatus from './loans/CheckApplicationStatus';
+import BecomeAMember from './account/BecomeAMember';
+import OpenAccount from './account/OpenAccount';
+import CreateAccount from './account/CreateAccount';
 // import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
@@ -68,8 +71,17 @@ const MainApp = () => {
          <Route path="/loans/result-application" exact>
             <ResultApplication />
          </Route>
-         <Route path="/application-status">
+         <Route path="/application-status" exact>
             <CheckApplicationStatus />
+         </Route>
+         <Route path="/banking/checking" exact>
+            <BecomeAMember />
+         </Route>
+         <Route path='/open-account' exact>
+            <OpenAccount />
+         </Route>
+         <Route path="/open-account/register">
+            <CreateAccount />
          </Route>
          <LowerContent />
          <Footer />

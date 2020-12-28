@@ -1,0 +1,60 @@
+.BecomeAMember {
+  background: #8c9091;
+  padding: 3rem 0;
+  .BecomeAMember-wrapper {
+    background: white;
+    max-width: 1150px;
+    margin: 0 auto;
+
+    .img-wrapper {
+      margin-bottom: 5rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .banking-description {
+      padding: 0 2rem;
+
+      button {
+        font-size: 1rem;
+        font-weight: 300;
+        padding: 0.7rem 1.5rem;
+        //   margin-left: 1rem;
+        text-transform: uppercase;
+        border: 1px solid #b22b2e;
+        background: #b22b2e;
+        color: white;
+        border-radius: 4px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;
+      }
+
+      p {
+        margin: 2rem 0;
+        font-size: 1.1rem;
+        line-height: 1.5;
+      }
+
+      ul {
+        list-style: square;
+        margin-left: 2rem;
+        margin-bottom: 3rem;
+
+        li {
+          margin-bottom: 0.3rem;
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .must-read {
+      padding: 0 2rem 5rem;
+      p {
+        margin-bottom: 0.3rem;
+        font-size: 0.6rem;
+      }
+    }
+  }
+}
