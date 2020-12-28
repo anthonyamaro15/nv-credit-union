@@ -9,6 +9,7 @@ import logo from '../../imgs/logo.jpg';
 import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
 import { useDispatch } from 'react-redux';
 import { CREDIT_CARD_APPLICATION } from '../../redux/actions';
+import { createNumbers, states, employmentStatus, idType } from '../../seedData';
 
 interface Props {
    applicationData: any;
@@ -19,6 +20,8 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
       defaultValues: applicationData
    });
    const [toogleSsn, setToggleSsn] = useState(false);
+   const [years, setYears] = useState(createNumbers(80));
+   const [months, setMonths] = useState(createNumbers(11));
    const history = useHistory();
    const dispatch = useDispatch();
    const { loanType } = useParams<{loanType: string}>();
@@ -82,8 +85,10 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   </div>
                </div>
                <label htmlFor="ssn">
-                  <input type={toogleSsn ? "text" : "password"} id="ssn" name="ssn" ref={register({ required: true})} />
-                  <p className="error-backup">{errors.ssn && "Required field"}</p>
+                  <input type={toogleSsn ? "text" : "password"} id="ssn" name="ssn" ref={register({ required: true, maxLength: 9})} />
+                  <p className="error-backup">{errors.ssn && errors.ssn.type === "required" && "Required field" }</p>
+                  <p className="error-backup">{errors.ssn && errors.ssn.type === "minLength" && "Field required a min length of 9" }</p>
+
                </label>
                <div className="date-of-birth">
                   <div>
@@ -194,7 +199,9 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      <span className="require">*</span>
                      <select name="state" id="state" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
-                        <option value="alabama">alabama</option>
+                        {states.map((single: string, i) => (
+                           <option value={single} key={i}>{single}</option>
+                        ))}
                      </select>
                      <p className="error">{errors.state && "Required field"}</p>              
                   </label>
@@ -220,16 +227,18 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         <label htmlFor="occupancyYears">
                            <select name="occupancyYears" id="occupancyYears" ref={register({ required: true})}>
                               <option value="">years</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
+                              {years.map((year: number, i) => (
+                                 <option value={year} key={i}>{year}</option>
+                              ))}
                            </select>
                            <p className="error">{errors.occupancyYears && "Required field"}</p>
                         </label>
                         <label htmlFor="occupancyMonths">
                            <select name="occupancyMonths" id="occupancyMonths" ref={register({ required: true })}>
                               <option value="">months</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
+                              {months.map((month: number, i) => (
+                                 <option value={month} key={i}>{month}</option>
+                              ))}
                            </select>
                            {/* <p className="error">{errors.occupancyMonths && "Required field"}</p> */}
                         </label>
@@ -258,8 +267,10 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      ID Type
                      <span className="require">*</span>
                      <select name="idType" id="idType" ref={register({ required: true })}>
-                        <option value="">drivers license</option>
-                        <option value="employerId">employer id</option>
+                        <option value="">--Please Select--</option>
+                        {idType.map((single: string, i) => (
+                           <option value={single} key={i}>{single}</option>
+                        ))}
                      </select>
                      <p className="error">{errors.idType && "Required field"}</p>
                   </label>
@@ -274,7 +285,9 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      <span className="require">*</span> 
                      <select name="idState" id="idState" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
-                        <option value="alabama">alabama</option>
+                        {states.map((single: string, i) => (
+                           <option value={single} key={i}>{single}</option>
+                        ))}
                      </select>
                      <p className="error">{errors.idState && "Required field"}</p>
                   </label>
@@ -308,7 +321,9 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      <span className="require">*</span>
                      <select name="employmentStatus" id="employmentStatus" ref={register({ required: true})}>
                         <option value="">--Please Select--</option>
-                        <option value="employed">employed</option>
+                        {employmentStatus.map((single: string, i) => (
+                           <option value={single} key={i}>{single}</option>
+                        ))}
                      </select>
                      <p className="error">{errors.employmentStatus && "Required field"}</p>
                   </label>
@@ -332,16 +347,18 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         <label htmlFor="employmentYears">
                            <select name="employmentYears" id="years" ref={register({ required: true})}>
                               <option value="">Years</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
+                              {years.map((year: number, i) => (
+                                 <option value={year} key={i}>{year}</option>
+                              ))}
                            </select>
                            <p className="error-backup">{errors.employmentYears && "Required field"}</p>
                         </label>
                         <label htmlFor="employmentMonths">
                            <select name="employmentMonths" id="employmentMonths">
                               <option value="">Months</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
+                              {months.map((month: number, i) => (
+                                 <option value={month} key={i}>{month}</option>
+                              ))}
                            </select>
                         </label>
                      </div>
@@ -355,6 +372,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   </label>
                </div>
                <div className="btn-wrapper">
+                  <p><span className="require">*</span>Required Field(s)</p>
                   <button type="submit">continue</button>
                </div>
             </form>

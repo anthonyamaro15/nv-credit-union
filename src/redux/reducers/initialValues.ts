@@ -39,6 +39,7 @@ const values =  {
    employmentMonths: '',
    monthlyExpenses: '',
    loanType: '',
+   applicationNumber: 0
 }
 
 

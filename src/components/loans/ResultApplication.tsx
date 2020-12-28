@@ -45,7 +45,7 @@ const history = useHistory();
                   <h1>thank you</h1>
                </div>
                <div className="application-result">
-                  <p>{`${creditCardApplication.firstName}, thank you for submitting you loan appliation. Your application number is 477361. You will reveive an email notification when your application has been updated or you may login to check the status online. If you have any questions or need additional information, please contact our Member Services Contact Center at (800) 388-3000.`}</p>
+                  <p>{`${creditCardApplication.firstName}, thank you for submitting you loan appliation. Your application number is ${creditCardApplication.applicationNumber}. You will reveive an email notification when your application has been updated or you may login to check the status online. If you have any questions or need additional information, please contact our Member Services Contact Center at (800) 388-3000.`}</p>
                   <div className="btn-wrapper">
                      <button type="submit" onClick={returnToWebsite}>return to our website</button>
                   </div>
