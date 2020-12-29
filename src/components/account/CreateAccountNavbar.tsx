@@ -6,7 +6,7 @@ const CreateAccountNavbar =  () => {
       <nav className="CreateAccountNavbar">
          <NavLink to="/open-account/register/personal-information" activeClassName="active" exact>personal information</NavLink>
          <NavLink to="/open-account/register/contact-information" activeClassName="active" exact>contact information</NavLink>
-         <NavLink to="/open-account/register/employment" activeClassName="active" exact>employment</NavLink>
+         <NavLink to="/open-account/register/employment-information" activeClassName="active" exact>employment</NavLink>
          
       </nav>
    )
