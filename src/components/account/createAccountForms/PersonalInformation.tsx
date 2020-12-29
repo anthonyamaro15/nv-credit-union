@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { CREATE_ACCOUNT_USER } from '../../../redux/actions';
 
 interface FormProps {
    firstName: string;
@@ -19,9 +21,42 @@ interface FormProps {
 const PersonalInformation = () => {
    const { register, handleSubmit, errors } = useForm<FormProps>();
    const history = useHistory();
+   const dispatch = useDispatch();
 
-   const onSubmit = (values: any) => {
-      console.log(values);
+   const onSubmit = (values: FormProps) => {
+      const { SSNNumber, 
+         confirmSSN, 
+         password, 
+         confirmPassword, 
+         email, 
+         confirmEmail, 
+         firstName, 
+         middleName, 
+         lastName, 
+         dateOfBirth, 
+         gender,  
+      } = values;
+
+      const updatedValues = {
+         firstName,
+         middleName,
+         lastName,
+         SSNNumber,
+         dateOfBirth,
+         gender,
+         email,
+         password,
+      }
+      if(SSNNumber !== confirmSSN) {
+         return alert("ssn numbers dont match")  
+      } 
+      if(password !== confirmPassword) {
+         return alert('passwords dont match');
+      }
+      if(email !== confirmEmail) {
+         return alert("emails dont match");
+      }
+      dispatch({type: CREATE_ACCOUNT_USER, payload: updatedValues })
       history.push('/open-account/register/contact-information');
    }
 
@@ -64,8 +99,8 @@ const PersonalInformation = () => {
                <input type="text" name="email" id="email" ref={register({ required: true })} />
             </label>
             {errors.email && <p className="errors">Field require</p>}
-            <label htmlFor="confirmEmal">re-enter email address
-               <input type="text" name="confirmEmal" id="confirmEmal" ref={register({ required: true })} />
+            <label htmlFor="confirmEmail">re-enter email address
+               <input type="text" name="confirmEmail" id="confirmEmail" ref={register({ required: true })} />
             </label>
             {errors.confirmEmail && <p className="errors">Field require</p>}
             <label htmlFor="password">create password
