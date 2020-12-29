@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Route } from 'react-router-dom';
 import ContactInformation from './createAccountForms/ContactInformation';
 import EmploymentInformation from './createAccountForms/EmploymentInformation';
+import FormFooter from './createAccountForms/FormFooter';
 import PersonalInformation from './createAccountForms/PersonalInformation';
 import CreateAccountNavbar from './CreateAccountNavbar';
 
@@ -20,6 +21,7 @@ const CreateAccountForm = () => {
             <Route path="/open-account/register/employment-information" exact>
                <EmploymentInformation />
             </Route>
+            <FormFooter />
          </div>
       </section>
    )

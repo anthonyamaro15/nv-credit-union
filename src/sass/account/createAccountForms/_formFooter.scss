@@ -1,0 +1,32 @@
+.FormFooter {
+  padding: 1rem 1rem 2rem;
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  background: #dde4ea;
+  border-radius: 4px;
+
+  p {
+    font-size: 0.7rem;
+  }
+
+  a {
+    font-size: 0.7rem;
+    font-weight: bold;
+    display: block;
+    color: #337ab7;
+  }
+
+  .right-side {
+    text-transform: capitalize;
+    p {
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    a {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+  }
+}
