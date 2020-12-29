@@ -1,0 +1,40 @@
+.PersonalInformation {
+  form {
+    .city-state-zip-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgb(226, 225, 225);
+      padding-bottom: 2rem;
+
+      span {
+        font-weight: bold;
+      }
+
+      .input-wrappers {
+        display: flex;
+        width: 70%;
+        align-items: center;
+
+        label {
+          width: 100%;
+
+          input {
+            width: 80%;
+          }
+
+          select {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.errors {
+  color: red;
+  margin-left: 15rem;
+  font-size: 0.9rem;
+}
