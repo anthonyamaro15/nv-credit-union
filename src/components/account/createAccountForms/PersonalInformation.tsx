@@ -1,4 +1,3 @@
-import { errorMonitor } from 'events';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
@@ -25,7 +24,7 @@ const PersonalInformation = () => {
       console.log(values);
       history.push('/open-account/register/contact-information');
    }
-   
+
    return (
       <section className="PersonalInformation">
          <h6>Please enter your personal information in the fields below.</h6>
