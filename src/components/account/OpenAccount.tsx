@@ -5,7 +5,7 @@ const OpenAccount = () => {
    const history = useHistory();
 
    const redirect = () => {
-      history.push('/open-account/register');
+      history.push('/open-account/register/personal-information');
    }
 
    return (
