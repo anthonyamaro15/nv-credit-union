@@ -20,11 +20,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
       defaultValues: applicationData
    });
    const [toogleSsn, setToggleSsn] = useState(false);
-   const [years, setYears] = useState(createNumbers(80));
-   const [months, setMonths] = useState(createNumbers(11));
    const history = useHistory();
    const dispatch = useDispatch();
    const { loanType } = useParams<{loanType: string}>();
+   const years = createNumbers(80);
+   const months = createNumbers(11);
 
    const onSubmit = (values: FormCreditCardProps) => {
       const updatedValues = {...values, loanType };

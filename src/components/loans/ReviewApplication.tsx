@@ -6,6 +6,8 @@ import logo from '../../imgs/logo.jpg';
 import { CREDIT_CARD_APPLICATION } from '../../redux/actions';
 import { preferredLocations } from '../../seedData';
 import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
+import { serverUrl } from '../../envVariables';
+import axios from 'axios';
 
 type FormValues = {
    preferredLocation: string;
@@ -77,17 +79,13 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
 
    useEffect(() => {
       setHashSSN('****' + ssn.slice(5));
-   })
-
-   // console.log(pathname.split('/').slice(0, -1).join('/'));
+   },[setHashSSN, ssn]);
 
    const generateRandomNumber = () => {
       return Math.floor(Math.random() * 1000000);
    }
 
-   // console.log("what is this number?? ", generateRandomNumber());
-
-   const onSubmit = (values: FormValues) => {
+   const onSubmit =  async (values: FormValues) => {
       const { hasOneNevadaCreditCard, preferredLocation } = values;
       const updateNewValues = {
          ...creditCardApplication,
@@ -98,6 +96,15 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
       dispatch({type: CREDIT_CARD_APPLICATION, payload: updateNewValues })
       history.push("/loans/result-application");
       localStorage.clear();
+
+      
+
+      try {
+        await axios.post(`${serverUrl}/credit_card_application/create`, updateNewValues);
+        console.log("sucess post application");
+      } catch (error) {
+         console.log(error.response);
+      }
    }
 
    const goBackToApplication = () => {

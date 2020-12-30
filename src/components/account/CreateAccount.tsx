@@ -1,5 +1,4 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { Route } from 'react-router-dom';
 import ApplicationDecision from './createAccountForms/ApplicationDecision';
 import ContactInformation from './createAccountForms/ContactInformation';
