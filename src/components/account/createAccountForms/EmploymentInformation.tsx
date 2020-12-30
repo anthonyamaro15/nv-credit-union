@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 interface FormProps {
    employerName: string;
@@ -9,7 +9,7 @@ interface FormProps {
 
 const EmploymentInformation = () => {
    const { register, handleSubmit, errors } = useForm<FormProps>();
-   const history = useHistory();
+   // const history = useHistory();
 
    const onSubmit = (values: any) => {
       console.log(values);

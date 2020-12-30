@@ -11,6 +11,10 @@ const VisaSignatureCreditCard = () => {
       history.push('/loans/application/visa-signature');
    }
 
+   const redirect = () => {
+      history.push("/application-status")
+   }
+
    return (
       <div className="Loans-wrapper">
          <div className="Loans">
@@ -46,7 +50,7 @@ const VisaSignatureCreditCard = () => {
                   <p>
                   Have you already applied for a credit card with One Nevada? 
                   </p>
-                  <button>check your application status</button>
+                  <button onClick={redirect}>check your application status</button>
                </div>
             </section>
 
@@ -55,11 +59,11 @@ const VisaSignatureCreditCard = () => {
                <nav>
                   <div className="share-icons credit">
                      {/* <HiCreditCard /> */}
-                     <Link to="/credit-card">Visa® Signature Rewards Credit Cards</Link> 
+                     <Link to="/loans/credit-card/visa-signature-credit-card">Visa® Signature Rewards Credit Cards</Link> 
                   </div> 
                   <div className="share-icons credit">
                      {/* <FaCarAlt /> */}
-                     <Link to="/car-loan">Visa® Platinum Rewards Credit Card</Link> 
+                     <Link to="/loans/credit-card/visa-platium-credit-card">Visa® Platinum Rewards Credit Card</Link> 
                   </div> 
                   {/* <div className="share-icons credit">
                      <GrCalculator />

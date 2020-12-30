@@ -80,7 +80,7 @@ const Loans = () => {
                <nav>
                   <div className="share-icons">
                      <HiCreditCard />
-                     <Link to="/credit-card">credit cards</Link> 
+                     <Link to="/loans/credit-card">credit cards</Link> 
                   </div> 
                   {/* <div className="share-icons">
                      <FaUserAlt />

@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaLock } from "react-icons/fa";
 import { AiFillQuestionCircle } from "react-icons/ai";
@@ -18,7 +18,7 @@ const CheckApplicationStatus = () => {
    const [simulateSubmit, setSimulateSubmit] = useState(false);
    const [loading, setLoading] = useState(false);
    const [toogleSsn, setToggleSsn] = useState(false);
-   const history = useHistory();
+   // const history = useHistory();
 
    const onSubmit = (values: FormProps) => {
       setLoading(true);

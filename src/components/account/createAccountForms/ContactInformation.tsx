@@ -27,7 +27,7 @@ const ContactInformation = () => {
 
    const onSubmit = (values: any) => {
       console.log(values);
-      history.push('/open-account/register/contact-information');
+      history.push('/open-account/register/employment-information');
    }
    
    return (
@@ -97,7 +97,7 @@ const ContactInformation = () => {
             <label htmlFor="workPhone">Work Phone
                <input type="text" name="workPhone" id="workPhone" placeholder="xxx-xxx-xxxx" ref={register({ required: true })} />
             </label>
-            {/* {errors.cellPhone && <p className="errors">Field require</p>} */}
+            {errors.workPhone && <p className="errors">Field require</p>}
 
 
             <label htmlFor="driverLincenseNumber">Driver's License Number

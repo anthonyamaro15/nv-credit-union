@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 // import { FaUserAlt } from "react-icons/fa";
 import { FaCarAlt } from "react-icons/fa";
@@ -10,6 +10,11 @@ import creditCardImg from '../../../imgs/creditcard.png';
 
 
 const CreditCardLoan = () => {
+   const history = useHistory();
+
+   const redirect = () => {
+      history.push("/application-status")
+   }
    return (
       <div className="Loans-wrapper">
          <div className="Loans">
@@ -59,7 +64,7 @@ const CreditCardLoan = () => {
                   <p>
                   Have you already applied for an auto loan, credit card, or personal loan with One Nevada? 
                   </p>
-                  <button>check your application status</button>
+                  <button onClick={redirect}>check your application status</button>
                </div>
             </section>
 
