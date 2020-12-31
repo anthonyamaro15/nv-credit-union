@@ -1,13 +1,4 @@
-// import React from 'react';
-// import { NavLink, Link } from 'react-router-dom';
-import { MdLocationOn } from "react-icons/md";
-import { ImUserPlus } from "react-icons/im";
-import { FaUsers } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { BsFillLockFill } from "react-icons/bs";
 import logo from '../../imgs/logo.jpg';
-
-
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
