@@ -1,0 +1,118 @@
+.Main-wrapper {
+  padding: 0.5rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+
+  border-bottom: 3px solid rgba(27, 27, 27, 0.1);
+
+  display: none;
+  @media (max-width: $laptop) {
+    display: block;
+  }
+
+  .img-wrapper {
+    margin-left: 2rem;
+    img {
+      width: 150px;
+    }
+  }
+
+  .MobileNavbar {
+    width: 100%;
+    background: #003764;
+    border-left: 1px solid rgb(61, 59, 59);
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: all 0.5s ease;
+    transform: translateY(-700px);
+    z-index: 100;
+
+    @media (max-width: $med-phone) {
+      width: 100%;
+    }
+
+    // add class when click hamburger menu
+    &.show {
+      transform: translateY(0px);
+    }
+
+    nav {
+      padding-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      a {
+        padding: 0.5rem 0 1rem 3em;
+        width: 100%;
+        font-weight: 300;
+        margin: 0 auto;
+        color: $white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        text-transform: capitalize;
+        font-size: 0.9rem;
+
+        &:last-child {
+          border: none;
+        }
+
+        &:hover {
+          background: #333;
+        }
+      }
+    }
+  }
+
+  .burger-menu {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    top: 0rem;
+    right: 2rem;
+    transition: transform 0.8s ease;
+    z-index: 120;
+    border: 1px solid red;
+
+    @media (max-width: $laptop) {
+      display: block;
+    }
+
+    // close mobile navbar when click on hamburger menu
+    &.close {
+      transform: rotate(180deg);
+      transition: all 1s ease;
+
+      .lines {
+        background: $white;
+
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(3px, 5px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(3px, -6px);
+        }
+      }
+    }
+
+    .lines {
+      padding: 2px 4px;
+      margin: 2px 0;
+      background: #003764;
+      width: 25px;
+      border-radius: 2px;
+      transition: all 0.7s ease;
+    }
+  }
+}

@@ -19,6 +19,7 @@ import CheckApplicationStatus from './loans/CheckApplicationStatus';
 import BecomeAMember from './account/BecomeAMember';
 import OpenAccount from './account/OpenAccount';
 import CreateAccount from './account/CreateAccount';
+import MobileNavbar from './mobileFiles/MobileNavbar';
 // import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
@@ -37,6 +38,7 @@ const MainApp = () => {
    return (
       <div>
          <Navbar />
+         <MobileNavbar />
          <Route path="/" exact>
             <Header />
             <Content />

@@ -1,5 +1,9 @@
 .Navbar {
   border-bottom: 3px solid rgba(27, 27, 27, 0.1);
+
+  @media (max-width: $laptop) {
+    display: none;
+  }
   .inner-wrapper {
     margin: 0 auto;
 
@@ -14,6 +18,10 @@
         //   padding: 1rem 0;
         align-items: center;
         font-size: 0.7rem;
+        //   border: 1px solid red;
+        @media (max-width: $md-desktop) {
+          max-width: 90%;
+        }
       }
 
       a {
@@ -51,9 +59,17 @@
       align-items: center;
       padding: 0.1rem 0;
 
+      @media (max-width: $md-desktop) {
+        max-width: 90%;
+      }
+
       img {
         width: 300px;
         // height: ;
+
+        @media (max-width: $md-desktop) {
+          width: 150px;
+        }
       }
 
       .second-nav-wrapper {
@@ -78,6 +94,11 @@
           &:hover {
             background: #333;
             color: white;
+          }
+
+          @media (max-width: $md-desktop) {
+            padding: 0.6rem 0.3rem;
+            font-size: 1rem;
           }
         }
 
