@@ -2,12 +2,22 @@
   background: #003764;
   color: white;
   padding: 4rem 0;
+
+  @media (max-width: $laptop) {
+    padding: 3rem 0;
+  }
   .footer-wrapper {
     max-width: 1200px;
     margin: 0 auto 3rem;
     //  border: 1px solid red;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: $md-desktop) {
+      max-width: 85%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
     .left-side {
       nav {
@@ -35,6 +45,10 @@
         }
       }
       .logos {
+        @media (max-width: $md-desktop) {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
         img {
           width: 80px;
           height: 35px;
@@ -42,6 +56,10 @@
 
           &:first-child {
             margin-right: 0.3rem;
+          }
+
+          @media (max-width: $laptop) {
+            height: 30px;
           }
         }
       }
@@ -68,6 +86,10 @@
           font-size: 1.5rem;
         }
       }
+    }
+
+    @media (max-width: $md-desktop) {
+      text-align: center;
     }
   }
 
