@@ -33,7 +33,7 @@ const Loans = () => {
                   </div>
                   <nav>
                      <div className="share-icons">
-                        <HiCreditCard />
+                        <span><HiCreditCard /></span>
                         <Link to="/loans/credit-card">credit cards</Link> 
                      </div> 
                      {/* <div className="share-icons">
@@ -41,7 +41,7 @@ const Loans = () => {
                         <Link to="/personal-loan">personal loans</Link> 
                      </div>  */}
                      <div className="share-icons">
-                        <FaCarAlt />
+                        <span><FaCarAlt /></span>
                         <Link to="/loans/car-loan">vehicle loans</Link> 
                      </div> 
                      {/* <div className="share-icons">
@@ -59,7 +59,7 @@ const Loans = () => {
                         <Link to="/commercial-loan">commercial real state loans</Link> 
                      </div>  */}
                      <div className="share-icons">
-                        <GrCalculator />
+                        <span><GrCalculator /></span>
                         <Link to="/calculator">calculators</Link> 
                      </div> 
                   </nav>
@@ -79,7 +79,7 @@ const Loans = () => {
                <h3>one nevada loans</h3>
                <nav>
                   <div className="share-icons">
-                     <HiCreditCard />
+                     <span><HiCreditCard /></span>
                      <Link to="/loans/credit-card">credit cards</Link> 
                   </div> 
                   {/* <div className="share-icons">
@@ -87,7 +87,7 @@ const Loans = () => {
                      <Link to="/personal-loan">personal loans</Link> 
                   </div>  */}
                   <div className="share-icons">
-                     <FaCarAlt />
+                     <span><FaCarAlt /></span>
                      <Link to="/car-loan">vehicle loans</Link> 
                   </div> 
                   {/* <div className="share-icons">
@@ -105,7 +105,7 @@ const Loans = () => {
                      <Link to="/commercial-loan">commercial real state loans</Link> 
                   </div>  */}
                   <div className="share-icons">
-                     <GrCalculator />
+                     <span><GrCalculator /></span>
                      <Link to="/calculator">calculators</Link> 
                   </div> 
                </nav>
