@@ -23,12 +23,19 @@
         padding: 0.7rem 1.5rem;
         //   margin-left: 1rem;
         text-transform: uppercase;
-        border: 1px solid #b22b2e;
+        //   border: 1px solid #b22b2e;
+        border: none;
         background: #b22b2e;
         color: white;
         border-radius: 4px;
         font-family: "Raleway", sans-serif;
         font-weight: 300;
+
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: #333;
+        }
       }
 
       p {

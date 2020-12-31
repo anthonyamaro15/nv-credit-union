@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { MdLocationOn } from "react-icons/md";
 import { ImUserPlus } from "react-icons/im";
 import { FaUsers } from "react-icons/fa";
@@ -13,18 +13,18 @@ const Navbar = () => {
          <div className="inner-wrapper">
             <nav className="first-nav">
                <div className="t">
-                  <Link to="/locations">
+                  <NavLink to="/locations" activeClassName="active">
                      <span><MdLocationOn /></span>
-                     Find ATMs & Branches</Link>
-                  <Link to="/register">
+                     Find ATMs & Branches</NavLink>
+                  <NavLink to="/register" activeClassName="active">
                      <span><ImUserPlus /></span>
-                     Open a New Account</Link>
-                  <Link to="/about">
+                     Open a New Account</NavLink>
+                  <NavLink to="/about" activeClassName="active">
                      <span><FaUsers /></span>
-                     About us</Link>
-                  <Link to="/about">
+                     About us</NavLink>
+                  <NavLink to="/about" activeClassName="active">
                      <span><MdEmail /></span>
-                     Contact Us</Link>
+                     Contact Us</NavLink>
                </div>
             </nav>
             <nav className="second-nav">
@@ -32,12 +32,12 @@ const Navbar = () => {
                   <img src={logo} alt="logo"/>
                </Link>
                <div className="second-nav-wrapper">
-                  <Link to="/bankin">Banking</Link>
-                  <Link to="/loans">Loans</Link>
-                  <Link to="/mortage">Mortage</Link>
-                  <Link to="/servicer">Services</Link>
-                  <Link to="/support">Support</Link>
-                  <Link to="/login"><span><BsFillLockFill /></span> Log in</Link>
+                  <NavLink to="/bankin" activeClassName="active">Banking</NavLink>
+                  <NavLink to="/loans" activeClassName="active">Loans</NavLink>
+                  <NavLink to="/mortage" activeClassName="active">Mortage</NavLink>
+                  <NavLink to="/servicer" activeClassName="active">Services</NavLink>
+                  <NavLink to="/support" activeClassName="active">Support</NavLink>
+                  <NavLink to="/login" activeClassName="active"><span><BsFillLockFill /></span> Log in</NavLink>
                </div>
             </nav>
          </div>

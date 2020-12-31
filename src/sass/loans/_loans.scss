@@ -42,6 +42,11 @@
           color: white;
           border: none;
           border-radius: 4px;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background: #333;
+          }
         }
 
         p {
@@ -53,7 +58,7 @@
       }
       nav {
         padding: 0 2rem 2rem;
-        //   border: 1px solid blue;
+
         .share-icons {
           font-size: 1.2rem;
           margin-bottom: 0.4rem;
@@ -64,6 +69,11 @@
             margin-left: 1rem;
             text-transform: capitalize;
             color: #0076d6;
+            transition: background 0.3s ease;
+
+            &:hover {
+              color: #333;
+            }
           }
         }
       }
@@ -94,6 +104,11 @@
         color: white;
         border: none;
         border-radius: 4px;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: #333;
+        }
       }
     }
   }
@@ -124,6 +139,12 @@
           margin-left: 0.5rem;
           font-size: 1rem;
           color: #0076d6;
+
+          transition: background 0.3s ease;
+
+          &:hover {
+            color: #333;
+          }
         }
       }
     }
