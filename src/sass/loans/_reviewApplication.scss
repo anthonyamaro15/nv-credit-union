@@ -6,17 +6,22 @@
     margin: 0 auto;
     background: white;
     padding-top: 4rem;
+    position: relative;
 
     .review-form-header {
       padding: 0 1rem;
-      // border: 1px solid red;
-      position: relative;
+      // position: relative;
 
       img {
         width: 230px;
         position: absolute;
-        top: 0;
+        top: 4rem;
         left: 1rem;
+
+        @media (max-width: $me-laptop) {
+          left: 50%;
+          transform: translate(-50%);
+        }
       }
 
       h1 {
@@ -24,17 +29,26 @@
         text-transform: capitalize;
         margin-bottom: 2rem;
         color: #2c5794;
+
+        @media (max-width: $laptop) {
+          font-size: 1.6rem;
+        }
       }
       .application-title {
         text-align: center;
         font-size: 2.7rem;
         font-weight: 300;
         margin-bottom: 5rem;
+
+        @media (max-width: $me-laptop) {
+          margin-top: 4rem;
+          margin-bottom: 2rem;
+          font-size: 2.5rem;
+        }
       }
     }
 
     .application-information {
-      // border: 1px solid red;
       padding: 0 1rem;
 
       .share-classes {
@@ -54,6 +68,15 @@
           justify-content: space-around;
           padding: 0.5rem 0;
 
+          @media (max-width: $laptop) {
+            padding: 0.5rem 1rem;
+          }
+
+          @media (max-width: $laptop) {
+            flex-direction: column;
+            align-items: center;
+          }
+
           .lef-side-wrapper,
           .right-side-wrapper {
             .description {
@@ -62,11 +85,19 @@
               margin-right: 0.5rem;
               color: #2c5794;
               font-size: 0.9rem;
+
+              @media (max-width: $laptop) {
+                font-size: 0.8rem;
+              }
             }
 
             .value {
               font-size: 0.9rem;
               color: black;
+
+              @media (max-width: $laptop) {
+                font-size: 0.8rem;
+              }
             }
           }
         }
@@ -132,6 +163,10 @@
           border-radius: 4px;
           margin-top: 0.5rem;
           //  border: 1px solid grey;
+
+          @media (max-width: $laptop) {
+            width: 300px;
+          }
         }
 
         .goback {
