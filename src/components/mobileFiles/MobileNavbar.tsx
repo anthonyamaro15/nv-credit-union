@@ -1,6 +1,6 @@
 import logo from '../../imgs/logo.jpg';
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const MobileNavbar = () => {
   const [isMoblie, setIsMobile] = useState(false);
@@ -8,6 +8,10 @@ const MobileNavbar = () => {
   const toggleMenu = () => {
     setIsMobile(!isMoblie);
   };
+
+  const closeNavMenu = () => {
+     setIsMobile(false);
+  }
 
   useEffect(() => {
     if (isMoblie) {
@@ -19,7 +23,10 @@ const MobileNavbar = () => {
   return (
     <div className="Main-wrapper">
        <div className="img-wrapper">
-         <img src={logo} alt=""/>
+          <Link to="/">
+            <img src={logo} alt="application logo"/>
+          </Link>
+         
        </div>
       <div
         className={!isMoblie ? "burger-menu" : "burger-menu close"}
@@ -31,16 +38,16 @@ const MobileNavbar = () => {
       </div>
       <div className={isMoblie ? "MobileNavbar show" : "MobileNavbar"}>
         <nav>
-          <NavLink to="/" exact activeClassName="active">
+          <NavLink onClick={closeNavMenu} to="/" exact activeClassName="active">
             banking
           </NavLink>
-          <NavLink to="/about" exact activeClassName="active">
+          <NavLink onClick={closeNavMenu} to="/loans" exact activeClassName="active">
             loans
           </NavLink>
-          <NavLink to="/contact" exact activeClassName="active">
+          <NavLink onClick={closeNavMenu} to="/contact" exact activeClassName="active">
             login
           </NavLink>
-          <NavLink to="/contact" exact activeClassName="active">
+          <NavLink onClick={closeNavMenu} to="/banking/checking" exact activeClassName="active">
             open a new account
           </NavLink>
         </nav>
