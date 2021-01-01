@@ -5,6 +5,7 @@
   left: 0;
   right: 0;
   background: white;
+  z-index: 100;
 
   border-bottom: 3px solid rgba(27, 27, 27, 0.1);
 
@@ -78,7 +79,6 @@
     right: 2rem;
     transition: transform 0.8s ease;
     z-index: 120;
-    border: 1px solid red;
 
     @media (max-width: $laptop) {
       display: block;

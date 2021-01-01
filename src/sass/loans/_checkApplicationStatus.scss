@@ -1,16 +1,32 @@
 .bg-color {
   .LoanApplication {
+    @media (max-width: $me-laptop) {
+      width: 90%;
+      margin: 0 auto;
+    }
     .img-wrapper {
       text-align: center;
       margin-bottom: 5rem;
+
+      @media (max-width: $laptop) {
+        margin-bottom: 3rem;
+      }
       img {
         width: 230px;
+
+        @media (max-width: $laptop) {
+          width: 180px;
+        }
       }
     }
     form {
       .app-status-btn-wrapper {
         margin: 4rem 0 5rem;
         text-align: center;
+
+        @media (max-width: $laptop) {
+          margin: 3rem 0;
+        }
         button {
           background: #2c5794;
           color: white;
@@ -21,6 +37,10 @@
           border-radius: 4px;
           border: 1px solid grey;
           margin-top: 0.5rem;
+
+          @media (max-width: $laptop) {
+            width: 300px;
+          }
         }
       }
     }
@@ -31,7 +51,7 @@
 
       h2 {
         text-transform: capitalize;
-        //   margin-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
       }
       p {
         font-size: 0.9rem;
@@ -42,6 +62,10 @@
         text-transform: capitalize;
         margin-bottom: 1rem;
         font-size: 1.1rem;
+
+        @media (max-width: $laptop) {
+          font-size: 1rem;
+        }
       }
       .application-status {
         width: 250px;
@@ -50,6 +74,10 @@
         .description-left {
           display: flex;
           justify-content: space-between;
+
+          @media (max-width: $laptop) {
+            font-size: 0.9rem;
+          }
         }
         .description-left {
           font-weight: bold;

@@ -5,12 +5,25 @@
 
     margin: 0 auto;
     padding: 2rem 0;
-    //  border: 1px solid red;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: $me-laptop) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (max-width: $laptop) {
+      padding-bottom: 0;
+    }
+
     .loan-section {
       width: 750px;
-      // border: 1px solid red;
+
+      @media (max-width: $laptop) {
+        width: 100%;
+        // margin-top: 2rem;
+      }
 
       .right-side {
         background: white;
@@ -59,10 +72,18 @@
       nav {
         padding: 0 2rem 2rem;
 
+        //   @media (max-width: $me-laptop) {
+        //     display: none;
+        //   }
+
         .share-icons {
           font-size: 1.2rem;
           margin-bottom: 0.4rem;
           color: #0076d6;
+
+          @media (max-width: $med-phone) {
+            font-size: 1rem;
+          }
 
           a {
             font-weight: 300;
@@ -81,6 +102,10 @@
         padding: 0 2rem 2.5rem;
         font-size: 0.7rem;
         margin-bottom: 2.5rem;
+
+        @media (max-width: $laptop) {
+          margin: 0;
+        }
       }
     }
 
@@ -88,6 +113,11 @@
       margin: 2rem 0 0;
       padding: 2rem 2rem;
       background: white;
+
+      @media (max-width: $laptop) {
+        margin: 0;
+        padding: 1rem 2rem;
+      }
 
       p {
         margin-bottom: 1rem;
@@ -118,6 +148,18 @@
     padding: 2.7rem;
     height: 100%;
     background: white;
+    //  border: 1px solid blue;
+
+    @media (max-width: $me-laptop) {
+      width: 750px;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: $laptop) {
+      width: 100%;
+      margin: 0;
+      padding: 2.7rem 2rem;
+    }
 
     h3 {
       text-transform: uppercase;
@@ -133,6 +175,11 @@
         padding: 0.7rem 0.5rem;
         font-size: 1.1rem;
         color: #0076d6;
+
+        @media (max-width: $laptop) {
+          font-size: 1rem;
+          padding: 0.7rem 0;
+        }
 
         a {
           text-transform: capitalize;
