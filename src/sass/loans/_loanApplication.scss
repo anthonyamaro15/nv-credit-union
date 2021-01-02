@@ -209,6 +209,31 @@
         }
       }
 
+      .use-different-address {
+        .diferent-address-title {
+          display: flex;
+          align-items: center;
+          text-transform: capitalize;
+          color: #2c5794;
+
+          span {
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+          }
+        }
+
+        .different-address-input-wrapper {
+          display: none;
+          margin-top: 1.5rem;
+        }
+
+        .show-inputs {
+          display: block;
+        }
+      }
+
       .identification {
         // border: 1px solid blue;
         margin-top: 3rem;

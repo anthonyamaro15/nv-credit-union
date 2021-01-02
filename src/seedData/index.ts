@@ -70,11 +70,11 @@ const employmentStatus = [
    "Homemaker",
    "Retired",
    "Self Employed",
-   "Student",
+   // "Student",
    "Unemployed",
-   "Other",
-   "Retired Military",
-   "Government/DOD",
+   // "Other",
+   // "Retired Military",
+   // "Government/DOD",
 ];
 
 const idType = [
@@ -110,6 +110,34 @@ const preferredLocations = [
    "Lemmon Valley/Reno Bran",
 ];
 
+const payGrade = [
+   "E1",
+   "E2",
+   "E3",
+   "E4",
+   "E5",
+   "E6",
+   "E7",
+   "E8",
+   "E9",
+   "O1",
+   "O1E",
+   "O2",
+   "O2E",
+   "O3",
+   "O3E",
+   "O4",
+   "O5",
+   "O6",
+   "O7",
+   "O8",
+   "O9",
+   "O10",
+   "W1",
+   "W2",
+   "W3"
+];
+
 function createNumbers(num: number) {
    const numbers  = [];
    for(let i = 0; i <= num; i++) {
@@ -118,4 +146,11 @@ function createNumbers(num: number) {
    return numbers;
 } 
 
-export { createNumbers, employmentStatus, idType, preferredLocations, states };
+export { 
+   createNumbers, 
+   employmentStatus, 
+   idType, 
+   payGrade, 
+   preferredLocations, 
+   states 
+};

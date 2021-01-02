@@ -2,6 +2,8 @@ import React, {  useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaUserAlt } from "react-icons/fa";
+import { FaArrowAltCircleDown } from "react-icons/fa";
+import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import ReactTooltip from 'react-tooltip';
@@ -10,21 +12,31 @@ import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
 import { useDispatch } from 'react-redux';
 import { CREDIT_CARD_APPLICATION } from '../../redux/actions';
 import { createNumbers, states, employmentStatus, idType } from '../../seedData';
+import Employed from './loanApplicationOptionalInputs/Employed';
+import Unemployed from './loanApplicationOptionalInputs/Unemployed';
+import Homemaker from './loanApplicationOptionalInputs/Homemaker';
+import ActiveMilitary from './loanApplicationOptionalInputs/ActiveMillitary';
+import IdTypes from './loanApplicationOptionalInputs/IdTypes';
 
 interface Props {
    applicationData: any;
 }
 
 const LoanApplication: React.FC<Props> = ({ applicationData }) => {
-   const { register, errors, handleSubmit } = useForm({
+   const { register, errors, handleSubmit, watch } = useForm({
+      mode: "onBlur",
       defaultValues: applicationData
    });
    const [toogleSsn, setToggleSsn] = useState(false);
+   const [toogleAddress, setToogleAddress] = useState(false);
    const history = useHistory();
    const dispatch = useDispatch();
    const { loanType } = useParams<{loanType: string}>();
    const years = createNumbers(80);
    const months = createNumbers(11);
+
+   const employment = watch('employmentStatus');
+   const identificationType = watch("idType");
 
    const onSubmit = (values: FormCreditCardProps) => {
       const updatedValues = {...values, loanType };
@@ -35,6 +47,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
 
    const toogleSSN = () => {
       setToggleSsn(!toogleSsn);
+   }
+
+   const showDifferentAddressInputs = () => {
+   
+      setToogleAddress(!toogleAddress);
    }
 
    return (
@@ -244,23 +261,43 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         </label>
                      </div>
                   </div>
+                  <div className="use-different-address">
+                     {toogleAddress ? (
+                        <div className="diferent-address-title" onClick={showDifferentAddressInputs}>
+                           <FaArrowAltCircleDown />
+                           <span>use same as address for mailing</span>
+                        </div>   
+                     ): (
+                        <div className="diferent-address-title" onClick={showDifferentAddressInputs}>
+                           <FaArrowAltCircleRight />
+                           <span>use different address for mailing</span>
+                        </div>
+                     )}
+
+                     <div className={toogleAddress ? "different-address-input-wrapper show-inputs" : "different-address-input-wrapper"}>
+                        <label htmlFor="differentAddress">address
+                           <input type="text" name="differentAddress" id="differentAddress" ref={register} />
+                        </label>
+                        <label htmlFor="differentZip">zip
+                           <input type="text" name="differentZip" id="differentZip" ref={register} />
+                        </label>
+                        <label htmlFor="differentCity">city
+                           <input type="text" name="differentCity" id="differentCity" ref={register} />
+                        </label>
+                        <label htmlFor="different-state">
+                           state
+                           {/* <span className="require">*</span>  */}
+                           <select name="differentState" id="differentState" ref={register}>
+                              <option value="">--Please Select--</option>
+                              {states.map((single: string, i) => (
+                                 <option value={single} key={i}>{single}</option>
+                              ))}
+                           </select>
+                           {/* <p className="error">{errors.idState && "Required field"}</p> */}
+                        </label>
+                     </div>
+                  </div>
                </div>
-               {/* <div className="previous-address">
-                  <h2>previous address</h2>
-                  <label htmlFor="previousAddress">address
-                     <input type="text" id="previousAddress" name="previousAddress" ref={register} />  
-                  </label>
-                  <label htmlFor="previousZip">zip
-                     <input type="text" id="previousZip" name="previousZip" ref={register} />  
-                  </label>
-                  <label htmlFor="previousCity">city
-                     <input type="text" id="previousCity" name="previousCity" ref={register} />  
-                  </label>
-                  <select name="previousState" id="previousState" ref={register}>state 
-                     <option value="">--Please Select--</option>
-                     <option value="alabama">alabama</option>
-                  </select>
-               </div> */}
                <div className="identification">
                   <h2>identification</h2>
                   <label htmlFor="idType">
@@ -274,39 +311,17 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      </select>
                      <p className="error">{errors.idType && "Required field"}</p>
                   </label>
-                  <label htmlFor="idNumber">
-                     ID Number
-                     <span className="require">*</span>
-                     <input type="text" id="idNumber" name="idNumber" ref={register({ required: true})} />
-                     <p className="error">{errors.idNumber && "Required field"}</p> 
-                  </label>
-                  <label htmlFor="idState">
-                     ID state
-                     <span className="require">*</span> 
-                     <select name="idState" id="idState" ref={register({ required: true})}>
-                        <option value="">--Please Select--</option>
-                        {states.map((single: string, i) => (
-                           <option value={single} key={i}>{single}</option>
-                        ))}
-                     </select>
-                     <p className="error">{errors.idState && "Required field"}</p>
-                  </label>
-                  <div className="id-expiration-date">
-                     <span>ID Expiration Date</span>
-                     <span className="require">*</span>
-                     <div className="input-wrapper">
-                        <label htmlFor="expirationMonth">
-                           <input type="text" id="expirationMonth" name="expirationMonth" placeholder="mm" ref={register({ required: true})} />
-                           <p className="error">{errors.expirationMonth && "Required field"}</p>
-                        </label>
-                        <label htmlFor="expirationDay">
-                           <input type="text" id="expirationDay" name="expirationDay" placeholder="dd" ref={register({ required: true})} />
-                        </label>
-                        <label htmlFor="expirationYear">
-                           <input type="text" id="expirationYear" name="expirationYear" placeholder="yyyy" ref={register({ required: true})} />
-                        </label>
-                     </div>
-                  </div>
+
+                  {identificationType && (
+                     <IdTypes 
+                        register={register}
+                        errors={errors}
+                        years={years}
+                        months={months}
+                     
+                     />
+                  )}
+
                </div>
                <div className="financial-information">
                   <h2>financial information</h2>
@@ -327,42 +342,48 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      </select>
                      <p className="error">{errors.employmentStatus && "Required field"}</p>
                   </label>
-                  <label htmlFor="jobTitle">
-                     Profession/Job Title
-                     <span className="require">*</span>
-                     <input type="text" id="jobTitle" name="jobTitle" ref={register({ required: true})} />
-                     <p className="error">{errors.jobTitle && "Required field"}</p>
-                  </label>
-                  <label htmlFor="employer">
-                     employer
-                     <span className="require">*</span>
-                     <input type="text" id="employer" name="employer" ref={register({ required: true})} />
-                  </label>
-                  <div className="employment-duration">
-                     <div>
-                        <span>employment duration</span>
-                        <span className="require">*</span>
-                     </div>
-                     <div className="duration-wrapper">
-                        <label htmlFor="employmentYears">
-                           <select name="employmentYears" id="years" ref={register({ required: true})}>
-                              <option value="">Years</option>
-                              {years.map((year: number, i) => (
-                                 <option value={year} key={i}>{year}</option>
-                              ))}
-                           </select>
-                           <p className="error-backup">{errors.employmentYears && "Required field"}</p>
-                        </label>
-                        <label htmlFor="employmentMonths">
-                           <select name="employmentMonths" id="employmentMonths">
-                              <option value="">Months</option>
-                              {months.map((month: number, i) => (
-                                 <option value={month} key={i}>{month}</option>
-                              ))}
-                           </select>
-                        </label>
-                     </div>
-                  </div>
+                  {employment === "Employed" && (
+                     <Employed 
+                        register={register}
+                        errors={errors}
+                        years={years}
+                        months={months}
+                     
+                     />
+                  )}
+                  {employment === "Unemployed" && (
+                     <Unemployed 
+                        register={register}
+                        errors={errors}
+                        years={years}
+                        months={months}
+                     
+                     />
+                  )}
+                  {employment === "Retired" && (
+                     <Unemployed 
+                        register={register}
+                        errors={errors}
+                        years={years}
+                        months={months}
+                     
+                     />
+                  )}
+                  {employment === "Homemaker" && (
+                     <Homemaker
+                        register={register}
+                        errors={errors}
+                     />
+                  )}
+                  {employment === "Active Military" && (
+                     <ActiveMilitary
+                        register={register}
+                        errors={errors}
+                        years={years}
+                        months={months}
+                     />
+                  )}
+
                   <h3>monthy expenses</h3>
                   <label htmlFor="monthlyExpenses">
                      Monthly Mortgage/Rent Payment
