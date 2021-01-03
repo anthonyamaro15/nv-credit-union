@@ -1,0 +1,40 @@
+.Loans-wrapper {
+  .Loans {
+    .loan-section {
+      .right-side {
+        .why-bank-with-us {
+          .highlights {
+            font-weight: bold;
+            margin-right: 0.3rem;
+          }
+        }
+      }
+
+      .open-acc-today {
+        padding: 0 2rem 3rem;
+        font-size: 1.1rem;
+
+        @media (max-width: $laptop) {
+          font-size: 1rem;
+        }
+
+        p {
+          &:first-child {
+            margin-bottom: 2rem;
+          }
+
+          a {
+            margin-right: 0.3rem;
+            color: #0076d6;
+
+            transition: background 0.3s ease;
+
+            &:hover {
+              color: #333;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -20,6 +20,7 @@ import BecomeAMember from './account/BecomeAMember';
 import OpenAccount from './account/OpenAccount';
 import CreateAccount from './account/CreateAccount';
 import MobileNavbar from './mobileFiles/MobileNavbar';
+import AboutUs from './marketingPage/AboutUs';
 // import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
@@ -45,6 +46,9 @@ const MainApp = () => {
          </Route>
          <Route path="/loans" exact>
             <Loans />
+         </Route>
+         <Route path="/about-us" exact>
+            <AboutUs />
          </Route>
          <Route path="/loans/credit-card" exact>
             <CreditCardLoan />
