@@ -64,6 +64,10 @@
     form {
       padding: 0 1rem;
 
+      .phone-labels {
+        text-transform: none;
+      }
+
       h3 {
         text-transform: capitalize;
         font-size: 1.2rem;
@@ -72,10 +76,10 @@
       }
 
       label {
-        font-family: "Raleway", sans-serif;
+        //   font-family: "Raleway", sans-serif;
         // border: 1px solid red;
         text-transform: capitalize;
-        font-weight: bold;
+        //   font-weight: bold;
         position: relative;
         width: 100%;
 
@@ -127,6 +131,7 @@
 
         span {
           text-transform: uppercase;
+          //  font-weight: bold;
         }
 
         .ssn-icons {
@@ -134,6 +139,7 @@
             text-transform: none;
             margin-right: 0.5rem;
             cursor: pointer;
+            font-weight: normal;
 
             &:last-child {
               margin-right: 0;
@@ -147,7 +153,7 @@
         span {
           //  display: block;
           text-transform: capitalize;
-          font-weight: bold;
+          //  font-weight: bold;
         }
 
         .dof-wrapper {
@@ -166,7 +172,10 @@
       .contact-information {
         margin-top: 3rem;
 
-        //   border: 1px solid red;
+        .phone-labels {
+          text-transform: none;
+        }
+
         h2 {
           text-transform: capitalize;
           margin-bottom: 1rem;

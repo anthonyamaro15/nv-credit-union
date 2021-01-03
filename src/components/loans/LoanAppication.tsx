@@ -126,8 +126,8 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      maxLength={9}
                      ref={register({ 
                         required: true, 
-                        minLength: 9, 
-                        validate: value => typeof value === 'number' 
+                        minLength: 9,
+                        pattern: /^\d+$/ 
                      })} 
                   />
                   <p className="error-backup">
@@ -137,7 +137,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      {errors.ssn && errors.ssn.type === "minLength" && "Field required a min length of 9" }
                   </p>
                   <p className="error-backup">
-                     {errors.ssn && errors.ssn.type === "validate" && "Enter valid SSN" }
+                     {errors.ssn && errors.ssn.type === "pattern" && "Enter valid SSN" }
                   </p>
 
                </label>
@@ -256,8 +256,8 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      ref={register} 
                   />
                </label>
-               <label htmlFor="referencePhone">
-                  phone 
+               <label htmlFor="referencePhone" className="phone-labels">
+                  Phone 
                    
                   (xxx) xxx-xxxx
                   <input 
@@ -309,7 +309,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      />
                      <p className="error">{errors.contactEmail && "Required field"}</p>
                   </label>
-                  <label htmlFor="homePhone">home phone (xxx) xxx-xxxx
+                  <label htmlFor="homePhone" className="phone-labels">Home Phone (xxx) xxx-xxxx
                      <input 
                         type="tel" 
                         id="homePhone" 
@@ -321,7 +321,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         {errors.homePhone && errors.homePhone.type === "pattern" && "Enter valid phone number"}
                      </p>
                   </label>
-                  <label htmlFor="cellPhone">cell phone (xxx) xxx-xxxx
+                  <label htmlFor="cellPhone" className="phone-labels">Cell Phone (xxx) xxx-xxxx
                      <input 
                         type="tel" 
                         id="cellPhone" 
@@ -333,7 +333,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         {errors.cellPhone && errors.cellPhone.type === "pattern" && "Enter valid phone number"}
                      </p>
                   </label>
-                  <label htmlFor="workPhone">phone (xxx) xxx-xxxx
+                  <label htmlFor="workPhone" className="phone-labels">Phone (xxx) xxx-xxxx
                      <input 
                         type="text" 
                         id="workPhone" 

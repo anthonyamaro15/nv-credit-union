@@ -19,6 +19,7 @@
 
     .loan-section {
       width: 750px;
+      font-weight: 300;
 
       @media (max-width: $laptop) {
         width: 100%;
@@ -67,6 +68,7 @@
           font-size: 1.1rem;
           //  border: 1px solid red;
           margin-bottom: 2rem;
+          //  font-weight: 200;
         }
       }
       nav {
@@ -186,6 +188,7 @@
           margin-left: 0.5rem;
           font-size: 1rem;
           color: #0076d6;
+          font-weight: 300;
 
           transition: background 0.3s ease;
 
