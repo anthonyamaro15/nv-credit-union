@@ -19,7 +19,7 @@ const SelfEmployed: React.FC<Props> = ({ register, errors, years, months }) => {
       </label>
       <label htmlFor="selfEmployer">
          employer
-         <span className="require">*</span>
+         {/* <span className="require">*</span> */}
          <input type="text" id="selfEmployer" name="selfEmployer" ref={register} />
          {/* <p className="error">{errors.employer && "Required field"}</p> */}
       </label>

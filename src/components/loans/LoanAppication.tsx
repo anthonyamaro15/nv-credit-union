@@ -17,6 +17,7 @@ import Unemployed from './loanApplicationOptionalInputs/Unemployed';
 import Homemaker from './loanApplicationOptionalInputs/Homemaker';
 import ActiveMilitary from './loanApplicationOptionalInputs/ActiveMillitary';
 import IdTypes from './loanApplicationOptionalInputs/IdTypes';
+import SelfEmployed from './loanApplicationOptionalInputs/SelfEmployed';
 
 interface Props {
    applicationData: any;
@@ -248,7 +249,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                                  <option value={year} key={i}>{year}</option>
                               ))}
                            </select>
-                           <p className="error">{errors.occupancyYears && "Required field"}</p>
+                           <p className="error-backup">{errors.occupancyYears && "Required field"}</p>
                         </label>
                         <label htmlFor="occupancyMonths">
                            <select name="occupancyMonths" id="occupancyMonths" ref={register({ required: true })}>
@@ -276,17 +277,20 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
 
                      <div className={toogleAddress ? "different-address-input-wrapper show-inputs" : "different-address-input-wrapper"}>
                         <label htmlFor="differentAddress">address
+                           <span className="require">*</span>
                            <input type="text" name="differentAddress" id="differentAddress" ref={register} />
                         </label>
                         <label htmlFor="differentZip">zip
+                           <span className="require">*</span>
                            <input type="text" name="differentZip" id="differentZip" ref={register} />
                         </label>
                         <label htmlFor="differentCity">city
+                           <span className="require">*</span>
                            <input type="text" name="differentCity" id="differentCity" ref={register} />
                         </label>
                         <label htmlFor="different-state">
                            state
-                           {/* <span className="require">*</span>  */}
+                           <span className="require">*</span> 
                            <select name="differentState" id="differentState" ref={register}>
                               <option value="">--Please Select--</option>
                               {states.map((single: string, i) => (
@@ -384,6 +388,14 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      />
                   )}
 
+                  {employment === "Self Employed" && (
+                     <SelfEmployed
+                        register={register}
+                        errors={errors}
+                        years={years}
+                        months={months}
+                     />
+                  )}
                   <h3>monthy expenses</h3>
                   <label htmlFor="monthlyExpenses">
                      Monthly Mortgage/Rent Payment

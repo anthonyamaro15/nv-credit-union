@@ -92,7 +92,7 @@ const idType = [
 ];
 
 const preferredLocations = [
-   "nderson-Green Valley",
+   "Henderson-Green Valley",
    "Las Vegas- Blue Diamond Branch",
    "Las Vegas- Durango Branch",
    "Las Vegas- Ft. Apache Branch",

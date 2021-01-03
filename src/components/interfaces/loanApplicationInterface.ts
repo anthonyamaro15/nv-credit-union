@@ -56,7 +56,7 @@ export interface FormCreditCardProps  {
    // active military
    militaryJobTitle?: string;
    branchOfService?: string;
-   payGragde?: string;
+   payGrade?: string;
    militaryEmploymentYears?: string;
    militaryEmploymentMonths?: string;
 
@@ -65,7 +65,10 @@ export interface FormCreditCardProps  {
    selfEmployer?: string;
    selfEmploymentYears?: string;
    selfEmploymentMonths?: string;
-
+   // retired
+   retiredJobTitle?: string;
+   retiredEmploymentYears?: string;
+   retiredEmploymentMonths?: string;
 
    monthlyExpenses: string;
    loanType: string;
@@ -73,3 +76,71 @@ export interface FormCreditCardProps  {
    preferredLocation?: string;
    applicationNumber?: number;
 }
+
+
+// firstName,
+// middleName,
+// lastName,
+// ssn,
+// birthMonth,
+// birthDay,
+// birthYear,
+// memberNumber,
+// referenceFirstName,
+// referenceLastName,
+// referenceEmail,
+// referencePhone,
+// referenceRelationship,
+// citizenship,
+// contactMethod,
+// contactEmail,
+// homePhone,
+// cellPhone,
+// workPhone,
+// address,
+// zip,
+// city,
+// state,
+// occupancyStatus,
+// occupancyYears,
+// occupancyMonths,
+// idType,
+// idNumber,
+// idState,
+// expirationMonth,
+// expirationDay,
+// expirationYear,
+// monthlyIncome,
+// employmentStatus,
+// jobTitle,
+// employer,
+// employmentYears,
+// employmentMonths,
+// monthlyExpenses,
+// loanType,
+// // use different address
+// differentAddress,
+// differentZip,
+// differentCity,
+// differentState,
+// // unemployed
+// previsousJobTitle,
+// previousEmploymentYears,
+// previousEmploymentMonths,
+// //homemaker
+// homemakerJobTitle,
+// // active military
+// militaryJobTitle,
+// branchOfService,
+// payGrade,
+// militaryEmploymentYears,
+// militaryEmploymentMonths,
+// //selfemployed
+// selfJobTitle,
+// selfEmployer,
+// selfEmploymentYears,
+// selfEmploymentMonths,
+
+// hasOneNevadaCreditCard,
+// preferredLocation,
+// applicationNumber,
