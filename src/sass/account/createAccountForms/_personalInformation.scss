@@ -1,15 +1,11 @@
 .PersonalInformation {
-  //   border: 1px solid red;
-
   h6 {
     text-align: center;
     margin: 2rem 0;
     font-size: 0.9rem;
-    //  font-weight: normal;
   }
 
   form {
-    //  border: 1px solid blue;
     max-width: 70%;
     margin: 0 auto;
 
@@ -22,12 +18,24 @@
       font-weight: bold;
       color: black;
       font-size: 0.9rem;
+
+      @media (max-width: $laptop) {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.8rem;
+      }
+
       input {
         width: 70%;
         padding: 0.5rem;
         font-size: 0.9rem;
         border: 1px solid rgb(214, 214, 214);
         border-radius: 4px;
+
+        @media (max-width: $laptop) {
+          width: 100%;
+          margin-top: 0.3rem;
+        }
       }
 
       select {
@@ -35,6 +43,10 @@
         padding: 0.5rem;
         border: 1px solid rgb(214, 214, 214);
         border-radius: 4px;
+
+        @media (max-width: $laptop) {
+          width: 100%;
+        }
       }
     }
 

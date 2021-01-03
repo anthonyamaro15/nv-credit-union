@@ -17,7 +17,7 @@ const Navbar = () => {
                      <span><MdLocationOn /></span>
                      Find ATMs & Branches
                   </NavLink> */}
-                  <NavLink to="/register" activeClassName="active">
+                  <NavLink to="/banking/checking" activeClassName="active">
                      <span><ImUserPlus /></span>
                      Open a New Account</NavLink>
                   <NavLink to="/about-us" activeClassName="active">
