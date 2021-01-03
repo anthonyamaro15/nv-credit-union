@@ -13,7 +13,7 @@ import Header from './marketingPage/Header';
 import LowerContent from './marketingPage/LowerContent';
 import Navbar from './marketingPage/Navbar';
 import LoanApplication from './loans/LoanAppication';
-import ReviewApplication from './loans/ReviewApplication';
+import ReviewApplication from './loans/ReviewApplication/ReviewApplication';
 import ResultApplication from './loans/ResultApplication';
 import CheckApplicationStatus from './loans/CheckApplicationStatus';
 import BecomeAMember from './account/BecomeAMember';

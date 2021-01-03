@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import logo from '../../imgs/logo.jpg';
-import { CREDIT_CARD_APPLICATION } from '../../redux/actions';
-import { preferredLocations } from '../../seedData';
-import { FormCreditCardProps } from '../interfaces/loanApplicationInterface';
-import { serverUrl } from '../../envVariables';
+import logo from '../../../imgs/logo.jpg';
+import { CREDIT_CARD_APPLICATION } from '../../../redux/actions';
+import { preferredLocations } from '../../../seedData';
+import { FormCreditCardProps } from '../../interfaces/loanApplicationInterface';
+import { serverUrl } from '../../../envVariables';
 import axios from 'axios';
+import Employed from './reviewApplicationComponents/Employed';
+import Unemployed from './reviewApplicationComponents/Unemployed';
+import Retired from './reviewApplicationComponents/Retired';
+import ActiveMilitary from './reviewApplicationComponents/ActiveMilitary';
+import Homemaker from './reviewApplicationComponents/Homemaker';
+import SelfEmployed from './reviewApplicationComponents/SelfEmployed';
+import ReferenceInformation from './reviewApplicationComponents/ReferenceInformation';
+import DifferentEmailingAddress from './reviewApplicationComponents/DifferentEmailingAddress';
 
 type FormValues = {
    preferredLocation: string;
@@ -42,18 +50,13 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
       birthMonth,
       birthDay,
       birthYear,
-      // memberNumber,
-      // referenceFirstName,
-      // referenceLastName,
-      // referenceEmail,
-      // referencePhone,
-      // referenceRelationship,
+      referenceFirstName,
       citizenship,
       contactMethod,
       contactEmail,
       homePhone,
-      // cellPhone,
-      // workPhone,
+      cellPhone,
+      workPhone,
       address,
       zip,
       city,
@@ -67,14 +70,10 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
       expirationMonth,
       expirationDay,
       expirationYear,
-      monthlyIncome,
       employmentStatus,
-      jobTitle,
-      // employer,
-      employmentYears,
-      // employmentMonths,
-      monthlyExpenses,
       loanType,
+      // use different address
+      differentAddress,
    } = creditCardApplication;
 
    useEffect(() => {
@@ -129,6 +128,10 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                         <span className="description">credit card type</span>
                         <span className="value">{loanType}</span>
                      </div>
+                        <div className="right-side-wrapper">
+                        <span className="description"></span>
+                        <span className="value"></span>
+                     </div>
                   </div> 
                </div>
                <div className="share-classes">
@@ -154,6 +157,9 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                   </div> 
                </div>
+               {referenceFirstName && (
+                  <ReferenceInformation applicationInputs={creditCardApplication} />
+               )}
                <div className="share-classes">
                   <h3>applicant contact information</h3>
                   <div className="information-wrapper">
@@ -163,13 +169,27 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                      <div className="right-side-wrapper">
                         <span className="description">home phone </span>
-                        <span className="value">{homePhone}</span>
+                        <span className="value">{homePhone ? homePhone : 'N/A'}</span>
                      </div>
                   </div> 
                   <div className="information-wrapper">
                      <div className="lef-side-wrapper">
                         <span className="description">preferred contact method</span>
                         <span className="value">{contactMethod}</span>
+                     </div>
+                     <div className="right-side-wrapper">
+                        <span className="description">cell phone</span>
+                        <span className="value">{cellPhone}</span>
+                     </div>
+                  </div> 
+                  <div className="information-wrapper">
+                     <div className="lef-side-wrapper">
+                        <span className="description">work phone</span>
+                        <span className="value">{workPhone ? workPhone : 'N/A'}</span>
+                     </div>
+                     <div className="right-side-wrapper">
+                        <span className="description"></span>
+                        <span className="value"></span>
                      </div>
                   </div> 
                </div>
@@ -185,16 +205,23 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                         <span className="value">{occupancyStatus}</span>
                      </div>
                   </div> 
-                 <div className="information-wrapper">
-                     <div className="lef-side-wrapper">
-                        <span className="description">current physical address</span>
-                        <span className="value check-for-same-address">mailinh address is the same as current </span>
+
+                  {!differentAddress && (
+                     <div className="information-wrapper">
+                        <div className="lef-side-wrapper">
+                           <span className="description">mailing address</span>
+                           <span className="value check-for-same-address">same as current physical address</span>
+                        </div>
+                        <div className="right-side-wrapper">
+                           <span className="description">occupancy duration</span>
+                           <span className="value">{`${occupancyYears} yrs ${occupancyMonths} months`}</span>
+                        </div>
                      </div>
-                     <div className="right-side-wrapper">
-                        <span className="description">occupancy duration</span>
-                        <span className="value">{`${occupancyYears} yrs ${occupancyMonths} months`}</span>
-                     </div>
-                  </div> 
+                  )}
+
+                  {differentAddress && (
+                     <DifferentEmailingAddress applicationInputs={creditCardApplication} />
+                  )}
                </div>
                <div className="share-classes">
                   <h3>your identification</h3>
@@ -219,35 +246,30 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                   </div> 
                </div>
-               <div className="share-classes">
-                  <h3>financial information</h3>
-                  <div className="information-wrapper">
-                     <div className="lef-side-wrapper">
-                        <span className="description">empoyment status</span>
-                        <span className="value">{employmentStatus}</span>
-                     </div>
-                     <div className="right-side-wrapper">
-                        <span className="description">profession/Job Title</span>
-                        <span className="value">{jobTitle}</span>
-                     </div>
-                  </div> 
-                 <div className="information-wrapper">
-                     <div className="lef-side-wrapper">
-                        <span className="description">employment duration</span>
-                        <span className="value">{`${employmentYears}`}</span>
-                     </div>
-                     <div className="right-side-wrapper">
-                        <span className="description">gross monthly income </span>
-                        <span className="value">{`$ ${monthlyIncome}`}</span>
-                     </div>
-                  </div> 
-                 <div className="information-wrapper">
-                     <div className="lef-side-wrapper">
-                        <span className="description">montly mortage/rent</span>
-                        <span className="value">{`$ ${monthlyExpenses}`}</span>
-                     </div>
-                  </div> 
-               </div>
+
+               {employmentStatus === "Employed" && (
+                  <Employed applicationInputs={creditCardApplication} />
+               )}
+
+               {employmentStatus === "Unemployed" && (
+                  <Unemployed applicationInputs={creditCardApplication} />
+               )}
+
+               {employmentStatus === "Retired" && (
+                  <Retired applicationInputs={creditCardApplication} />
+               )}
+
+               {employmentStatus === "Active Military" && (
+                  <ActiveMilitary applicationInputs={creditCardApplication} />
+               )}
+
+               {employmentStatus === "Homemaker" && (
+                  <Homemaker applicationInputs={creditCardApplication} />
+               )}
+
+               {employmentStatus === "Self Employed" && (
+                  <SelfEmployed  applicationInputs={creditCardApplication} />
+               )}
             </div>
             <form className="choose-branch-location" onSubmit={handleSubmit(onSubmit)}>
                <h1>please answer question(s) below</h1>

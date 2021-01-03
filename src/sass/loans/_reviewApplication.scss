@@ -66,7 +66,8 @@
           background: rgb(243, 243, 243);
           display: flex;
           justify-content: space-around;
-          padding: 0.5rem 0;
+          padding: 0.2rem 0;
+          //  border: 1px solid red;
 
           @media (max-width: $laptop) {
             padding: 0.5rem 1rem;
@@ -79,6 +80,15 @@
 
           .lef-side-wrapper,
           .right-side-wrapper {
+            // border: 1px solid red;
+            display: flex;
+            justify-content: flex-end;
+            width: 40%;
+            margin: 0 auto;
+
+            @media (max-width: $laptop) {
+              width: 80%;
+            }
             .description {
               font-weight: bold;
               text-transform: capitalize;
