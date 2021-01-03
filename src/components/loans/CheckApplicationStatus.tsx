@@ -14,7 +14,9 @@ interface FormProps {
 }
 
 const CheckApplicationStatus = () => {
-   const { register, errors, handleSubmit } = useForm<FormProps>();
+   const { register, errors, handleSubmit } = useForm<FormProps>({
+      mode: "onBlur"
+   });
    const [simulateSubmit, setSimulateSubmit] = useState(false);
    const [loading, setLoading] = useState(false);
    const [toogleSsn, setToggleSsn] = useState(false);
@@ -40,11 +42,21 @@ const CheckApplicationStatus = () => {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                <label htmlFor="lastName">last name <span className="require">*</span>
-                  <input type="text" id="lastName" name="lastName" ref={register({ required: true})} />
+                  <input 
+                     type="text" 
+                     id="lastName" 
+                     name="lastName" 
+                     ref={register({ required: true})} 
+                  />
                   <p className="error">{errors.lastName && "Required field"}</p>
                </label>
                <label htmlFor="email">email <span className="require">*</span>
-                  <input type="text" id="email" name="email" ref={register({ required: true})} />
+                  <input 
+                     type="text" 
+                     id="email" 
+                     name="email" 
+                     ref={register({ required: true})} 
+                  />
                   <p className="error">{errors.email && "Required field"}</p>
                </label>
                <div className="ssn-wrapper">
@@ -67,8 +79,27 @@ const CheckApplicationStatus = () => {
                   </div>
                </div>
                <label htmlFor="ssn">
-                  <input type={toogleSsn ? "text" : "password"} id="ssn" name="ssn" ref={register({ required: true})} />
-                  <p className="error-backup">{errors.ssn && "Required field"}</p>
+                  <input 
+                     type={toogleSsn ? "text" : "password"} 
+                     id="ssn" 
+                     name="ssn" 
+                     inputMode="numeric"
+                     maxLength={9}
+                     ref={register({ 
+                        required: true, 
+                        minLength: 9,
+                        pattern: /^\d+$/ 
+                     })}  
+                  />
+                  <p className="error-backup">
+                     {errors.ssn && errors.ssn.type === "required" && "Required field" }
+                  </p>
+                  <p className="error-backup">
+                     {errors.ssn && errors.ssn.type === "minLength" && "Field required a min length of 9" }
+                  </p>
+                  <p className="error-backup">
+                     {errors.ssn && errors.ssn.type === "pattern" && "Enter valid SSN" }
+                  </p>
                </label>
 
                <div className="app-status-btn-wrapper">
