@@ -19,6 +19,16 @@
       // z-index: -1;
       position: relative;
 
+      @media (max-width: $me-laptop) {
+        width: 80%;
+      }
+
+      @media (max-width: $laptop) {
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
       &::after {
         content: "";
         position: absolute;
@@ -31,6 +41,10 @@
       a {
         text-transform: capitalize;
         color: grey;
+
+        @media (max-width: $laptop) {
+          font-size: 0.8rem;
+        }
       }
 
       .active {

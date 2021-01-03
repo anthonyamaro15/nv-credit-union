@@ -10,6 +10,9 @@
 
       span {
         font-weight: bold;
+        @media (max-width: $laptop) {
+          font-size: 0.8rem;
+        }
       }
 
       .input-wrappers {
@@ -17,15 +20,27 @@
         width: 70%;
         align-items: center;
 
+        @media (max-width: $laptop) {
+          width: 90%;
+        }
+
         label {
           width: 100%;
 
           input {
             width: 80%;
+            @media (max-width: $laptop) {
+              display: block;
+              width: 95%;
+            }
           }
 
           select {
             width: 80%;
+
+            @media (max-width: $laptop) {
+              width: 95%;
+            }
           }
         }
       }
