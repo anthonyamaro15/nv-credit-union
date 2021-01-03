@@ -73,7 +73,7 @@ const CheckApplicationStatus = () => {
 
                <div className="app-status-btn-wrapper">
                   <p><span className="require">*</span>Required Field(s)</p>
-                  <button type="submit">get status</button>
+                  <button type="submit" disabled={simulateSubmit} >get status</button>
                </div>
             </form>
             {loading && (

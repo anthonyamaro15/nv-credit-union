@@ -71,15 +71,30 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                <label htmlFor="firstName">
                   first name 
                   <span className="require">*</span>
-                  <input type="text" id="firstName" name="firstName" ref={register({required: true})} />
+                  <input 
+                     type="text" 
+                     id="firstName" 
+                     name="firstName" 
+                     ref={register({required: true})} 
+                  />
                   <p className="error">{errors.firstName && "Required field"}</p>
                </label>
 
                <label htmlFor="middleName">middle name
-                  <input type="text" id="middleName" name="middleName" ref={register} />
+                  <input 
+                     type="text" 
+                     id="middleName" 
+                     name="middleName" 
+                     ref={register} 
+                  />
                </label>
                <label htmlFor="lastName">last name <span className="require">*</span>
-                  <input type="text" id="lastName" name="lastName" ref={register({ required: true})} />
+                  <input 
+                     type="text" 
+                     id="lastName" 
+                     name="lastName" 
+                     ref={register({ required: true})} 
+                  />
                   <p className="error">{errors.lastName && "Required field"}</p>
                </label>
                <div className="ssn-wrapper">
@@ -103,9 +118,27 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   </div>
                </div>
                <label htmlFor="ssn">
-                  <input type={toogleSsn ? "text" : "password"} id="ssn" name="ssn" ref={register({ required: true, maxLength: 9})} />
-                  <p className="error-backup">{errors.ssn && errors.ssn.type === "required" && "Required field" }</p>
-                  <p className="error-backup">{errors.ssn && errors.ssn.type === "minLength" && "Field required a min length of 9" }</p>
+                  <input 
+                     type={toogleSsn ? "text" : "password"}
+                     id="ssn" 
+                     name="ssn" 
+                     inputMode="numeric"
+                     maxLength={9}
+                     ref={register({ 
+                        required: true, 
+                        minLength: 9, 
+                        validate: value => typeof value === 'number' 
+                     })} 
+                  />
+                  <p className="error-backup">
+                     {errors.ssn && errors.ssn.type === "required" && "Required field" }
+                  </p>
+                  <p className="error-backup">
+                     {errors.ssn && errors.ssn.type === "minLength" && "Field required a min length of 9" }
+                  </p>
+                  <p className="error-backup">
+                     {errors.ssn && errors.ssn.type === "validate" && "Enter valid SSN" }
+                  </p>
 
                </label>
                <div className="date-of-birth">
@@ -115,27 +148,83 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   </div>
                   <div className="dof-wrapper">
                      <label htmlFor="birthMonth">
-                        <input type="text" id="birthMonth" name="birthMonth" placeholder="mm" ref={register({ required: true})} />
-                        <p className="error-backup">{errors.birthMonth && "Required field"}</p>
+                        <input 
+                           type="text" 
+                           id="birthMonth" 
+                           name="birthMonth" 
+                           placeholder="mm"
+                           maxLength={2}
+                           ref={register({ 
+                              required: true, 
+                              validate: value => parseInt(value) <= 12, 
+                              pattern: /^\d+$/
+                           })} 
+                        />
+                        <p className="error-backup">
+                           {errors.birthMonth && errors.birthMonth.type === "required" && "Required field"}
+                        </p>
+                        <p className="error-backup">
+                           {errors.birthMonth && errors.birthMonth.type === "validate" && "Enter valid month"}
+                        </p>
+                        <p className="error-backup">
+                           {errors.birthDay && errors.birthDay.type === "validate" && "Enter valid day"}
+                        </p>
+                        <p className="error-backup">
+                           {
+                              errors.birthMonth && errors.birthMonth.type === "pattern" && "Enter valid format" ||
+                              errors.birthDay && errors.birthDay.type === "pattern" && "Enter valid format" ||
+                              errors.birthYear && errors.birthYear.type === "pattern" && "Enter valid format"
+                           }
+                        </p>
                      </label>
                      <label htmlFor="birthDay">
-                        <input type="text" id="birthDay" name="birthDay" placeholder="dd" ref={register({ required: true})} />
+                        <input 
+                           type="text" 
+                           id="birthDay" 
+                           name="birthDay" 
+                           placeholder="dd"
+                           maxLength={2} 
+                           ref={register({ 
+                              required: true, 
+                              validate: value => parseInt(value) <= 31,
+                              pattern: /^\d+$/
+                           })} 
+                        />
                         {/* <p className="error">{errors.birthDay && "Required field"}</p> */}
                      </label>
                      <label htmlFor="birthYear">
-                        <input type="text" id="birthYear" name="birthYear" placeholder="yyyy" ref={register({ required: true})} />
+                        <input 
+                           type="text" 
+                           id="birthYear" 
+                           name="birthYear" 
+                           placeholder="yyyy"
+                           maxLength={4}
+                           ref={register({ 
+                              required: true, 
+                              pattern: /^\d+$/
+                           })} 
+                        />
                         {/* <p className="error">{errors.birthYear && "Required field"}</p> */}
                      </label>
                   </div>
 
                   </div>
                <label htmlFor="memberNumber">member number
-                  <input type="text" name="memberNumber" id="memberNumber" ref={register} />
+                  <input 
+                     type="text" 
+                     name="memberNumber" 
+                     id="memberNumber" 
+                     ref={register} 
+                  />
                </label>
                <label htmlFor="citizenship">
                   citizenship status
                   <span className="require">*</span>
-                  <select name="citizenship" id="citizenship" ref={register({ required: true})}>
+                  <select 
+                     name="citizenship" 
+                     id="citizenship" 
+                     ref={register({ required: true})}
+                  >
                      <option value="">US Citizen</option>
                      <option value="permResident">Perm Resident</option>
                      <option value="usCitizen">US Citizen</option>
@@ -144,22 +233,51 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                </label>
                <h3>reference information</h3>
                <label htmlFor="referenceFirstName">first name
-                  <input type="text" id="referenceFirstName" name="referenceFirstName" ref={register} />
+                  <input 
+                     type="text" 
+                     id="referenceFirstName" 
+                     name="referenceFirstName" 
+                     ref={register} 
+                  />
                </label>
                <label htmlFor="referenceLastName">last name
-                  <input type="text" id="referenceLastName" name="referenceLastName" ref={register} />
+                  <input 
+                     type="text" 
+                     id="referenceLastName" 
+                     name="referenceLastName" 
+                     ref={register} 
+                  />
                </label>
                <label htmlFor="referenceEmail">email 
-                  <input type="text" id="referenceEmail" name="referenceEmail" ref={register} />
+                  <input 
+                     type="text" 
+                     id="referenceEmail" 
+                     name="referenceEmail" 
+                     ref={register} 
+                  />
                </label>
                <label htmlFor="referencePhone">
                   phone 
                    
                   (xxx) xxx-xxxx
-                  <input type="text" id="referencePhone" name="referencePhone" ref={register} />
+                  <input 
+                     type="tel"
+                     id="referencePhone" 
+                     name="referencePhone" 
+                     maxLength={10}
+                     ref={register( { pattern: /^\d+$/ })} 
+                  />
+                  <p className="error">
+                     {errors.referencePhone && errors.referencePhone.type === "pattern" && "Enter valid phone number"}
+                  </p>
                </label>
                <label htmlFor="referenceRelationship">relationship
-                  <input type="text" id="referenceRelationship" name="referenceRelationship" ref={register} />
+                  <input 
+                     type="text" 
+                     id="referenceRelationship" 
+                     name="referenceRelationship" 
+                     ref={register} 
+                  />
                </label>
 
                <div className="contact-information">
@@ -167,7 +285,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   <label htmlFor="contactMethod">
                      Preferred Contact Method
                      <span className="require">*</span>
-                     <select name="contactMethod" id="contactMethod" ref={register({ required: true})}>
+                     <select 
+                        name="contactMethod" 
+                        id="contactMethod" 
+                        ref={register({ required: true})}
+                     >
                         <option value="">--Please Select--</option>
                         <option value="email">email</option>
                         <option value="homePhone">home phone</option>
@@ -179,17 +301,49 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   <label htmlFor="contactEmail">
                      email
                      <span className="require">*</span> 
-                     <input type="text" id="contactEmail" name="contactEmail" ref={register({ required: true})} />
+                     <input 
+                        type="text" 
+                        id="contactEmail" 
+                        name="contactEmail" 
+                        ref={register({ required: true})} 
+                     />
                      <p className="error">{errors.contactEmail && "Required field"}</p>
                   </label>
                   <label htmlFor="homePhone">home phone (xxx) xxx-xxxx
-                     <input type="text" id="homePhone" name="homePhone" ref={register} />
+                     <input 
+                        type="tel" 
+                        id="homePhone" 
+                        name="homePhone"
+                        maxLength={10}
+                        ref={register( { pattern: /^\d+$/ })}
+                     />
+                     <p className="error">
+                        {errors.homePhone && errors.homePhone.type === "pattern" && "Enter valid phone number"}
+                     </p>
                   </label>
                   <label htmlFor="cellPhone">cell phone (xxx) xxx-xxxx
-                     <input type="text" id="cellPhone" name="cellPhone" ref={register} />
+                     <input 
+                        type="tel" 
+                        id="cellPhone" 
+                        name="cellPhone" 
+                        maxLength={10}
+                        ref={register( { pattern: /^\d+$/ })}
+                     />
+                     <p className="error">
+                        {errors.cellPhone && errors.cellPhone.type === "pattern" && "Enter valid phone number"}
+                     </p>
                   </label>
                   <label htmlFor="workPhone">phone (xxx) xxx-xxxx
-                     <input type="text" id="workPhone" name="workPhone" ref={register} />
+                     <input 
+                        type="text" 
+                        id="workPhone" 
+                        name="workPhone" 
+                        maxLength={10}
+                        ref={register( { pattern: /^\d+$/ })}
+                     />
+                     <p className="error">
+                        {errors.workPhone && errors.workPhone.type === "pattern" && "Enter valid phone number"}
+                     </p>
                   </label>            
                </div>
                <div className="current-address">
@@ -197,25 +351,49 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   <label htmlFor="address">
                      address
                      <span className="require">*</span>
-                     <input type="text" id="address" name="address" ref={register({ required: true})} />
+                     <input 
+                        type="text" 
+                        id="address" 
+                        name="address" 
+                        ref={register({ required: true})} 
+                     />
                      <p className="error">{errors.address && "Required field"}</p>  
                   </label>
                   <label htmlFor="zip">
                      zip
                      <span className="require">*</span>
-                     <input type="text" id="zip" name="zip" ref={register({ required: true})} />
-                     <p className="error">{errors.zip && "Required field"}</p>
+                     <input 
+                        type="text" 
+                        id="zip" 
+                        name="zip"
+                        maxLength={5} 
+                        ref={register({ 
+                           required: true,
+                           pattern: /^\d+$/
+                        })} 
+                     />
+                     <p className="error">{errors.zip && errors.zip.type === "required" && "Required field"}</p>
+                     <p className="error">{errors.zip && errors.zip.type === "pattern" && "Enter valid Zipcode"}</p>
                   </label>
                   <label htmlFor="city">
                      city
                      <span className="require">*</span>
-                     <input type="text" id="city" name="city" ref={register({ required: true})} />
+                     <input 
+                        type="text" 
+                        id="city" 
+                        name="city" 
+                        ref={register({ required: true})} 
+                     />
                      <p className="error">{errors.city && "Required field"}</p>
                   </label>
                   <label htmlFor="state">
                      state
                      <span className="require">*</span>
-                     <select name="state" id="state" ref={register({ required: true})}>
+                     <select 
+                        name="state" 
+                        id="state" 
+                        ref={register({ required: true})}
+                     >
                         <option value="">--Please Select--</option>
                         {states.map((single: string, i) => (
                            <option value={single} key={i}>{single}</option>
@@ -226,7 +404,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   <label htmlFor="occupancyStatus">
                      occupancy status
                      <span className="require">*</span>
-                     <select name="occupancyStatus" id="occupancyStatus" ref={register({ required: true})}>
+                     <select 
+                        name="occupancyStatus" 
+                        id="occupancyStatus" 
+                        ref={register({ required: true})}
+                     >
                         <option value="">--Please Select--</option>
                         <option value="buyingOwnWithMortage">Buying/Own with mortage</option>
                         <option value="liveWithParents">live with parents</option>
@@ -243,7 +425,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      </div>
                      <div className="duration-wrapper">
                         <label htmlFor="occupancyYears">
-                           <select name="occupancyYears" id="occupancyYears" ref={register({ required: true})}>
+                           <select 
+                              name="occupancyYears" 
+                              id="occupancyYears" 
+                              ref={register({ required: true})}
+                           >
                               <option value="">years</option>
                               {years.map((year: number, i) => (
                                  <option value={year} key={i}>{year}</option>
@@ -252,7 +438,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                            <p className="error-backup">{errors.occupancyYears && "Required field"}</p>
                         </label>
                         <label htmlFor="occupancyMonths">
-                           <select name="occupancyMonths" id="occupancyMonths" ref={register({ required: true })}>
+                           <select 
+                              name="occupancyMonths" 
+                              id="occupancyMonths" 
+                              ref={register({ required: true })}
+                           >
                               <option value="">months</option>
                               {months.map((month: number, i) => (
                                  <option value={month} key={i}>{month}</option>
@@ -278,20 +468,42 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      <div className={toogleAddress ? "different-address-input-wrapper show-inputs" : "different-address-input-wrapper"}>
                         <label htmlFor="differentAddress">address
                            <span className="require">*</span>
-                           <input type="text" name="differentAddress" id="differentAddress" ref={register} />
+                           <input 
+                              type="text" 
+                              name="differentAddress" 
+                              id="differentAddress" 
+                              ref={register} 
+                           />
                         </label>
                         <label htmlFor="differentZip">zip
                            <span className="require">*</span>
-                           <input type="text" name="differentZip" id="differentZip" ref={register} />
+                           <input 
+                              type="text" 
+                              name="differentZip" 
+                              id="differentZip" 
+                              maxLength={5} 
+                              ref={register({ pattern: /^\d+$/ })} 
+                           />
+                           <p className="error">
+                              {errors.differentZip && errors.differentZip.type === "pattern" && "Enter valid Zipcode"}
+                           </p>
                         </label>
                         <label htmlFor="differentCity">city
                            <span className="require">*</span>
-                           <input type="text" name="differentCity" id="differentCity" ref={register} />
+                           <input 
+                              type="text" 
+                              name="differentCity" 
+                              id="differentCity" 
+                              ref={register} 
+                           />
                         </label>
                         <label htmlFor="different-state">
                            state
                            <span className="require">*</span> 
-                           <select name="differentState" id="differentState" ref={register}>
+                           <select 
+                              name="differentState" 
+                              id="differentState" 
+                              ref={register}>
                               <option value="">--Please Select--</option>
                               {states.map((single: string, i) => (
                                  <option value={single} key={i}>{single}</option>
@@ -307,7 +519,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   <label htmlFor="idType">
                      ID Type
                      <span className="require">*</span>
-                     <select name="idType" id="idType" ref={register({ required: true })}>
+                     <select 
+                        name="idType" 
+                        id="idType" 
+                        ref={register({ required: true })}
+                     >
                         <option value="">--Please Select--</option>
                         {idType.map((single: string, i) => (
                            <option value={single} key={i}>{single}</option>
@@ -332,13 +548,22 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   <label htmlFor="monthlyIncome">
                      Gross Monthly Income (before taxes)
                      <span className="require">*</span>
-                     <input type="text" id="monthlyIncome" name="monthlyIncome" ref={register({ required: true})} />
+                     <input 
+                        type="text" 
+                        id="monthlyIncome" 
+                        name="monthlyIncome" 
+                        ref={register({ required: true})} 
+                     />
                      <p className="error">{errors.monthlyIncome && "Required field"}</p>
                   </label>
                   <label htmlFor="employmentStatus">
                      employment status
                      <span className="require">*</span>
-                     <select name="employmentStatus" id="employmentStatus" ref={register({ required: true})}>
+                     <select 
+                        name="employmentStatus" 
+                        id="employmentStatus" 
+                        ref={register({ required: true})}
+                     >
                         <option value="">--Please Select--</option>
                         {employmentStatus.map((single: string, i) => (
                            <option value={single} key={i}>{single}</option>
@@ -400,7 +625,12 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                   <label htmlFor="monthlyExpenses">
                      Monthly Mortgage/Rent Payment
                      <span className="require">*</span>
-                  <input type="text" id="monthlyExpenses" name="monthlyExpenses" ref={register({ required: true})} /> 
+                  <input 
+                     type="text" 
+                     id="monthlyExpenses" 
+                     name="monthlyExpenses" 
+                     ref={register({ required: true})} 
+                  /> 
                   <p className="error">{errors.monthlyExpenses && "Required field"}</p>
                   </label>
                </div>
