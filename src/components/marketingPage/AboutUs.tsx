@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
-import { FaCarAlt } from "react-icons/fa";
-import { GrCalculator } from "react-icons/gr";
+// import { FaCarAlt } from "react-icons/fa";
+// import { GrCalculator } from "react-icons/gr";
 import aboutusImg from '../../imgs/aboutus.png';
 
 
@@ -50,7 +50,7 @@ const AboutUs = () => {
                         Here’s the thing. If you want more boom and less bust. More make it, less break it. And if you want a credit union that has your back, then One Nevada is the place for you.
                      </p>
                      <p>
-                        <Link to="register">
+                        <Link to="banking/checking">
                            Open your account today 
                         </Link>
                         and experience One Nevada Credit Union membership.
@@ -66,14 +66,14 @@ const AboutUs = () => {
                      <HiCreditCard />
                      <Link to="/loans/credit-card">credit cards</Link> 
                   </div> 
-                  <div className="share-icons">
+                  {/* <div className="share-icons">
                      <FaCarAlt />
                      <Link to="/car-loan">vehicle loans</Link> 
                   </div> 
                   <div className="share-icons">
                      <GrCalculator />
                      <Link to="/calculator">calculators</Link> 
-                  </div> 
+                  </div>  */}
                </nav>
             </div>
          </div>

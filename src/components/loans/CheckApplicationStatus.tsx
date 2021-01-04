@@ -38,12 +38,12 @@ const CheckApplicationStatus = () => {
          const response = await axios
             .post(`${serverUrl}/credit_card_application/status`, {...values, contactEmail: values.email });
          setApplicatonStatus(response.data);
-         reset();
          setLoading(false);
          setSimulateSubmit(true);
-      } catch (error) {
          reset();
+      } catch (error) {
          setLoading(false);
+         reset();
          console.log(error.response.data);
       }
    }

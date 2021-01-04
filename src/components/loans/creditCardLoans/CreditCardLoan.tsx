@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 // import { FaUserAlt } from "react-icons/fa";
-import { FaCarAlt } from "react-icons/fa";
+// import { FaCarAlt } from "react-icons/fa";
 // import { BsFillHouseFill } from "react-icons/bs";
 // import { BsBagFill } from "react-icons/bs";
-import { GrCalculator } from "react-icons/gr";
+// import { GrCalculator } from "react-icons/gr";
 import creditCardImg from '../../../imgs/creditcard.png';
 
 
@@ -79,10 +79,10 @@ const CreditCardLoan = () => {
                      <FaUserAlt />
                      <Link to="/personal-loan">personal loans</Link> 
                   </div>  */}
-                  <div className="share-icons">
+                  {/* <div className="share-icons">
                      <FaCarAlt />
                      <Link to="/car-loan">vehicle loans</Link> 
-                  </div> 
+                  </div>  */}
                   {/* <div className="share-icons">
                      <BsFillHouseFill />
                      <Link to="/house-loan">mortage loans</Link> 
@@ -97,10 +97,10 @@ const CreditCardLoan = () => {
                      <BsBagFill />
                      <Link to="/commercial-loan">commercial real state loans</Link> 
                   </div>  */}
-                  <div className="share-icons">
+                  {/* <div className="share-icons">
                      <GrCalculator />
                      <Link to="/calculator">calculators</Link> 
-                  </div> 
+                  </div>  */}
                </nav>
             </div>
          </div>

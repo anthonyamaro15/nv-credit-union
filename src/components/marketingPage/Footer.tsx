@@ -11,7 +11,7 @@ const Footer = () => {
          <div className="footer-wrapper">
             <div className="left-side">
                <nav>
-                  <Link to="/about">about us</Link>
+                  <Link to="/about-us">about us</Link>
                   <Link to="/careers">careers</Link>
                   <Link to="/contact">contact us</Link>
                   <Link to="/disclosures">disclosures</Link>
@@ -28,7 +28,7 @@ const Footer = () => {
             </div>
             <div className="right-side">
                <h3>one nevada credit union</h3>
-               <p>routing number: <span>322484401</span></p>
+               <p>routing number: <span>674386438</span></p>
                <div className="follow-us">
                   <span><FaFacebookSquare /></span>
                   <span><FaTwitterSquare /></span>
@@ -38,8 +38,9 @@ const Footer = () => {
          </div>
          <div className="copyright">
             <p>Copyright &copy; 2020 One Nevada Credit Union. All Rights Reserved.</p>
-            <a href="www.example.com">Federally Insured by NCUA. Equal Housing Opportunity.</a>
+            <a href="https://www.anthonyamaro.dev/" target="_blank" rel="noreferrer" >Federally Insured by NCUA. Equal Housing Opportunity.</a>
          </div>
+
       </footer>
    )
 }
