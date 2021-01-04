@@ -48,10 +48,12 @@
     .Status-result {
       padding: 0 1rem;
       margin-top: 2rem;
+      font-weight: 300;
 
       h2 {
         text-transform: capitalize;
         margin-bottom: 0.5rem;
+        color: #2c5794;
       }
       p {
         font-size: 0.9rem;
@@ -74,6 +76,7 @@
         .description-left {
           display: flex;
           justify-content: space-between;
+          text-transform: capitalize;
 
           @media (max-width: $laptop) {
             font-size: 0.9rem;
