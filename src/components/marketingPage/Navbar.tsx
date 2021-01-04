@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { ImUserPlus } from "react-icons/im";
 import { FaUsers } from "react-icons/fa";
 // import { MdEmail } from "react-icons/md";
-import { BsFillLockFill } from "react-icons/bs";
+// import { BsFillLockFill } from "react-icons/bs";
 import logo from '../../imgs/logo.jpg';
 
 const Navbar = () => {
@@ -40,7 +40,7 @@ const Navbar = () => {
                   {/* <NavLink to="/mortage" activeClassName="active">Mortage</NavLink>
                   <NavLink to="/servicer" activeClassName="active">Services</NavLink>
                   <NavLink to="/support" activeClassName="active">Support</NavLink> */}
-                  <NavLink to="/login" activeClassName="active"><span><BsFillLockFill /></span> Log in</NavLink>
+                  {/* <NavLink to="/login" activeClassName="active"><span><BsFillLockFill /></span> Log in</NavLink> */}
                </div>
             </nav>
          </div>
