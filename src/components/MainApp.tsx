@@ -21,6 +21,8 @@ import OpenAccount from './account/OpenAccount';
 import CreateAccount from './account/CreateAccount';
 import MobileNavbar from './mobileFiles/MobileNavbar';
 import AboutUs from './marketingPage/AboutUs';
+import axios from 'axios';
+import { serverUrl } from '../envVariables';
 // import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
@@ -28,6 +30,21 @@ const MainApp = () => {
 
    useEffect(() => {
       getLocalStoreData();
+   },[]);
+
+   // The only function of this API request is to wake heroku up since it goes to sleep mode
+   // for inactivity then we have to wait 30 seconds. instead once the user gets on the marketing page
+   // the funcion below will run
+   useEffect(() => {
+      async function wakeHerokuUp() {
+         try {
+            const { data } = await axios.get(`${serverUrl}`);
+            console.log(data.message);
+         } catch (error) {
+            console.log(error.response);
+         }
+      }
+      wakeHerokuUp();
    },[]);
 
    function getLocalStoreData() {
