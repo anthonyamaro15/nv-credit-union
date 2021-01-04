@@ -6,6 +6,8 @@ import { AiFillQuestionCircle } from "react-icons/ai";
 import ReactTooltip from 'react-tooltip';
 import logo from '../../imgs/logo.jpg';
 import Loader from './LoaderComponent';
+import axios from 'axios';
+import { serverUrl } from '../../envVariables';
 
 interface FormProps {
    lastName: string;
@@ -13,21 +15,37 @@ interface FormProps {
    ssn: string;
 }
 
+interface ApplicationStatusProps {
+   applicationNumber: number;
+   createdAt: string;
+   status: string;
+   contactEmail: string;
+}
+
 const CheckApplicationStatus = () => {
-   const { register, errors, handleSubmit } = useForm<FormProps>({
+   const { register, errors, handleSubmit, reset } = useForm<FormProps>({
       mode: "onBlur"
    });
    const [simulateSubmit, setSimulateSubmit] = useState(false);
    const [loading, setLoading] = useState(false);
    const [toogleSsn, setToggleSsn] = useState(false);
+   const [applicationStatus, setApplicatonStatus] = useState<ApplicationStatusProps>();
    // const history = useHistory();
 
-   const onSubmit = (values: FormProps) => {
+   const onSubmit = async (values: FormProps) => {
       setLoading(true);
-      setTimeout(() => {
-         setSimulateSubmit(true);
+      try {
+         const response = await axios
+            .post(`${serverUrl}/credit_card_application/status`, {...values, contactEmail: values.email });
+         setApplicatonStatus(response.data);
+         reset();
          setLoading(false);
-      }, 2000);
+         setSimulateSubmit(true);
+      } catch (error) {
+         reset();
+         setLoading(false);
+         console.log(error.response.data);
+      }
    }
 
    const toogleSSN = () => {
@@ -114,26 +132,24 @@ const CheckApplicationStatus = () => {
                   <p>This may take a few minutes.</p>
                </div>
             ) }
-            {simulateSubmit && (
+            {applicationStatus && (
                <div className="Status-result">
                   <h2>applications</h2>
                   <p>Only appliations created in the last 90 days are displayed</p>
-                  <span className="application-number">credit card application #477412</span>
+                  <span className="application-number">{`credit card application #${applicationStatus.applicationNumber}`}</span>
                   <div className="application-status">
                      <div className="description-right">
                         <span>status</span>
                         <span>created date</span>
                      </div>
                      <div className="description-left">
-                        <span>pending</span>
-                        <span>12/27/2020</span>
+                        <span>{applicationStatus.status}</span>
+                        <span>{applicationStatus.createdAt.split(' ')[0]}</span>
                      </div>
                   </div>
                   <p className="note-description">Note: Any approval displayed in this check status page may be conditional approval and subject to final review.</p>
                </div>
             )}
-
-
             <div className="form-footer">
                <span>One Nevada Credit Union</span>
                <div className="more-info">
