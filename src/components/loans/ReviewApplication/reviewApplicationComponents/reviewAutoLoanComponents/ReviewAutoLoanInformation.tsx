@@ -39,6 +39,8 @@ const ReviewAutoLoanInformation: React.FC<Props> = ({ autoLoanApplication }) => 
          </div> 
          <div className="share-classes">
             <h3>vehicle loan information</h3>
+
+            {/* Display this only when user select other than refinance vehicle */}
             {purchaseType !== 'refinance vehicle' && (
                <>
                   <div className="information-wrapper">
@@ -84,14 +86,17 @@ const ReviewAutoLoanInformation: React.FC<Props> = ({ autoLoanApplication }) => 
                </>
             )}
             
-
+            {/* Display only when user selects refinance option, this will display values
+             of refinance options user picked */}
             {purchaseType === 'refinance vehicle' && (
                <RefinanceVehicle autoLoanApplication={autoLoanApplication} />
             )}
+            {/* If user knows the make model and year of the car then display those values */}
             {knowsMakeAndModel === 'yes' && (
                <KnowsMakeAndModel autoLoanApplication={autoLoanApplication} />
             )}
          </div>
+         {/* Only display this component when user picked the option to trade in a vehicle */}
          {tradeIn && (
             <TradeInVehicleInformation autoLoanApplication={autoLoanApplication} />
          )}

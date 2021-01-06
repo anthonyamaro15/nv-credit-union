@@ -19,7 +19,9 @@ const DifferentEmailingAddress: React.FC<Props> = ({ applicationInputs }) => {
       <div className="information-wrapper">
          <div className="lef-side-wrapper">
             <span className="description">mailing address</span>
-            <span className="value check-for-same-address">{`${differentAddress} ${differentCity} ${differentState} ${differentZip}`}</span>
+            <span className="value check-for-same-address">
+               {`${differentAddress} ${differentCity} ${differentState} ${differentZip}`}
+            </span>
          </div>
          <div className="right-side-wrapper">
             <span className="description">occupancy duration</span>

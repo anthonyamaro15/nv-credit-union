@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// import { HiCreditCard } from "react-icons/hi";
-// import { FaCarAlt } from "react-icons/fa";
-// import { GrCalculator } from "react-icons/gr";
 
 const VisaPlatiumCreditCard = () => {
    const history = useHistory();
@@ -58,17 +55,11 @@ const VisaPlatiumCreditCard = () => {
                <h3>credit cards</h3>
                <nav>
                   <div className="share-icons credit">
-                     {/* <HiCreditCard /> */}
                      <Link to="/loans/credit-card/visa-signature-credit-card">Visa® Signature Rewards Credit Cards</Link> 
                   </div> 
                   <div className="share-icons credit">
-                     {/* <FaCarAlt /> */}
                      <Link to="/loans/credit-card/visa-platium-credit-card">Visa® Platinum Rewards Credit Card</Link> 
                   </div> 
-                  {/* <div className="share-icons credit">
-                     <GrCalculator />
-                     <Link to="/calculator">calculators</Link> 
-                  </div>  */}
                </nav>
             </div>
          </div>

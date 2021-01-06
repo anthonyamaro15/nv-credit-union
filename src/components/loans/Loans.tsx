@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
-// import { FaUserAlt } from "react-icons/fa";
 import { FaCarAlt } from "react-icons/fa";
-// import { BsFillHouseFill } from "react-icons/bs";
-// import { BsBagFill } from "react-icons/bs";
-// import { GrCalculator } from "react-icons/gr";
 import logoImg from '../../imgs/loanheader.png';
 
 
@@ -36,32 +32,10 @@ const Loans = () => {
                         <span><HiCreditCard /></span>
                         <Link to="/loans/credit-card">credit cards</Link> 
                      </div> 
-                     {/* <div className="share-icons">
-                        <FaUserAlt />
-                        <Link to="/personal-loan">personal loans</Link> 
-                     </div>  */}
                      <div className="share-icons">
                         <span><FaCarAlt /></span>
                         <Link to="/loans/car-loan">vehicle loans</Link> 
                      </div> 
-                     {/* <div className="share-icons">
-                        <BsFillHouseFill />
-                        <Link to="/house-loan">mortage loans</Link> 
-                     </div> 
-
-
-                     <div className="share-icons">
-                        <BsFillHouseFill />
-                        <Link to="/home-equity">home equity loans</Link> 
-                     </div> 
-                     <div className="share-icons">
-                        <BsBagFill />
-                        <Link to="/commercial-loan">commercial real state loans</Link> 
-                     </div>  */}
-                     {/* <div className="share-icons">
-                        <span><GrCalculator /></span>
-                        <Link to="/calculator">calculators</Link> 
-                     </div>  */}
                   </nav>
                   <p className="apr-info">
                      APRs can increase after consummation of the loan if the loan terms allow an APR to increase.
@@ -82,31 +56,10 @@ const Loans = () => {
                      <span><HiCreditCard /></span>
                      <Link to="/loans/credit-card">credit cards</Link> 
                   </div> 
-                  {/* <div className="share-icons">
-                     <FaUserAlt />
-                     <Link to="/personal-loan">personal loans</Link> 
-                  </div>  */}
                   <div className="share-icons">
                      <span><FaCarAlt /></span>
                      <Link to="/car-loan">vehicle loans</Link> 
                   </div> 
-                  {/* <div className="share-icons">
-                     <BsFillHouseFill />
-                     <Link to="/house-loan">mortage loans</Link> 
-                  </div> 
-
-                  <div className="share-icons">
-                     <BsFillHouseFill />
-                     <Link to="/home-equity">home equity loans</Link> 
-                  </div> 
-                  <div className="share-icons">
-                     <BsBagFill />
-                     <Link to="/commercial-loan">commercial real state loans</Link> 
-                  </div>  */}
-                  {/* <div className="share-icons">
-                     <span><GrCalculator /></span>
-                     <Link to="/calculator">calculators</Link> 
-                  </div>  */}
                </nav>
             </div>
          </div>

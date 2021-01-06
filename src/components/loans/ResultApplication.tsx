@@ -19,6 +19,7 @@ const { creditCardApplication } = useSelector((state: ReducerProps) => state.cre
 const history = useHistory();
 
    useEffect(() => {
+      // this timer is just to mimic a waiting for application to be approved
       setTimeout(() => {
          setResult(false);
       }, 3000);

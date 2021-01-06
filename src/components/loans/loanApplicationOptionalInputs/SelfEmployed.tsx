@@ -2,32 +2,27 @@ import React from 'react';
 
 interface Props {
    register: any;
-   // ref: any;
    errors: any;
    years: number[];
    months: number[]
 }
 
-const SelfEmployed: React.FC<Props> = ({ register, errors, years, months }) => {
+const SelfEmployed: React.FC<Props> = ({ register, years, months }) => {
    return (
      <>
       <label htmlFor="seflJobTitle">
          Profession/Job Title
          <span className="require">*</span>
          <input type="text" id="selfJobTitle" name="selfJobTitle" ref={register} />
-         {/* <p className="error">{errors.jobTitle && "Required field"}</p> */}
       </label>
       <label htmlFor="selfEmployer">
          employer
-         {/* <span className="require">*</span> */}
          <input type="text" id="selfEmployer" name="selfEmployer" ref={register} />
-         {/* <p className="error">{errors.employer && "Required field"}</p> */}
       </label>
       <label htmlFor="businessType">
          business type
          <span className="require">*</span>
          <input type="text" id="businessType" name="businessType" ref={register} />
-         {/* <p className="error">{errors.employer && "Required field"}</p> */}
       </label>
       <div className="employment-duration">
          <div>
@@ -42,7 +37,6 @@ const SelfEmployed: React.FC<Props> = ({ register, errors, years, months }) => {
                      <option value={year} key={i}>{year}</option>
                   ))}
                </select>
-               {/* <p className="error-backup">{errors.employmentYears && "Required field"}</p> */}
             </label>
             <label htmlFor="selfEmploymentMonths">
                <select name="selfEmploymentMonths" id="selfEmploymentMonths" ref={register}>

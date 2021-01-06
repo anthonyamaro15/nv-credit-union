@@ -2,20 +2,18 @@ import React from 'react';
 
 interface Props {
    register: any;
-   // ref: any;
    errors: any;
    years: number[];
    months: number[]
 }
 
-const Unemployed: React.FC<Props> = ({ register, errors, years, months }) => {
+const Unemployed: React.FC<Props> = ({ register, years, months }) => {
    return (
      <>
       <label htmlFor="retiredJobTitle">
          Former Profession/Job Title
          <span className="require">*</span>
          <input type="text" id="retiredJobTitle" name="retiredJobTitle" ref={register} />
-         {/* <p className="error">{errors.jobTitle && "Required field"}</p> */}
       </label>
       <div className="employment-duration">
          <div>
@@ -30,7 +28,6 @@ const Unemployed: React.FC<Props> = ({ register, errors, years, months }) => {
                      <option value={year} key={i}>{year}</option>
                   ))}
                </select>
-               {/* <p className="error-backup">{errors.employmentYears && "Required field"}</p> */}
             </label>
             <label htmlFor="retiredEmploymentMonths">
                <select name="retiredEmploymentMonths" id="retiredEmploymentMonths" ref={register}>

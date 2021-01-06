@@ -1,5 +1,4 @@
 import React, {  useState } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaLock } from "react-icons/fa";
 import { AiFillQuestionCircle } from "react-icons/ai";
@@ -48,6 +47,7 @@ const CheckApplicationStatus = () => {
       }
    }
 
+   // this just gives to option to show / hide SSN
    const toogleSSN = () => {
       setToggleSsn(!toogleSsn);
    }
@@ -125,6 +125,7 @@ const CheckApplicationStatus = () => {
                   <button type="submit" disabled={simulateSubmit} >get status</button>
                </div>
             </form>
+            {/* If loading is true then show loader component */}
             {loading && (
                <div className="loading-component">
                   <h3>Processing your request...</h3>
@@ -132,6 +133,7 @@ const CheckApplicationStatus = () => {
                   <p>This may take a few minutes.</p>
                </div>
             ) }
+            {/* If we have application data available then display it */}
             {applicationStatus && (
                <div className="Status-result">
                   <h2>applications</h2>
