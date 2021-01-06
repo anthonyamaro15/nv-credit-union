@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
-// import { FaCarAlt } from "react-icons/fa";
-// import { GrCalculator } from "react-icons/gr";
 import aboutusImg from '../../imgs/aboutus.png';
 
 
@@ -66,14 +64,6 @@ const AboutUs = () => {
                      <HiCreditCard />
                      <Link to="/loans/credit-card">credit cards</Link> 
                   </div> 
-                  {/* <div className="share-icons">
-                     <FaCarAlt />
-                     <Link to="/car-loan">vehicle loans</Link> 
-                  </div> 
-                  <div className="share-icons">
-                     <GrCalculator />
-                     <Link to="/calculator">calculators</Link> 
-                  </div>  */}
                </nav>
             </div>
          </div>
