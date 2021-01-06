@@ -1,0 +1,41 @@
+.bg-color {
+  .LoanApplication {
+    .application-header {
+      .auto-loan-title {
+        display: flex;
+        span {
+          font-size: 2.3rem;
+        }
+      }
+    }
+    form {
+      h2 {
+        color: #2c5794;
+      }
+      .car-loan-input-wrappers {
+        margin-top: 3rem;
+
+        .purchaseType {
+          margin-bottom: 3rem;
+          display: inline-block;
+          font-size: 1.4rem;
+          font-weight: bold;
+          color: #2c5794;
+        }
+
+        .trade-in-information {
+          font-size: 1.1rem;
+          text-transform: capitalize;
+        }
+      }
+
+      .select-purpose-error {
+        color: red;
+        font-size: 0.9rem;
+        margin-left: 0.3rem;
+        font-weight: normal;
+        margin-top: -0.7rem;
+      }
+    }
+  }
+}

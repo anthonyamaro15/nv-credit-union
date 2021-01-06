@@ -138,6 +138,108 @@ const payGrade = [
    "W3"
 ];
 
+
+const branchLocation = [
+   "Blue Diamond Decatur Branch",
+   "Craig Ferrell Branch",
+   "Damonte/Reno Branch",
+   "Durango 95 Branch",
+   "E-Branch and Loan by Phone",
+   "Fort Apache West Flamingo Branch",
+   "Green Valley Branch",
+   "Lemmon Valley/Reno Branch",
+   "N Decatur 215 Branch",
+   "Nellis AFB Branch",
+   "Pearl Branch",
+   "Plumb/Reno Branch",
+   "Rainbow Branch",
+   "Serene Branch",
+   "Summerlin Branch",
+   "Sunrise Branch "
+];
+
+const carMake = [
+   "ALFA ROMEO",
+   "AM GENERAL",
+   "AMERICAN MOTORS (AMC)",
+   "ASTON MARTIN",
+   "AUDI",
+   "AUSTIN HEALEY",
+   "AVANTI",
+   "BENTLEY",
+   "BERTONE",
+   "BMW",
+   "BUICK",
+   "CADILLAC",
+   "CHEVROLET",
+   "CHRYSLER",
+   "CONSULIER",
+   "DAEWOO",
+   "DAIHATSU",
+   "DAIMLER",
+   "DATSUN/NISSAN",
+   "DELOREAN",
+   "DODGE",
+   "EAGLE",
+   "FERRARI",
+   "FIAT",
+   "FORD",
+   "GEO",
+   "GMC",
+   "HONDA",
+   "HUMMER",
+   "HYUNDAI",
+   "INFINITI",
+   "ISUZU",
+   "JAGUAR",
+   "JEEP",
+   "KIA",
+   "LAMBORGHINI",
+   "LAND ROVER",
+   "LEXUS",
+   "LINCOLN",
+   "LOTUS",
+   "MASERATI",
+   "MAZDA",
+   "MERCEDES-BENZ",
+   "MERCURY",
+   "MERKUR",
+   "MG CLASSIC",
+   "MINI",
+   "MITSUBISHI",
+   "NISSAN",
+   "OLDSMOBILE",
+   "PEUGEOT",
+   "PININFARINA",
+   "PLYMOUTH",
+   "PONTIAC",
+   "PORSCHE",
+   "RENAULT",
+   "ROLLS-ROYCE",
+   "SAAB",
+   "SATURN",
+   "SCION",
+   "SMART",
+   "STERLING",
+   "SUBARU",
+   "SUZUKI",
+   "TESLA",
+   "TOYOTA",
+   "TRIUMPH",
+   "VOLKSWAGEN",
+   "VOLVO",
+   "YUGO",
+   "RV",
+   "ZENN"
+];
+
+const loanTerm = [
+   "24",
+   "36",
+   "48",
+   "60",
+   "72"
+];
 function createNumbers(num: number) {
    const numbers  = [];
    for(let i = 0; i <= num; i++) {
@@ -147,9 +249,12 @@ function createNumbers(num: number) {
 } 
 
 export { 
+   branchLocation,
+   carMake,
    createNumbers, 
    employmentStatus, 
    idType, 
+   loanTerm,
    payGrade, 
    preferredLocations, 
    states 

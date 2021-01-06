@@ -1,14 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 // import { FaUserAlt } from "react-icons/fa";
 import { FaCarAlt } from "react-icons/fa";
 // import { BsFillHouseFill } from "react-icons/bs";
 // import { BsBagFill } from "react-icons/bs";
-import { GrCalculator } from "react-icons/gr";
+// import { GrCalculator } from "react-icons/gr";
 import autoLoanImg from '../../../imgs/autoloan.png';
 
 const AutoLoan = () => {
+   const history = useHistory();
+
+   const redirect = () => {
+      history.push("/application-status");
+   }
+
    return (
       <div className="Loans-wrapper">
          <div className="Loans">
@@ -57,10 +63,10 @@ const AutoLoan = () => {
                         <BsBagFill />
                         <Link to="/commercial-loan">commercial real state loans</Link> 
                      </div>  */}
-                     <div className="share-icons">
+                     {/* <div className="share-icons">
                         <GrCalculator />
                         <Link to="/calculator">calculators</Link> 
-                     </div> 
+                     </div>  */}
                   </nav>
                   <p className="apr-info">
                      APRs can increase after consummation of the loan if the loan terms allow an APR to increase.
@@ -70,7 +76,7 @@ const AutoLoan = () => {
                   <p>
                   Have you already applied for an auto loan, credit card, or personal loan with One Nevada? 
                   </p>
-                  <button>apply now</button>
+                  <button onClick={redirect}>check your application status</button>
                </div>
             </section>
 
@@ -103,10 +109,10 @@ const AutoLoan = () => {
                      <BsBagFill />
                      <Link to="/commercial-loan">commercial real state loans</Link> 
                   </div>  */}
-                  <div className="share-icons">
+                  {/* <div className="share-icons">
                      <GrCalculator />
                      <Link to="/calculator">calculators</Link> 
-                  </div> 
+                  </div>  */}
                </nav>
             </div>
          </div>
