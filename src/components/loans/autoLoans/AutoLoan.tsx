@@ -66,7 +66,7 @@ const AutoLoan = () => {
                <nav>
                   <div className="share-icons">
                      <HiCreditCard />
-                     <Link to="/credit-card">credit cards</Link> 
+                     <Link to="/loans/credit-card">credit cards</Link> 
                   </div> 
                   {/* <div className="share-icons">
                      <FaUserAlt />
@@ -74,7 +74,7 @@ const AutoLoan = () => {
                   </div>  */}
                   <div className="share-icons">
                      <FaCarAlt />
-                     <Link to="/car-loan">vehicle loans</Link> 
+                     <Link to="/loans/car-loan">vehicle loans</Link> 
                   </div> 
                </nav>
             </div>

@@ -24,7 +24,6 @@ import AboutUs from './marketingPage/AboutUs';
 import axios from 'axios';
 import { serverUrl } from '../envVariables';
 import AutoLoanApplication from './loans/autoLoans/AutoLoanApplication';
-// import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
    const [applicationData, setApplicationData] = useState();
@@ -48,6 +47,7 @@ const MainApp = () => {
       wakeHerokuUp();
    },[]);
 
+   // get credit card application data from localStorage
    function getLocalStoreData() {
       const data = localStorage.getItem('application');
       if(data) {

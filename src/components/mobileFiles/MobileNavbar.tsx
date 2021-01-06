@@ -39,13 +39,10 @@ const MobileNavbar = () => {
       <div className={isMoblie ? "MobileNavbar show" : "MobileNavbar"}>
         <nav>
           <NavLink onClick={closeNavMenu} to="/" exact activeClassName="active">
-            banking
+            home
           </NavLink>
           <NavLink onClick={closeNavMenu} to="/loans" exact activeClassName="active">
             loans
-          </NavLink>
-          <NavLink onClick={closeNavMenu} to="/contact" exact activeClassName="active">
-            login
           </NavLink>
           <NavLink onClick={closeNavMenu} to="/banking/checking" exact activeClassName="active">
             open a new account

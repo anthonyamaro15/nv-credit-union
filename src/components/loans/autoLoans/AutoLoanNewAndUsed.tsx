@@ -10,6 +10,9 @@ const AutoLoanNewAndUsed = () => {
       history.push('/vehicle-loan/application');
    }
 
+   const applicationStatus = () => {
+      history.push('/application-status');
+   }
    return (
       <div className="Loans-wrapper">
          <div className="Loans">
@@ -39,7 +42,7 @@ const AutoLoanNewAndUsed = () => {
                   <p>
                   Have you already applied for a credit card with One Nevada? 
                   </p>
-                  <button>check your application status</button>
+                  <button onClick={applicationStatus}>check your application status</button>
                </div>
             </section>
 
@@ -48,11 +51,11 @@ const AutoLoanNewAndUsed = () => {
                <nav>
                   <div className="share-icons credit">
                      <HiCreditCard />
-                     <Link to="/credit-card">Credit Cards</Link> 
+                     <Link to="/loans/credit-card">Credit Cards</Link> 
                   </div> 
                   <div className="share-icons credit">
                      <FaCarAlt />
-                     <Link to="/car-loan">vehicle loans</Link> 
+                     <Link to="/loans/car-loan">vehicle loans</Link> 
                   </div> 
                </nav>
             </div>
