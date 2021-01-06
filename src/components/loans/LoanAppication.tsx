@@ -42,6 +42,9 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
    const onSubmit = (values: FormCreditCardProps) => {
       const updatedValues = {...values, loanType };
       dispatch({type: CREDIT_CARD_APPLICATION, payload: updatedValues});
+      // cache application data to local storage in case user decides to go back 
+      // and update a value, 
+      // We want to cache everything but the SSN
       localStorage.setItem("application", JSON.stringify({...updatedValues, ssn: ""}));
       history.push('/loans/application/visa-platium/confirmation');
    }
@@ -51,7 +54,6 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
    }
 
    const showDifferentAddressInputs = () => {
-   
       setToogleAddress(!toogleAddress);
    }
 
@@ -107,7 +109,6 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         className="show" 
                         onClick={toogleSSN}>{toogleSsn ? "Hide SSN" : "Show SSN"}
                      </span>
-                     {/* <span className="icon"><AiFillQuestionCircle /></span> */}
                       <span 
                          className="icon" 
                          data-tip="Your Social Security Number (SSN) is used for identification purposes and to determine your account opening eligibility.">
@@ -171,9 +172,17 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         </p>
                         <p className="error-backup">
                            {
-                              errors.birthMonth && errors.birthMonth.type === "pattern" && "Enter valid format" ||
-                              errors.birthDay && errors.birthDay.type === "pattern" && "Enter valid format" ||
+                              errors.birthMonth && errors.birthMonth.type === "pattern" && "Enter valid format"
+                           }
+                        </p>
+                        <p className="error-backup">
+                           {
                               errors.birthYear && errors.birthYear.type === "pattern" && "Enter valid format"
+                           }
+                        </p>
+                        <p className="error-backup">
+                           {
+                              errors.birthDay && errors.birthDay.type === "pattern" && "Enter valid format"
                            }
                         </p>
                      </label>
@@ -190,7 +199,6 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                               pattern: /^\d+$/
                            })} 
                         />
-                        {/* <p className="error">{errors.birthDay && "Required field"}</p> */}
                      </label>
                      <label htmlFor="birthYear">
                         <input 
@@ -204,7 +212,6 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                               pattern: /^\d+$/
                            })} 
                         />
-                        {/* <p className="error">{errors.birthYear && "Required field"}</p> */}
                      </label>
                   </div>
 
@@ -448,11 +455,11 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                                  <option value={month} key={i}>{month}</option>
                               ))}
                            </select>
-                           {/* <p className="error">{errors.occupancyMonths && "Required field"}</p> */}
                         </label>
                      </div>
                   </div>
                   <div className="use-different-address">
+                     {/* Toogle text is user wnats to add a different emailing address */}
                      {toogleAddress ? (
                         <div className="diferent-address-title" onClick={showDifferentAddressInputs}>
                            <FaArrowAltCircleDown />
@@ -465,6 +472,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                         </div>
                      )}
 
+                     {/* toggle css classes to either show or hide different address inputs */}
                      <div className={toogleAddress ? "different-address-input-wrapper show-inputs" : "different-address-input-wrapper"}>
                         <label htmlFor="differentAddress">address
                            <span className="require">*</span>
@@ -509,7 +517,6 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                                  <option value={single} key={i}>{single}</option>
                               ))}
                            </select>
-                           {/* <p className="error">{errors.idState && "Required field"}</p> */}
                         </label>
                      </div>
                   </div>
@@ -532,6 +539,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      <p className="error">{errors.idType && "Required field"}</p>
                   </label>
 
+                  {/* Displays different type of ID's options */}
                   {identificationType && (
                      <IdTypes 
                         register={register}
@@ -571,6 +579,9 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      </select>
                      <p className="error">{errors.employmentStatus && "Required field"}</p>
                   </label>
+                  {/* We want to display different input options depending on the what the user picks,
+                  if user chooses employed then show input options for employed users and the same for the 
+                  rest of the components */}
                   {employment === "Employed" && (
                      <Employed 
                         register={register}

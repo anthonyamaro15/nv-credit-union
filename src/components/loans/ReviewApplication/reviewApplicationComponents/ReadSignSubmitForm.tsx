@@ -21,6 +21,9 @@ const ReadSignSubmitForm: React.FC<Props> = ({
    return (
       <form className="choose-branch-location" onSubmit={handleSubmit(onSubmit)}>
          <h1>please answer question(s) below</h1>
+         {/* Only display this options if user is applying for credit cards, 
+         since im using the same component for both review applications we need to check for the
+         type of application */}
          {loanType === 'visa-platium' || loanType === 'visa-signature' && (
             <>
                <label htmlFor="preferredLocation">
@@ -46,6 +49,7 @@ const ReadSignSubmitForm: React.FC<Props> = ({
                </label>                  
             </>
          )}
+         {/* Display vinNumber input only when user is applying for auto loan application */}
          {loanType === 'auto-loan' && (
             <label htmlFor="vinNumber">
                please enter VIN of the vehicle

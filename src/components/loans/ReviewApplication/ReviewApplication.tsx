@@ -15,7 +15,6 @@ import Homemaker from './reviewApplicationComponents/Homemaker';
 import SelfEmployed from './reviewApplicationComponents/SelfEmployed';
 import ReferenceInformation from './reviewApplicationComponents/ReferenceInformation';
 import DifferentEmailingAddress from './reviewApplicationComponents/DifferentEmailingAddress';
-import { Reducer } from 'react';
 import ReviewAutoLoanInformation from './reviewApplicationComponents/reviewAutoLoanComponents/ReviewAutoLoanInformation';
 import ReadSignSubmitForm from './reviewApplicationComponents/ReadSignSubmitForm';
 
@@ -87,9 +86,11 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
 
 
    useEffect(() => {
+      // Only displays the last four of SSN
       setHashSSN('****' + ssn.slice(5));
    },[setHashSSN, ssn]);
 
+   // generate a random number for confirmation number
    const generateRandomNumber = () => {
       return Math.floor(Math.random() * 1000000);
    }
@@ -107,6 +108,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
       history.push("/loans/result-application");
       localStorage.clear();
 
+      // send user data to server so we can send a comfirmation email
       try {
         await axios.post(`${serverUrl}/credit_card_application/create`, updateNewValues);
         console.log("sucess post application");
@@ -115,6 +117,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
       }
    }
 
+   // if user decides to go back to application and edit something
    const goBackToApplication = () => {
       getLocalStoreData();
       const previousPath = pathname.split('/').slice(0, -1).join('/');
@@ -130,6 +133,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                <h1>review and submit</h1>
             </div>
             <div className="application-information">
+               {/* Only display this when user applies for any of the credit cards */}
                {loanType === 'visa-platium' || loanType === 'visa-signature' && (
                   <div className="share-classes">
                      <h3>credit card information</h3>
@@ -145,6 +149,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div> 
                   </div>
                )}
+               {/* Only display auto loan information when user applies for an auto loan */}
                {loanType === 'auto-loan' && (
                   <ReviewAutoLoanInformation autoLoanApplication={autoLoanApplication} />
                )}
@@ -172,6 +177,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                   </div> 
                </div>
+               {/* Display reference information only when user entered referenced information */}
                {referenceFirstName && (
                   <ReferenceInformation applicationInputs={creditCardApplication} />
                )}
@@ -221,6 +227,8 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                   </div> 
 
+                  {/* If there is no different address for mailing that means
+                   user wants to use the same as physical address */}
                   {!differentAddress && (
                      <div className="information-wrapper">
                         <div className="lef-side-wrapper">
@@ -233,7 +241,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                         </div>
                      </div>
                   )}
-
+                  {/* Display different address only when user enters a different mailing address */}
                   {differentAddress && (
                      <DifferentEmailingAddress applicationInputs={creditCardApplication} />
                   )}
@@ -262,6 +270,8 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                   </div> 
                </div>
 
+               {/* We will display components base on user employment status,
+               if user is employed then show employed component, and same for the rest */}
                {employmentStatus === "Employed" && (
                   <Employed applicationInputs={creditCardApplication} />
                )}
@@ -286,6 +296,8 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                   <SelfEmployed  applicationInputs={creditCardApplication} />
                )}
             </div>
+            {/* Decided to move this form to its own component to make 
+            ReviewApplication component as clean as possible */}
             <ReadSignSubmitForm
                register={register}
                handleSubmit={handleSubmit}
@@ -297,6 +309,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
             <div className="form-footer">
                <span>One Nevada Credit Union</span>
                <div className="more-info">
+                  {/* href links values are just placeholders for the moment */}
                   <a href="www.example.com">Federally Insured by NCUA</a>
                   <a href="www.example.com">Equal Housing Lender.</a>
                </div>

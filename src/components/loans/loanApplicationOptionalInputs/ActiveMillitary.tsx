@@ -3,7 +3,6 @@ import { payGrade } from '../../../seedData';
 
 interface Props {
    register: any;
-   // ref: any;
    errors: any;
    years: number[];
    months: number[]
@@ -16,13 +15,11 @@ const ActiveMilitary: React.FC<Props> = ({ register, errors, years, months }) =>
          Profession/MOS
          <span className="require">*</span>
          <input type="text" id="militaryJobTitle" name="militaryJobTitle" ref={register} />
-         {/* <p className="error">{errors.jobTitle && "Required field"}</p> */}
       </label>
       <label htmlFor="branchOfService">
          branch of service
          <span className="require">*</span>
          <input type="text" id="branchOfService" name="branchOfService" ref={register} />
-         {/* <p className="error">{errors.employer && "Required field"}</p> */}
       </label>
       <label htmlFor="payGrade">
          pay grade
@@ -33,7 +30,6 @@ const ActiveMilitary: React.FC<Props> = ({ register, errors, years, months }) =>
                <option value={single} key={i}>{single}</option>
             ))}
          </select>
-         {/* <p className="error">{errors.idType && "Required field"}</p> */}
       </label>
       <div className="employment-duration">
          <div>
@@ -48,7 +44,6 @@ const ActiveMilitary: React.FC<Props> = ({ register, errors, years, months }) =>
                      <option value={year} key={i}>{year}</option>
                   ))}
                </select>
-               {/* <p className="error-backup">{errors.employmentYears && "Required field"}</p> */}
             </label>
             <label htmlFor="militaryEmploymentMonths">
                <select name="militaryEmploymentMonths" id="militaryEmploymentMonths" ref={register}>

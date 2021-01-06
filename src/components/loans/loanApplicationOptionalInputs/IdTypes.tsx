@@ -3,13 +3,12 @@ import { states } from  '../../../seedData';
 
 interface Props {
    register: any;
-   // ref: any;
    errors: any;
    years: number[];
    months: number[]
 }
 
-const IdTypes: React.FC<Props> = ({ register, errors, years, months }) => {
+const IdTypes: React.FC<Props> = ({ register, errors }) => {
    return (
      <>
       <label htmlFor="idNumber">
@@ -34,14 +33,32 @@ const IdTypes: React.FC<Props> = ({ register, errors, years, months }) => {
          <span className="require">*</span>
          <div className="input-wrapper">
             <label htmlFor="expirationMonth">
-               <input type="text" id="expirationMonth" name="expirationMonth" placeholder="mm" ref={register({ required: true})} />
+               <input 
+                  type="text" 
+                  id="expirationMonth" 
+                  name="expirationMonth" 
+                  placeholder="mm" 
+                  ref={register({ required: true })} 
+               />
                <p className="error">{errors.expirationMonth && "Required field"}</p>
             </label>
             <label htmlFor="expirationDay">
-               <input type="text" id="expirationDay" name="expirationDay" placeholder="dd" ref={register({ required: true})} />
+               <input 
+                  type="text" 
+                  id="expirationDay" 
+                  name="expirationDay" 
+                  placeholder="dd" 
+                  ref={register({ required: true})} 
+               />
             </label>
             <label htmlFor="expirationYear">
-               <input type="text" id="expirationYear" name="expirationYear" placeholder="yyyy" ref={register({ required: true})} />
+               <input 
+                  type="text" 
+                  id="expirationYear" 
+                  name="expirationYear" 
+                  placeholder="yyyy" 
+                  ref={register({ required: true})} 
+               />
             </label>
          </div>
       </div>
