@@ -10,12 +10,11 @@
     margin: 0 auto;
 
     label {
-      display: flex;
-      justify-content: space-between;
+      @include flexProps(space-between);
+
       margin-bottom: 0.6rem;
       text-transform: capitalize;
       align-items: center;
-      // font-weight: bold;
       color: black;
       font-size: 0.9rem;
 
@@ -55,13 +54,7 @@
       text-align: center;
 
       button {
-        font-size: 1rem;
-        text-transform: capitalize;
-        padding: 0.6rem 1.5rem;
-        border-radius: 4px;
-        border: none;
-        background: #337ab7;
-        color: white;
+        @include mainButton($light-blue, 0.6rem 1.5rem);
       }
     }
   }

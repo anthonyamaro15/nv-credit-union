@@ -1,8 +1,8 @@
 .FormFooter {
   padding: 1rem 1rem 2rem;
   margin: 0 1rem;
-  display: flex;
-  justify-content: space-between;
+
+  @include flexProps(space-between);
   background: #dde4ea;
   border-radius: 4px;
 
@@ -14,7 +14,7 @@
     font-size: 0.7rem;
     font-weight: bold;
     display: block;
-    color: #337ab7;
+    color: $light-blue;
   }
 
   .right-side {

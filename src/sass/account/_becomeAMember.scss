@@ -2,8 +2,8 @@
   background: #8c9091;
   padding: 3rem 0;
   .BecomeAMember-wrapper {
-    background: white;
-    max-width: 1150px;
+    background: $white;
+    max-width: $max-width;
     margin: 0 auto;
     font-weight: 300;
 
@@ -19,19 +19,10 @@
       padding: 0 2rem;
 
       button {
-        font-size: 1rem;
-        font-weight: 300;
-        padding: 0.7rem 1.5rem;
-        //   margin-left: 1rem;
-        text-transform: uppercase;
-        //   border: 1px solid #b22b2e;
-        border: none;
-        background: #b22b2e;
-        color: white;
-        border-radius: 4px;
-        font-family: "Raleway", sans-serif;
-        font-weight: 300;
+        @include mainButton($red, 0.7rem 1.5rem);
 
+        text-transform: uppercase;
+        font-weight: 300;
         transition: background 0.3s ease;
 
         &:hover {
