@@ -3,11 +3,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 // import { FaUserAlt } from "react-icons/fa";
 import { FaCarAlt } from "react-icons/fa";
-// import { BsFillHouseFill } from "react-icons/bs";
-// import { BsBagFill } from "react-icons/bs";
-// import { GrCalculator } from "react-icons/gr";
 import autoLoanImg from '../../../imgs/autoloan.png';
 
+
+// commented out code is something im going to implement later
 const AutoLoan = () => {
    const history = useHistory();
 
@@ -49,24 +48,6 @@ const AutoLoan = () => {
                         <FaCarAlt />
                         <Link to="/loans/auto-refinance">refinance your auto loan</Link> 
                      </div> 
-                     {/* <div className="share-icons">
-                        <BsFillHouseFill />
-                        <Link to="/house-loan">mortage loans</Link> 
-                     </div> 
-
-
-                     <div className="share-icons">
-                        <BsFillHouseFill />
-                        <Link to="/home-equity">home equity loans</Link> 
-                     </div> 
-                     <div className="share-icons">
-                        <BsBagFill />
-                        <Link to="/commercial-loan">commercial real state loans</Link> 
-                     </div>  */}
-                     {/* <div className="share-icons">
-                        <GrCalculator />
-                        <Link to="/calculator">calculators</Link> 
-                     </div>  */}
                   </nav>
                   <p className="apr-info">
                      APRs can increase after consummation of the loan if the loan terms allow an APR to increase.
@@ -95,24 +76,6 @@ const AutoLoan = () => {
                      <FaCarAlt />
                      <Link to="/car-loan">vehicle loans</Link> 
                   </div> 
-                  {/* <div className="share-icons">
-                     <BsFillHouseFill />
-                     <Link to="/house-loan">mortage loans</Link> 
-                  </div> 
-
-
-                  <div className="share-icons">
-                     <BsFillHouseFill />
-                     <Link to="/home-equity">home equity loans</Link> 
-                  </div> 
-                  <div className="share-icons">
-                     <BsBagFill />
-                     <Link to="/commercial-loan">commercial real state loans</Link> 
-                  </div>  */}
-                  {/* <div className="share-icons">
-                     <GrCalculator />
-                     <Link to="/calculator">calculators</Link> 
-                  </div>  */}
                </nav>
             </div>
          </div>

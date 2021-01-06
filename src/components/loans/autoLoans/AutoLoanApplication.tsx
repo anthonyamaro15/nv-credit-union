@@ -12,30 +12,27 @@ import RefinanceVehicle from './AutoLoanApplicationInputs/RefinanceVehicle';
 import { branchLocation, loanTerm } from '../../../seedData';
 import { AutoLoanApplicationProps } from '../../interfaces/loanApplicationInterface';
 import { AUTO_LOAN_APPLICATION } from '../../../redux/actions';
+import ProvideLoanInformation from './AutoLoanApplicationInputs/ProvideLoanInformation';
 
 
 const AutoLoanApplication = () => {
    const { register, errors, handleSubmit, watch } = useForm<AutoLoanApplicationProps>({
       mode: "onBlur",
    });
-   const [toogleAddress, setToogleAddress] = useState(false);
+   const [toogleTradeIn, setToogleTradeIn] = useState(false);
    const [tradeIn, setTradeIn] = useState(false);
    const history = useHistory();
    const dispatch = useDispatch();
    const purchaseType = watch('purchaseType');
    const knowMakeAndModel = watch('knowsMakeAndModel');
 
-   const onSubmit = (values: any) => {
-      console.log("values here ", values);
-      // console.log("values here ", knowMakeAndModel);
-      // const updatedValues = {...values, loanType };
+   const onSubmit = (values: AutoLoanApplicationProps) => {
       dispatch({type: AUTO_LOAN_APPLICATION, payload: {...values, tradeIn} });
-      // localStorage.setItem("application", JSON.stringify({...updatedValues, ssn: ""}));
       history.push('/loans/application/auto-loan');
    }
 
-   const showDifferentAddressInputs = () => {
-      setToogleAddress(!toogleAddress);
+   const displayTradeInInputs = () => {
+      setToogleTradeIn(!toogleTradeIn);
       setTradeIn(!tradeIn);
    }
 
@@ -98,6 +95,7 @@ const AutoLoanApplication = () => {
                         <p className="error">{errors.vehicleType && "Required field"}</p>
                      </label>
 
+                     {/* ONly display components below if user select the refinance option */}
                      {purchaseType === "refinance vehicle" && (
                         <div className="different-address-input-wrapper">
                            <MakeModelYear register={register} errors={errors} />
@@ -105,118 +103,13 @@ const AutoLoanApplication = () => {
                         </div>
                      )}
 
+                     {/* Display this when user select other than refiance */}
                      {purchaseType !== 'refinance vehicle' && (
-                        <>
-                           <label htmlFor="newOrUse">
-                              is this a new or used vehicle?
-                              <span className="require">*</span>
-                              <select 
-                                 name="newOrUse" 
-                                 id="newOrUse" 
-                                 ref={register({ required: true})}
-                              >
-                                 <option value="">--Please Select--</option>
-                                 <option value="new">new</option>
-                                 <option value="used">used</option>
-                              </select>
-                              <p className="error">{errors.newOrUse && "Required field"}</p>
-                           </label>
-                           <label htmlFor="knowsMakeAndModel">
-                              do you know the Make and Model?
-                              <span className="require">*</span>
-                              <select 
-                                 name="knowsMakeAndModel" 
-                                 id="knowsMakeAndModel" 
-                                 ref={register({ required: true})}
-                              >
-                                 <option value="">--Please Select--</option>
-                                 <option value="yes">yes</option>
-                                 <option value="no">no</option>
-                              </select>
-                              <p className="error">{errors.knowsMakeAndModel && "Required field"}</p>
-                           </label>
-                           {knowMakeAndModel === 'yes' && (
-                              <MakeModelYear register={register} errors={errors} />
-                           )}
-                           <label htmlFor="estimatedPrice">
-                              Estimated Purchase Price
-                              <span className="require">*</span> 
-                              <input 
-                                 type="text" 
-                                 id="estimatedPrice" 
-                                 name="estimatedPrice"
-                                 placeholder="$0.00"
-                                 maxLength={5}
-                                 ref={register({ required: true, pattern: /^\d+$/ })} 
-                              />
-                              <p className="error">
-                                 {
-                                    errors.estimatedPrice &&  
-                                    errors.estimatedPrice.type === "required" && 
-                                    "Required field"
-                                 }
-                                 </p>
-                              <p className="error">
-                                 {
-                                    errors.estimatedPrice &&  
-                                    errors.estimatedPrice.type === "pattern" && 
-                                    "Enter a valid number"
-                                 }
-                                 </p>
-                           </label>  
-                           <label htmlFor="downPaymentAmount">
-                              down payment amount
-                              <span className="require">*</span> 
-                              <input 
-                                 type="text" 
-                                 id="downPaymentAmount" 
-                                 name="downPaymentAmount"
-                                 placeholder="$0.00" 
-                                 maxLength={5}
-                                 ref={register({ required: true, pattern: /^\d+$/ })}
-                              />
-                              <p className="error">
-                                 {
-                                    errors.downPaymentAmount &&  
-                                    errors.downPaymentAmount.type === "required" && 
-                                    "Required field"
-                                 }
-                                 </p>
-                              <p className="error">
-                                 {
-                                    errors.downPaymentAmount 
-                                    &&  errors.downPaymentAmount.type === "pattern" 
-                                    && "Enter a valid number"
-                                 }
-                                 </p>
-                           </label> 
-                           <label htmlFor="loanAmount">
-                              requested loan amount
-                              <span className="require">*</span> 
-                              <input 
-                                 type="text" 
-                                 id="loanAmount" 
-                                 name="loanAmount"
-                                 placeholder="$0.00" 
-                                 maxLength={5}
-                                 ref={register({ required: true, pattern: /^\d+$/ })}
-                              />
-                              <p className="error">
-                                 {
-                                    errors.loanAmount &&  
-                                    errors.loanAmount.type === "required" && 
-                                    "Required field"
-                                 }
-                                 </p>
-                              <p className="error">
-                                 {
-                                    errors.loanAmount 
-                                    &&  errors.loanAmount.type === "pattern" 
-                                    && "Enter a valid number"
-                                 }
-                                 </p>
-                           </label>                     
-                        </>
+                        <ProvideLoanInformation
+                           register={register}
+                           errors={errors}
+                           knowMakeAndModel={knowMakeAndModel}
+                        />
                      )}
 
                      <label htmlFor="loanTerm">
@@ -237,19 +130,21 @@ const AutoLoanApplication = () => {
 
                      {purchaseType !== 'refinance vehicle' && (
                         <div className="use-different-address">
-                           {toogleAddress ? (
-                              <div className="diferent-address-title" onClick={showDifferentAddressInputs}>
+                           {/* If toogleTradeIn is true that means user clicked on the trade in button, so trade in form will be display to user, it will toogle the title and icon as well */}
+                           {toogleTradeIn ? (
+                              <div className="diferent-address-title" onClick={displayTradeInInputs}>
                                  <FaArrowAltCircleDown />
                                  <span>remove trade-in</span>
                               </div>   
                            ): (
-                              <div className="diferent-address-title" onClick={showDifferentAddressInputs}>
+                              <div className="diferent-address-title" onClick={displayTradeInInputs}>
                                  <FaArrowAltCircleRight />
                                  <span>add a trade-in</span>
                               </div>
                            )}
 
-                           <div className={toogleAddress ? "different-address-input-wrapper show-inputs" : "different-address-input-wrapper"}>
+                           {/* Toogles css classes to show / hide the trade in form */}
+                           <div className={toogleTradeIn ? "different-address-input-wrapper show-inputs" : "different-address-input-wrapper"}>
                               <h2 className="trade-in-information">trade-in information</h2>
                               
                               <TradeInOption register={register} errors={errors} />

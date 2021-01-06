@@ -22,7 +22,6 @@ const TradeInOption: React.FC<Props> = ({ register, errors }) => {
                   <option value={single} key={i}>{single}</option>
                ))}
             </select>
-            {/* <p className="error">{errors.tradeinVehicleType && "Required field"}</p> */}
          </label>
          <label htmlFor="tradeInVehicleModel">
             vehicle model
@@ -31,10 +30,8 @@ const TradeInOption: React.FC<Props> = ({ register, errors }) => {
                type="text" 
                name="tradeInVehicleModel" 
                id="tradeInVehicleModel" 
-               // maxLength={5} 
                ref={register} 
             />
-            {/* <p className="error">{errors.knowsMaketradeinVehicleType && "Required field"}</p> */}
          </label>
 
          <label htmlFor="tradeInVehicleYear">vehicle year
@@ -47,7 +44,11 @@ const TradeInOption: React.FC<Props> = ({ register, errors }) => {
                ref={register({ pattern: /^\d+$/ })} 
             />
             <p className="error">
-               { errors.tradeInVehicleYear && errors.tradeInVehicleYear.type === "pattern" && "Enter a valid number" }
+               { 
+                  errors.tradeInVehicleYear && 
+                  errors.tradeInVehicleYear.type === "pattern" && 
+                  "Enter a valid number" 
+               }
             </p>
          </label>
          <label htmlFor="tradeInVehicleType">
@@ -62,7 +63,6 @@ const TradeInOption: React.FC<Props> = ({ register, errors }) => {
                <option value="auto">auto</option>
                <option value="pickup-truck">pickup-truck</option>
             </select>
-            {/* <p className="error">{errors.vehicleType && "Required field"}</p> */}
          </label>
 
          <label htmlFor="tradeInVehicleCurrentValue">
@@ -75,7 +75,11 @@ const TradeInOption: React.FC<Props> = ({ register, errors }) => {
                ref={register({ pattern: /^\d+$/ })} 
             />
             <p className="error">
-               { errors.tradeInVehicleCurrentValue && errors.tradeInVehicleCurrentValue.type === "pattern" && "Enter a valid number" }
+               { 
+                  errors.tradeInVehicleCurrentValue && 
+                  errors.tradeInVehicleCurrentValue.type === "pattern" && 
+                  "Enter a valid number" 
+               }
             </p>
          </label>
 
@@ -89,7 +93,11 @@ const TradeInOption: React.FC<Props> = ({ register, errors }) => {
                ref={register({ pattern: /^\d+$/ })} 
             />
             <p className="error">
-               { errors.tradeInVehicleOweValue && errors.tradeInVehicleOweValue.type === "pattern" && "Enter a valid number" }
+               { 
+                  errors.tradeInVehicleOweValue && 
+                  errors.tradeInVehicleOweValue.type === "pattern" && 
+                  "Enter a valid number" 
+               }
             </p>
          </label>
 
@@ -103,7 +111,11 @@ const TradeInOption: React.FC<Props> = ({ register, errors }) => {
                ref={register({ pattern: /^\d+$/ })} 
             />
             <p className="error">
-               { errors.tradeInVehicleMonthlyPayment && errors.tradeInVehicleMonthlyPayment.type === "pattern" && "Enter a valid number" }
+               { 
+                  errors.tradeInVehicleMonthlyPayment && 
+                  errors.tradeInVehicleMonthlyPayment.type === "pattern" && 
+                  "Enter a valid number" 
+               }
             </p>
          </label>      
       </>

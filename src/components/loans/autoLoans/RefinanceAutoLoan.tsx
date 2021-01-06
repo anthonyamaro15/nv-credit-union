@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 import { FaCarAlt } from "react-icons/fa";
-// import { GrCalculator } from "react-icons/gr";
 
 const RefinanceAutoLoan = () => {
    return (
@@ -41,10 +40,6 @@ const RefinanceAutoLoan = () => {
                      <FaCarAlt />
                      <Link to="/car-loan">vehicle loans</Link> 
                   </div> 
-                  {/* <div className="share-icons credit">
-                     <GrCalculator />
-                     <Link to="/calculator">calculators</Link> 
-                  </div>  */}
                </nav>
             </div>
          </div>

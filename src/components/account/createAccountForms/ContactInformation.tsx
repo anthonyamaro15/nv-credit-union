@@ -27,7 +27,8 @@ const ContactInformation = () => {
    });
    const history = useHistory();
 
-   const onSubmit = (values: any) => {
+   const onSubmit = (values: FormProps) => {
+      // save this to redux state, but not needed at the moment
       console.log(values);
       history.push('/open-account/register/employment-information');
    }

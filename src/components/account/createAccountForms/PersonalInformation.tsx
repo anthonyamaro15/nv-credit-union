@@ -26,7 +26,8 @@ const PersonalInformation = () => {
    const dispatch = useDispatch();
 
    const onSubmit = (values: FormProps) => {
-      const { SSNNumber, 
+      const { 
+         SSNNumber, 
          confirmSSN, 
          password, 
          confirmPassword, 
@@ -49,6 +50,7 @@ const PersonalInformation = () => {
          email,
          password,
       }
+      // passwords and ssnumbers need to match before you continue
       if(SSNNumber !== confirmSSN) {
          return alert("ssn numbers dont match")  
       } 
