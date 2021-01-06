@@ -1,23 +1,16 @@
-$md-desktop: 1200px;
-// $me-laptop: 1025px;
-$me-laptop: 1140px;
-
-$laptop: 760px;
-
-// main with
-$max-w: 1300px;
+// main app width;
+$max-width: 1150px;
 
 // main colors
 $blue: #3f58a6;
+$light-blue: #337ab7;
+$dark-blue: #2c5794;
 $white: #f4f4f4;
 $black: #333;
+$red: #b22b2e;
 
-// media queries variables
-$med-desktop: 1450px;
-$sm-desktop: 1180px;
-$s-laptop: 900px;
-$m-laptop: 850px;
-// $laptop: 800px;
-$lg-phone: 650px;
+// media query sizes
+$md-desktop: 1200px;
+$me-laptop: 1140px;
+$laptop: 760px;
 $med-phone: 500px;
-$galaxy: 414px;

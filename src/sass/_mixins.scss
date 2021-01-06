@@ -1,0 +1,15 @@
+@mixin mainButton($bg-color, $padding) {
+  background: $bg-color;
+  padding: $padding;
+  text-transform: capitalize;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+@mixin flexProps($justify) {
+  display: flex;
+  justify-content: $justify;
+}

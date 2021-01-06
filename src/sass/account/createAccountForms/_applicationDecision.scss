@@ -17,7 +17,6 @@
     margin: 5rem 0;
 
     h1 {
-      text-transform: capitalize;
       font-size: 2rem;
       margin-bottom: 0.5rem;
     }
@@ -27,13 +26,7 @@
     }
 
     button {
-      font-size: 1rem;
-      text-transform: capitalize;
-      padding: 0.6rem 1.5rem;
-      border-radius: 4px;
-      border: none;
-      background: #337ab7;
-      color: white;
+      @include mainButton($light-blue, 0.6rem 1.5rem);
     }
   }
 }

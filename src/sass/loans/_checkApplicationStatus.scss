@@ -19,6 +19,7 @@
         }
       }
     }
+
     form {
       .app-status-btn-wrapper {
         margin: 4rem 0 5rem;
@@ -28,14 +29,10 @@
           margin: 3rem 0;
         }
         button {
-          background: #2c5794;
-          color: white;
+          @include mainButton($dark-blue, 0.8rem);
+
           width: 500px;
-          padding: 0.8rem;
-          text-transform: capitalize;
           font-size: 1.2rem;
-          border-radius: 4px;
-          border: 1px solid grey;
           margin-top: 0.5rem;
 
           @media (max-width: $laptop) {
@@ -51,9 +48,8 @@
       font-weight: 300;
 
       h2 {
-        text-transform: capitalize;
         margin-bottom: 0.5rem;
-        color: #2c5794;
+        color: $dark-blue;
       }
       p {
         font-size: 0.9rem;
@@ -74,8 +70,8 @@
 
         .description-right,
         .description-left {
-          display: flex;
-          justify-content: space-between;
+          @include flexProps(space-between);
+
           text-transform: capitalize;
 
           @media (max-width: $laptop) {
@@ -84,7 +80,6 @@
         }
         .description-left {
           font-weight: bold;
-          //  margin-top: 0.5rem;
           margin: 0.5rem 0 5rem;
         }
       }

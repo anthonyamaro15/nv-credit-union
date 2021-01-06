@@ -1,4 +1,3 @@
-
 const states = [
    "Alabama",
    "Alaska",
@@ -70,11 +69,7 @@ const employmentStatus = [
    "Homemaker",
    "Retired",
    "Self Employed",
-   // "Student",
    "Unemployed",
-   // "Other",
-   // "Retired Military",
-   // "Government/DOD",
 ];
 
 const idType = [

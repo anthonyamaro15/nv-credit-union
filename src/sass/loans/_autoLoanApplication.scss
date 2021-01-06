@@ -10,7 +10,7 @@
     }
     form {
       h2 {
-        color: #2c5794;
+        color: $dark-blue;
       }
       .car-loan-input-wrappers {
         margin-top: 3rem;
@@ -20,7 +20,7 @@
           display: inline-block;
           font-size: 1.4rem;
           font-weight: bold;
-          color: #2c5794;
+          color: $dark-blue;
         }
 
         .trade-in-information {

@@ -13,19 +13,10 @@
       padding: 0 2rem;
 
       button {
-        font-size: 1rem;
-        font-weight: 300;
-        padding: 0.7rem 1.5rem;
-        //   margin-left: 1rem;
-        text-transform: uppercase;
-        //   border: 1px solid #b22b2e;
-        border: none;
-        background: #b22b2e;
-        color: white;
-        border-radius: 4px;
-        font-family: "Raleway", sans-serif;
-        font-weight: 300;
+        @include mainButton($red, 0.7rem 1.5rem);
 
+        text-transform: uppercase;
+        font-weight: 300;
         transition: background 0.3s ease;
 
         &:hover {
@@ -40,7 +31,6 @@
       }
 
       ol {
-        // list-style: square;
         margin-left: 2rem;
         margin-bottom: 3rem;
 
@@ -52,14 +42,13 @@
     }
 
     .account-requirements {
-      display: flex;
-      justify-content: space-between;
+      @include flexProps(space-between);
+
       padding: 0 2rem 2rem;
 
       .membership-eligibility,
       .require-information {
         background: rgb(238, 238, 238);
-        //   border: 1px solid blue;
         padding: 0.5rem;
         width: 48%;
 

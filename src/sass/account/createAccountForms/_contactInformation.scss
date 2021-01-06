@@ -1,8 +1,7 @@
 .PersonalInformation {
   form {
     .city-state-zip-wrapper {
-      display: flex;
-      justify-content: space-between;
+      @include flexProps(space-between);
       align-items: center;
       margin-bottom: 2rem;
       border-bottom: 1px solid rgb(226, 225, 225);
