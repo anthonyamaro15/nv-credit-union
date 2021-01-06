@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 import { FaCarAlt } from "react-icons/fa";
-// import { GrCalculator } from "react-icons/gr";
 
 const AutoLoanNewAndUsed = () => {
    const history = useHistory();
@@ -55,10 +54,6 @@ const AutoLoanNewAndUsed = () => {
                      <FaCarAlt />
                      <Link to="/car-loan">vehicle loans</Link> 
                   </div> 
-                  {/* <div className="share-icons credit">
-                     <GrCalculator />
-                     <Link to="/calculator">calculators</Link> 
-                  </div>  */}
                </nav>
             </div>
          </div>

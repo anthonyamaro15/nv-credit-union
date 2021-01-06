@@ -23,7 +23,6 @@ const MakeModelYear: React.FC<Props> = ({ register, errors }) => {
                   <option value={single} key={i}>{single}</option>
                ))}
             </select>
-            {/* <p className="error">{errors.tradeinVehicleType && "Required field"}</p> */}
          </label>
          <label htmlFor="vehicleModel">
             vehicle model
@@ -34,10 +33,7 @@ const MakeModelYear: React.FC<Props> = ({ register, errors }) => {
                id="vehicleModel" 
                ref={register} 
             />
-            {/* <p className="error">{errors.knowsMaketradeinVehicleType && "Required field"}</p> */}
          </label>
-
-
          <label htmlFor="vehicleYear">vehicle year
             <span className="require">*</span>
             <input 
