@@ -3,52 +3,43 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../../../imgs/logo.jpg';
-import { CREDIT_CARD_APPLICATION } from '../../../redux/actions';
-import { AutoLoanApplicationProps, FormCreditCardProps } from '../../interfaces/loanApplicationInterface';
-import { serverUrl } from '../../../envVariables';
+// import { CREDIT_CARD_APPLICATION } from '../../../redux/actions';
+// import { preferredLocations } from '../../../seedData';
+// import { FormCreditCardProps } from '../../interfaces/loanApplicationInterface';
+// import { serverUrl } from '../../../envVariables';
 import axios from 'axios';
-import Employed from './reviewApplicationComponents/Employed';
-import Unemployed from './reviewApplicationComponents/Unemployed';
-import Retired from './reviewApplicationComponents/Retired';
-import ActiveMilitary from './reviewApplicationComponents/ActiveMilitary';
-import Homemaker from './reviewApplicationComponents/Homemaker';
-import SelfEmployed from './reviewApplicationComponents/SelfEmployed';
-import ReferenceInformation from './reviewApplicationComponents/ReferenceInformation';
-import DifferentEmailingAddress from './reviewApplicationComponents/DifferentEmailingAddress';
-import { Reducer } from 'react';
-import ReviewAutoLoanInformation from './reviewApplicationComponents/reviewAutoLoanComponents/ReviewAutoLoanInformation';
-import ReadSignSubmitForm from './reviewApplicationComponents/ReadSignSubmitForm';
+// import Employed from './reviewApplicationComponents/Employed';
+// import Unemployed from './reviewApplicationComponents/Unemployed';
+// import Retired from './reviewApplicationComponents/Retired';
+// import ActiveMilitary from './reviewApplicationComponents/ActiveMilitary';
+// import Homemaker from './reviewApplicationComponents/Homemaker';
+// import SelfEmployed from './reviewApplicationComponents/SelfEmployed';
+// import ReferenceInformation from './reviewApplicationComponents/ReferenceInformation';
+// import DifferentEmailingAddress from './reviewApplicationComponents/DifferentEmailingAddress';
 
 type FormValues = {
    preferredLocation: string;
    hasOneNevadaCreditCard: string;
-   vinNumber: string;
 }
 
 interface CreditCardReducerProps {
-   creditCardApplication: FormCreditCardProps;  
-}
-
-interface LoanCarReducerProps {
-   autoLoanApplication: AutoLoanApplicationProps;
+   creditCardApplication: any;  
 }
 
 interface ReducerProps {
    creditCardReducer: CreditCardReducerProps;
-   loanCarReducer: LoanCarReducerProps;
 }
 
 interface Props {
    getLocalStoreData: () => void;
 }
 
-const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
+const ReviewAutoLoanApplication: React.FC<Props> = ({ getLocalStoreData }) => {
    const [hashSSN, setHashSSN] = useState('');
    const { register, errors, handleSubmit } = useForm<FormValues>();
    const history = useHistory();
    const dispatch = useDispatch();
    const { pathname } = useLocation();
-   const  { autoLoanApplication } = useSelector((state: ReducerProps) => state.loanCarReducer);
    const  { creditCardApplication }  = useSelector((state: ReducerProps ) => state.creditCardReducer);
 
    const {
@@ -85,7 +76,6 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
       differentAddress,
    } = creditCardApplication;
 
-
    useEffect(() => {
       setHashSSN('****' + ssn.slice(5));
    },[setHashSSN, ssn]);
@@ -95,24 +85,25 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
    }
 
    const onSubmit =  async (values: FormValues) => {
-      const { hasOneNevadaCreditCard, preferredLocation, vinNumber } = values;
-      const updateNewValues = {
-         ...creditCardApplication,
-         hasOneNevadaCreditCard,
-         preferredLocation,
-         vinNumber,
-         applicationNumber: generateRandomNumber()
-      }
-      dispatch({type: CREDIT_CARD_APPLICATION, payload: updateNewValues })
-      history.push("/loans/result-application");
-      localStorage.clear();
+      // const { hasOneNevadaCreditCard, preferredLocation } = values;
+      // const updateNewValues = {
+      //    ...creditCardApplication,
+      //    hasOneNevadaCreditCard,
+      //    preferredLocation,
+      //    applicationNumber: generateRandomNumber()
+      // }
+      // dispatch({type: CREDIT_CARD_APPLICATION, payload: updateNewValues })
+      // history.push("/loans/result-application");
+      // localStorage.clear();
 
-      try {
-        await axios.post(`${serverUrl}/credit_card_application/create`, updateNewValues);
-        console.log("sucess post application");
-      } catch (error) {
-         console.log(error.response);
-      }
+      
+
+      // try {
+      //   await axios.post(`${serverUrl}/credit_card_application/create`, updateNewValues);
+      //   console.log("sucess post application");
+      // } catch (error) {
+      //    console.log(error.response);
+      // }
    }
 
    const goBackToApplication = () => {
@@ -130,25 +121,19 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                <h1>review and submit</h1>
             </div>
             <div className="application-information">
-               {loanType === 'visa-platium' || loanType === 'visa-signature' && (
-                  <div className="share-classes">
-                     <h3>credit card information</h3>
-                     <div className="information-wrapper">
-                        <div className="lef-side-wrapper">
-                           <span className="description">credit card type</span>
-                           <span className="value">{loanType}</span>
-                        </div>
-                           <div className="right-side-wrapper">
-                           <span className="description"></span>
-                           <span className="value"></span>
-                        </div>
-                     </div> 
-                  </div>
-               )}
-               {loanType === 'auto-loan' && (
-                  <ReviewAutoLoanInformation autoLoanApplication={autoLoanApplication} />
-               )}
-
+               <div className="share-classes">
+                  <h3>credit card information</h3>
+                  <div className="information-wrapper">
+                     <div className="lef-side-wrapper">
+                        <span className="description">credit card type</span>
+                        <span className="value">{loanType}</span>
+                     </div>
+                        <div className="right-side-wrapper">
+                        <span className="description"></span>
+                        <span className="value"></span>
+                     </div>
+                  </div> 
+               </div>
                <div className="share-classes">
                   <h3>applicant information</h3>
                   <div className="information-wrapper">
@@ -172,9 +157,9 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                   </div> 
                </div>
-               {referenceFirstName && (
+               {/* {referenceFirstName && (
                   <ReferenceInformation applicationInputs={creditCardApplication} />
-               )}
+               )} */}
                <div className="share-classes">
                   <h3>applicant contact information</h3>
                   <div className="information-wrapper">
@@ -234,9 +219,9 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                      </div>
                   )}
 
-                  {differentAddress && (
+                  {/* {differentAddress && (
                      <DifferentEmailingAddress applicationInputs={creditCardApplication} />
-                  )}
+                  )} */}
                </div>
                <div className="share-classes">
                   <h3>your identification</h3>
@@ -262,7 +247,7 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
                   </div> 
                </div>
 
-               {employmentStatus === "Employed" && (
+               {/* {employmentStatus === "Employed" && (
                   <Employed applicationInputs={creditCardApplication} />
                )}
 
@@ -284,16 +269,43 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
 
                {employmentStatus === "Self Employed" && (
                   <SelfEmployed  applicationInputs={creditCardApplication} />
-               )}
+               )} */}
             </div>
-            <ReadSignSubmitForm
-               register={register}
-               handleSubmit={handleSubmit}
-               onSubmit={onSubmit}
-               loanType={loanType}
-               errors={errors}
-               goBackToApplication={goBackToApplication}
-            />
+            <form className="choose-branch-location" onSubmit={handleSubmit(onSubmit)}>
+               <h1>please answer question(s) below</h1>
+               <label htmlFor="preferredLocation">
+                  please select a preferred branch to sign documents
+                  <span className="require">*</span>
+                  <select name="preferredLocation" id="preferredLocation" ref={register({ required: true })}>
+                     <option value="">--Please Select--</option>
+                     {/* {preferredLocations.map((location: string, i) => (
+                        <option value={location} key={i}>{location}</option>
+                     ))} */}
+                  </select>
+                  <p className="error">{errors.preferredLocation && "Require field"}</p>
+               </label>
+               <label htmlFor="hasOneNevadaCreditCard">
+                  Do you currently have a One Nevada Credit Union Visa Credit Card
+                  <span className="require">*</span>
+                  <select name="hasOneNevadaCreditCard" id="hasOneNevadaCreditCard" ref={register({ required: true })}>
+                     <option value="">--Please Select--</option>
+                     <option value="no">no</option>
+                     <option value="yes">yes</option>
+                  </select>
+                  <p className="error">{errors.hasOneNevadaCreditCard && "Require field"}</p>
+               </label>
+               <div className="agreement">
+                  <h1>Read, sign and Submit</h1>
+                  <p className="small-desc">Your application is not complete until you read the disclosure below and click the "I Agree" button in orther to submit your application.</p>
+                  <p>You are now ready to submit your application! By clicking on "I agree", you authorize us to verify the information you submitted and may obtain your credit report. Upon your request, we will tell you if a credit report was obtained and give you the name and address of the credit reporting agency that provided the report. You warrant to us that the information you are submitting is true and correct. By submitting this application, you agree to allow us to receive the information contained in your application, as well as the status of your application.</p>
+               </div>
+               <div className="btn-wrapper">
+                  <p><span className="require">*</span>Required Field(s)</p>
+                  <button type="submit">I Agree</button>
+                  <span>Or</span>
+                  <button className="goback" onClick={goBackToApplication}>go back</button>
+               </div>
+            </form>
             <div className="form-footer">
                <span>One Nevada Credit Union</span>
                <div className="more-info">
@@ -307,4 +319,4 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
    )
 }
 
-export default ReviewApplication;
+export default ReviewAutoLoanApplication;

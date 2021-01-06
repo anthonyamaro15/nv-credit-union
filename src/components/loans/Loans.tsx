@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 // import { FaUserAlt } from "react-icons/fa";
-// import { FaCarAlt } from "react-icons/fa";
+import { FaCarAlt } from "react-icons/fa";
 // import { BsFillHouseFill } from "react-icons/bs";
 // import { BsBagFill } from "react-icons/bs";
 // import { GrCalculator } from "react-icons/gr";
@@ -40,10 +40,10 @@ const Loans = () => {
                         <FaUserAlt />
                         <Link to="/personal-loan">personal loans</Link> 
                      </div>  */}
-                     {/* <div className="share-icons">
+                     <div className="share-icons">
                         <span><FaCarAlt /></span>
                         <Link to="/loans/car-loan">vehicle loans</Link> 
-                     </div>  */}
+                     </div> 
                      {/* <div className="share-icons">
                         <BsFillHouseFill />
                         <Link to="/house-loan">mortage loans</Link> 
@@ -86,10 +86,10 @@ const Loans = () => {
                      <FaUserAlt />
                      <Link to="/personal-loan">personal loans</Link> 
                   </div>  */}
-                  {/* <div className="share-icons">
+                  <div className="share-icons">
                      <span><FaCarAlt /></span>
                      <Link to="/car-loan">vehicle loans</Link> 
-                  </div>  */}
+                  </div> 
                   {/* <div className="share-icons">
                      <BsFillHouseFill />
                      <Link to="/house-loan">mortage loans</Link> 

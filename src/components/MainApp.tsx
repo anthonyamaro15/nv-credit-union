@@ -23,6 +23,7 @@ import MobileNavbar from './mobileFiles/MobileNavbar';
 import AboutUs from './marketingPage/AboutUs';
 import axios from 'axios';
 import { serverUrl } from '../envVariables';
+import AutoLoanApplication from './loans/autoLoans/AutoLoanApplication';
 // import { FormCreditCardProps } from './interfaces/loanApplicationInterface';
 
 const MainApp = () => {
@@ -105,6 +106,10 @@ const MainApp = () => {
          </Route>
          <Route path="/open-account/register">
             <CreateAccount />
+         </Route>
+
+         <Route path="/vehicle-loan/application" exact>
+            <AutoLoanApplication />
          </Route>
          <LowerContent />
          <Footer />

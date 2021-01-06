@@ -77,70 +77,29 @@ export interface FormCreditCardProps  {
    applicationNumber?: number;
 }
 
-
-// firstName,
-// middleName,
-// lastName,
-// ssn,
-// birthMonth,
-// birthDay,
-// birthYear,
-// memberNumber,
-// referenceFirstName,
-// referenceLastName,
-// referenceEmail,
-// referencePhone,
-// referenceRelationship,
-// citizenship,
-// contactMethod,
-// contactEmail,
-// homePhone,
-// cellPhone,
-// workPhone,
-// address,
-// zip,
-// city,
-// state,
-// occupancyStatus,
-// occupancyYears,
-// occupancyMonths,
-// idType,
-// idNumber,
-// idState,
-// expirationMonth,
-// expirationDay,
-// expirationYear,
-// monthlyIncome,
-// employmentStatus,
-// jobTitle,
-// employer,
-// employmentYears,
-// employmentMonths,
-// monthlyExpenses,
-// loanType,
-// // use different address
-// differentAddress,
-// differentZip,
-// differentCity,
-// differentState,
-// // unemployed
-// previsousJobTitle,
-// previousEmploymentYears,
-// previousEmploymentMonths,
-// //homemaker
-// homemakerJobTitle,
-// // active military
-// militaryJobTitle,
-// branchOfService,
-// payGrade,
-// militaryEmploymentYears,
-// militaryEmploymentMonths,
-// //selfemployed
-// selfJobTitle,
-// selfEmployer,
-// selfEmploymentYears,
-// selfEmploymentMonths,
-
-// hasOneNevadaCreditCard,
-// preferredLocation,
-// applicationNumber,
+export interface AutoLoanApplicationProps {
+   branchLocation: string;
+   downPaymentAmount: string;
+   estimatedPrice: string;
+   knowsMakeAndModel: string;
+   loanAmount: string;
+   loanTerm: string;
+   newOrUse: string;
+   purchaseType: string;
+   tradeIn: boolean;
+   tradeInVehicleType?: string;
+   tradeInVehicleCurrentValue?: string;
+   tradeInVehicleOweValue?: string;
+   tradeInVehicleMake?: string;
+   tradeInVehicleModel?: string;
+   tradeInVehicleYear?: string;
+   tradeInVehicleMonthlyPayment?: string;
+   vehicleOweValue?: string;
+   vehicleType: string;
+   vehicleYear?: string;
+   refinanceLoanAmount?: string;
+   refinanceVehicleMileage?: string;
+   refinanceVehicleValue?: string;
+   vehicleMake?: string;
+   vehicleModel?: string;
+}

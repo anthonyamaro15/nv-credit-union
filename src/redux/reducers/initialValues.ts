@@ -46,5 +46,6 @@ const values =  {
 export const initialValues = {
    tt: 'not empty',
    creditCardApplication: values,
+   autoLoanApplication: {},
    createAccount: {}
 };
