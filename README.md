@@ -39,19 +39,6 @@ Live version here [Credit union](https://nv-credit-union.netlify.app/).
 
 ## Getting Started
 
-### Prerequisites
-
-How to run the project locally
-
-- npm -- to install all dependencies
-  ```sh
-  npm install
-  ```
-  - sass -- you may have to install sass globally
-  ```sh
-  npm install -g sass
-  ```
-
 ### Installation
 
 1. Clone the repo
@@ -66,6 +53,19 @@ How to run the project locally
    ```JS
    REACT_APP_API_SERVER_URL = 'url for server';
    ```
+
+### Prerequisites
+
+How to run the project locally
+
+- npm -- to install all dependencies
+  ```sh
+  npm install
+  ```
+  - sass -- you may have to install sass globally
+  ```sh
+  npm install -g sass
+  ```
 
 ### Server
 
