@@ -1,0 +1,85 @@
+.bg-color {
+  .LoanApplication {
+    .loginForm {
+      border: 1px solid rgb(212, 212, 212);
+      box-shadow: -1px 1px 8px 0px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+
+      label {
+        @include flexProps(space-between);
+        align-items: center;
+        position: relative;
+
+        @media (max-width: $sm-laptop) {
+          flex-direction: column;
+          align-items: baseline;
+        }
+
+        input {
+          width: 65%;
+          padding: 0.4rem 0.5rem;
+          background: none;
+
+          @media (max-width: $sm-laptop) {
+            width: 100%;
+          }
+        }
+      }
+
+      .login-btn-wrapper {
+        @include flexProps(flex-end);
+
+        button {
+          width: 65%;
+          @include mainButton($light-blue, 0.4rem 1.5rem);
+
+          @media (max-width: $sm-laptop) {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .extra-links {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+      text-transform: capitalize;
+      font-size: 0.9rem;
+
+      a {
+        color: $black;
+
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .maintenance-days {
+      background: rgba(73, 176, 236, 0.3);
+      color: $dark-blue;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 1rem;
+      font-size: 0.9rem;
+      border-radius: 4px;
+    }
+  }
+}
+
+.login-error {
+  position: absolute;
+  top: 2.7rem;
+  font-weight: normal;
+  color: red;
+  left: 35%;
+  width: 350px;
+  font-size: 0.8rem;
+}

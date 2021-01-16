@@ -24,6 +24,7 @@ import AboutUs from './marketingPage/AboutUs';
 import axios from 'axios';
 import { serverUrl } from '../envVariables';
 import AutoLoanApplication from './loans/autoLoans/AutoLoanApplication';
+import UserLogin from './account/UserLogin';
 
 const MainApp = () => {
    const [applicationData, setApplicationData] = useState();
@@ -106,6 +107,9 @@ const MainApp = () => {
          </Route>
          <Route path="/open-account/register">
             <CreateAccount />
+         </Route>
+         <Route path="/login" exact>
+            <UserLogin />
          </Route>
 
          <Route path="/vehicle-loan/application" exact>

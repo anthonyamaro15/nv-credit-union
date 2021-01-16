@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { ImUserPlus } from "react-icons/im";
 import { FaUsers } from "react-icons/fa";
+import { BsFillLockFill } from "react-icons/bs";
 import logo from '../../imgs/logo.jpg';
 
 const Navbar = () => {
@@ -25,6 +26,7 @@ const Navbar = () => {
                </Link>
                <div className="second-nav-wrapper">
                   <NavLink to="/loans" activeClassName="active">Loans</NavLink>
+                  <NavLink to="/login" activeClassName="active"><span><BsFillLockFill /></span> Log in</NavLink>
                </div>
             </nav>
          </div>
