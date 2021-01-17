@@ -44,6 +44,10 @@ const values =  {
 
 
 export const initialValues = {
+   isAllow: false,
+   contactInfoComponentAllow: false,
+   employmentInfoComponentAllow: false,
+   applicationDecisionComponentAllow: false,
    creditCardApplication: values,
    autoLoanApplication: {},
    createAccount: {}

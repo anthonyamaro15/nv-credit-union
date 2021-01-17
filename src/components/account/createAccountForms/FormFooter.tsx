@@ -1,5 +1,3 @@
-import React from 'react';
-
 // a tag links are just placeholders
 const FormFooter = () => {
    return (
