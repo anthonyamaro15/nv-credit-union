@@ -27,6 +27,9 @@ import AutoLoanApplication from './loans/autoLoans/AutoLoanApplication';
 import UserLogin from './account/UserLogin';
 import { PrivateComponent } from './privateRoutes';
 import { useSelector } from 'react-redux';
+import MotorcycleLoans from './loans/autoLoans/MotorcycleLoans';
+import RecreationalVehicleLoan from './loans/autoLoans/RecreationalVehicleLoan';
+import WatercraftLoans from './loans/autoLoans/WatercraftLoans';
 
 
 interface AllowProp {
@@ -101,6 +104,15 @@ const MainApp = () => {
          </Route>
          <Route path="/loans/auto-refinance" exact>
             <RefinanceAutoLoan />
+         </Route>
+         <Route path="/loans/motorcycle" exact>
+            <MotorcycleLoans />
+         </Route>
+         <Route path="/loans/rv-loan" exact>
+            <RecreationalVehicleLoan />
+         </Route>
+         <Route path="/loans/watercraft" exact>
+            <WatercraftLoans />
          </Route>
          <Route path="/loans/application/:loanType" exact>
             <LoanApplication applicationData={applicationData} />

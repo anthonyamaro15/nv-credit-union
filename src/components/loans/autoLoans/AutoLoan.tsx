@@ -3,6 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { HiCreditCard } from "react-icons/hi";
 // import { FaUserAlt } from "react-icons/fa";
 import { FaCarAlt } from "react-icons/fa";
+import { FaMotorcycle } from "react-icons/fa";
+import { FaBus } from "react-icons/fa";
+import { MdDirectionsBoat } from "react-icons/md";
 import autoLoanImg from '../../../imgs/autoloan.png';
 
 
@@ -47,6 +50,18 @@ const AutoLoan = () => {
                      <div className="share-icons">
                         <FaCarAlt />
                         <Link to="/loans/auto-refinance">refinance your auto loan</Link> 
+                     </div> 
+                     <div className="share-icons">
+                        <FaMotorcycle />
+                        <Link to="/loans/motorcycle">motorcycle / ATV loans</Link> 
+                     </div> 
+                     <div className="share-icons">
+                        <FaBus />
+                        <Link to="/loans/rv-loan">recreational vehicle loans</Link> 
+                     </div> 
+                     <div className="share-icons">
+                        <MdDirectionsBoat />
+                        <Link to="/loans/watercraft">watercraft loans</Link> 
                      </div> 
                   </nav>
                   <p className="apr-info">
