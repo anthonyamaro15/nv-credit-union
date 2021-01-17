@@ -1,6 +1,9 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { 
+   APPLICATION_DESICION_COMPONENT_ALLOW 
+} from '../../../redux/actions';
 
 interface FormProps {
    employerName: string;
@@ -10,10 +13,12 @@ interface FormProps {
 const EmploymentInformation = () => {
    const { register, handleSubmit, errors } = useForm<FormProps>();
    const history = useHistory();
+   const dispatch = useDispatch();
 
    const onSubmit = (values: FormProps) => {
       // save values to redux state, but not needed at the moment
       console.log(values);
+      dispatch({ type: APPLICATION_DESICION_COMPONENT_ALLOW, payload: true });
       history.push('/open-account/register/application-decision');
    }
 

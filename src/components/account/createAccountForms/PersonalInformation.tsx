@@ -1,8 +1,10 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { CREATE_ACCOUNT_USER } from '../../../redux/actions';
+import { 
+   CONTACT_INFO_COMPONENT_ALLOW, 
+   CREATE_ACCOUNT_USER 
+} from '../../../redux/actions';
 
 interface FormProps {
    firstName: string;
@@ -60,7 +62,9 @@ const PersonalInformation = () => {
       if(email !== confirmEmail) {
          return alert("emails dont match");
       }
-      dispatch({type: CREATE_ACCOUNT_USER, payload: updatedValues })
+
+      dispatch({type: CREATE_ACCOUNT_USER, payload: updatedValues });
+      dispatch({ type: CONTACT_INFO_COMPONENT_ALLOW, payload: true });
       history.push('/open-account/register/contact-information');
    }
 

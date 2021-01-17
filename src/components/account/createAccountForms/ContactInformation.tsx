@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { EMPLOYMENT_INFO_COMPONENT_ALLOW } from '../../../redux/actions';
 import { states } from '../../../seedData';
 
 interface FormProps {
@@ -22,6 +24,7 @@ interface FormProps {
 }
 
 const ContactInformation = () => {
+   const dispatch = useDispatch();
    const { register, handleSubmit, errors } = useForm<FormProps>({
       mode: "onBlur"
    });
@@ -30,6 +33,7 @@ const ContactInformation = () => {
    const onSubmit = (values: FormProps) => {
       // save this to redux state, but not needed at the moment
       console.log(values);
+      dispatch({ type: EMPLOYMENT_INFO_COMPONENT_ALLOW, payload: true });
       history.push('/open-account/register/employment-information');
    }
    
