@@ -1,7 +1,8 @@
 import { 
    APPLICATION_DESICION_COMPONENT_ALLOW, 
    CONTACT_INFO_COMPONENT_ALLOW, 
-   EMPLOYMENT_INFO_COMPONENT_ALLOW, 
+   EMPLOYMENT_INFO_COMPONENT_ALLOW,
+   RESULT_APPLICATION_COMPONENT_ALLOW, 
 } from '../actions';
 import { initialValues } from './initialValues';
 
@@ -21,6 +22,11 @@ export const allowComponentReducer = (state = initialValues, action: { type: any
          return {
             ...state,
             applicationDecisionComponentAllow: action.payload
+         }
+      case RESULT_APPLICATION_COMPONENT_ALLOW:
+         return {
+            ...state,
+            resultApplicationComponentAllow: action.payload
          }
          default:
             return state;

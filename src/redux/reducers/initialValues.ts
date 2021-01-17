@@ -48,6 +48,7 @@ export const initialValues = {
    contactInfoComponentAllow: false,
    employmentInfoComponentAllow: false,
    applicationDecisionComponentAllow: false,
+   resultApplicationComponentAllow: false,
    creditCardApplication: values,
    autoLoanApplication: {},
    createAccount: {}

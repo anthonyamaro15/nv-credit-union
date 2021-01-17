@@ -25,9 +25,24 @@ import axios from 'axios';
 import { serverUrl } from '../envVariables';
 import AutoLoanApplication from './loans/autoLoans/AutoLoanApplication';
 import UserLogin from './account/UserLogin';
+import { PrivateComponent } from './privateRoutes';
+import { useSelector } from 'react-redux';
+
+
+interface AllowProp {
+   resultApplicationComponentAllow: boolean;
+}
+
+interface ReducerProps {
+   allowComponentReducer: AllowProp
+}
+
 
 const MainApp = () => {
    const [applicationData, setApplicationData] = useState();
+   const { 
+      resultApplicationComponentAllow 
+   } = useSelector((state: ReducerProps) => state.allowComponentReducer);
 
    useEffect(() => {
       getLocalStoreData();
@@ -93,9 +108,14 @@ const MainApp = () => {
          <Route path="/loans/application/:loanType/confirmation" exact>
             <ReviewApplication getLocalStoreData={getLocalStoreData} />
          </Route>
-         <Route path="/loans/result-application" exact>
-            <ResultApplication />
-         </Route>
+
+         <PrivateComponent
+            path="/loans/result-application"
+            exact
+            isAllow={resultApplicationComponentAllow}
+            component={ResultApplication}
+         />
+
          <Route path="/application-status" exact>
             <CheckApplicationStatus />
          </Route>

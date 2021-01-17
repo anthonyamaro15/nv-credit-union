@@ -3,8 +3,14 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../../../imgs/logo.jpg';
-import { CREDIT_CARD_APPLICATION } from '../../../redux/actions';
-import { AutoLoanApplicationProps, FormCreditCardProps } from '../../interfaces/loanApplicationInterface';
+import { 
+   CREDIT_CARD_APPLICATION, 
+   RESULT_APPLICATION_COMPONENT_ALLOW
+} from '../../../redux/actions';
+import { 
+   AutoLoanApplicationProps, 
+   FormCreditCardProps 
+} from '../../interfaces/loanApplicationInterface';
 import { serverUrl } from '../../../envVariables';
 import axios from 'axios';
 import Employed from './reviewApplicationComponents/Employed';
@@ -104,7 +110,8 @@ const ReviewApplication: React.FC<Props> = ({ getLocalStoreData }) => {
          vinNumber,
          applicationNumber: generateRandomNumber()
       }
-      dispatch({type: CREDIT_CARD_APPLICATION, payload: updateNewValues })
+      dispatch({ type: CREDIT_CARD_APPLICATION, payload: updateNewValues });
+      dispatch({ type: RESULT_APPLICATION_COMPONENT_ALLOW, payload: true });
       history.push("/loans/result-application");
       localStorage.clear();
 
