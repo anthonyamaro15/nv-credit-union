@@ -1,0 +1,21 @@
+.MainUserDashboard {
+  border: 1px solid rgb(235, 234, 234);
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .DashboardNavbar {
+    background: $dark-blue;
+    padding: 0 1rem;
+
+    a {
+      text-transform: capitalize;
+      margin-right: 1.5rem;
+      padding: 0.8rem 0.2rem;
+      color: $white;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
