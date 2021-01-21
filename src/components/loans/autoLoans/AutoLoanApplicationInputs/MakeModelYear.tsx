@@ -1,7 +1,6 @@
 import React from 'react';
 import { carMake } from '../../../../seedData';
 
-
 interface Props {
    register: any;
    errors: any;

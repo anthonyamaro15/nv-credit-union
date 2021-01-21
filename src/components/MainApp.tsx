@@ -30,6 +30,7 @@ import { useSelector } from 'react-redux';
 import MotorcycleLoans from './loans/autoLoans/MotorcycleLoans';
 import RecreationalVehicleLoan from './loans/autoLoans/RecreationalVehicleLoan';
 import WatercraftLoans from './loans/autoLoans/WatercraftLoans';
+import MainUserDashboard from './userDashboard/MainUserDashboard';
 
 
 interface AllowProp {
@@ -142,6 +143,10 @@ const MainApp = () => {
          </Route>
          <Route path="/login" exact>
             <UserLogin />
+         </Route>
+
+         <Route path="/account/:accType" exact>
+            <MainUserDashboard />
          </Route>
 
          <Route path="/vehicle-loan/application" exact>

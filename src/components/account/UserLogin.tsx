@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from '../../imgs/logo.jpg';
 import { useForm } from 'react-hook-form';
 
@@ -11,9 +11,11 @@ const UserLogin = () => {
    const { register, handleSubmit, errors } = useForm<LoginProps>({
       mode: "onBlur"
    });
+   const history = useHistory();
 
    const onSubmit = (values: LoginProps) => {
       console.log(values);
+      history.push("/account/summary");
    }
 
    return (
