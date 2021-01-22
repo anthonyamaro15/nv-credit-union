@@ -1,3 +1,4 @@
+import { on } from 'process';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import autoLoanImg from '../../imgs/autoloan.png';
@@ -14,7 +15,7 @@ const Account = () => {
    const [displayAll, setDisplayAll] = useState(false);
    const [displayTransfers, setDisplayTransfers] = useState(true);
    const [displayBill, setDisplayBill] = useState(false);
-   const { handleSubmit, register, watch } = useForm({
+   const { handleSubmit, register, watch, errors } = useForm({
       mode: 'onBlur'
    });
 
@@ -60,6 +61,10 @@ const Account = () => {
       console.log('subbmited');
    }
 
+   const onSubmitTransfers = (value: any) => {
+      console.log("subbmiting tranfers", value);
+   }
+
    console.log('what is checking? ', cheking);
 
    return (
@@ -103,7 +108,14 @@ const Account = () => {
                      <button onClick={toggleBill}>bill payments</button>
                   </div>
 
-               { displayTransfers && <TransfersLoans />}
+               { displayTransfers && 
+                  <TransfersLoans 
+                     onSubmitTransfers={onSubmitTransfers}
+                     handleSubmit={handleSubmit}
+                     register={register}
+                     errors={errors}
+                  />
+               }
                { displayBill && <BillPayments /> }
 
                </div>

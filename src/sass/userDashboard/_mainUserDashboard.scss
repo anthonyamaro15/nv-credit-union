@@ -1,7 +1,25 @@
 .MainUserDashboard {
-  border: 1px solid rgb(235, 234, 234);
-  max-width: 1200px;
-  margin: 2rem auto;
+  padding: 2rem 0;
+  background-image: linear-gradient(
+    to top,
+    #9e3a32,
+    #9e3a32,
+    #9e3a32,
+    #9e3a32,
+    #9e3a32,
+    #a05031,
+    #9f6435,
+    #9e7640,
+    #9b9b69,
+    #a2ba9c,
+    #bed5cc,
+    #eceded
+  );
+  .MainUserDashboard-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+  }
 
   .DashboardNavbar {
     background: $dark-blue;

@@ -124,14 +124,31 @@
             text-transform: capitalize;
             font-weight: bold;
             font-size: 0.9rem;
+            position: relative;
             select {
               display: block;
               width: 100%;
               padding: 0.3rem;
-              margin-top: 0.5rem;
+              margin-top: 0.7rem;
               border: 1px solid rgb(214, 214, 214);
               border-radius: 4px;
             }
+
+            .error {
+              position: absolute;
+              color: red;
+              top: 2.6rem;
+              right: 63%;
+              font-weight: normal;
+              font-size: 0.9rem;
+            }
+
+            input {
+              margin-top: 0.7rem;
+            }
+          }
+          button {
+            margin-top: 1rem;
           }
         }
 
