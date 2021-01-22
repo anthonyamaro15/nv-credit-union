@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Account from './Account';
 import Dashboard from './Dashboard';
 import DashboardNavbar from './DashboardNavbar'; 
+import Transfers from './Transfers';
 
 const MainUserDashboard = () => {
    return (
@@ -15,6 +16,9 @@ const MainUserDashboard = () => {
             </Route>
             <Route path="/account/dashboard" exact>
                <Dashboard />
+            </Route>
+            <Route path="/account/transfer" exact>
+               <Transfers />
             </Route>
          </div>  
       </div>
