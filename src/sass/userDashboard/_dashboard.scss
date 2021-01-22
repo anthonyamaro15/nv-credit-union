@@ -1,0 +1,96 @@
+.Account {
+  .dashboard-information {
+    margin: 1rem;
+
+    .dashboard-shared {
+      border: 1px solid rgb(218, 218, 219);
+      margin-bottom: 1.5rem;
+      h3 {
+        background: $dark-blue;
+        color: $white;
+        font-weight: normal;
+        padding: 0.7rem 1rem;
+      }
+
+      .insured-acc-information {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+
+        .savings,
+        .checking {
+          text-transform: uppercase;
+        }
+        .title,
+        .savings,
+        .checking,
+        .total {
+          border-bottom: 1px solid rgb(218, 218, 219);
+          padding: 0.5rem;
+          display: flex;
+          font-size: 0.9rem;
+        }
+
+        .title,
+        .savings,
+        .checking {
+          span {
+            &:nth-child(1) {
+              width: 30%;
+            }
+            &:nth-child(2) {
+              width: 55%;
+            }
+            &:nth-child(3) {
+              width: 10%;
+            }
+          }
+        }
+
+        .total {
+          span {
+            &:first-child {
+              text-transform: capitalize;
+              font-weight: bold;
+            }
+          }
+          @include flexProps(space-between);
+
+          div {
+            width: 15%;
+            @include flexProps(space-between);
+
+            span {
+              &:first-child {
+                font-weight: normal;
+              }
+            }
+          }
+        }
+      }
+
+      .account-limit {
+        .account-limit-shared {
+          border-bottom: 1px solid rgb(218, 218, 219);
+          padding: 0.5rem;
+          font-size: 0.9rem;
+
+          p {
+            width: 30%;
+            margin: 0 auto;
+            @include flexProps(space-between);
+            font-weight: bold;
+
+            span {
+              font-weight: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+}
