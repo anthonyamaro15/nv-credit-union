@@ -1,12 +1,66 @@
 import React, { useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import autoLoanImg from '../../imgs/autoloan.png';
+import CreditCard from './AccountInnerComponents/CreditCard';
+import Loans from './AccountInnerComponents/Loans';
+import Shares from './AccountInnerComponents/Shares';
+import BillPayments from './transfersAndPayments/BillPayments';
+import TransfersLoans from './transfersAndPayments/TransfersLoans';
 
 const Account = () => {
    const [displayShare, setDisplayShare] = useState(true);
    const [displayLoan, setDisplayLoan] = useState(false);
    const [displayCreditCard, setDisplayCreditCard] = useState(false);
    const [displayAll, setDisplayAll] = useState(false);
+   const [displayTransfers, setDisplayTransfers] = useState(true);
+   const [displayBill, setDisplayBill] = useState(false);
+   const { handleSubmit, register, watch } = useForm({
+      mode: 'onBlur'
+   });
+
+   const cheking = watch('selectAccount');
+
+   const toggleShare = () => {
+      setDisplayShare(true);
+      setDisplayLoan(false);
+      setDisplayCreditCard(false);
+      setDisplayAll(false);
+   }
+
+   const toggleLoans = () => {
+      setDisplayShare(false);
+      setDisplayLoan(true);
+      setDisplayCreditCard(false);
+      setDisplayAll(false);
+   }
+   const toggleCreditCard = () => {
+      setDisplayShare(false);
+      setDisplayLoan(false);
+      setDisplayCreditCard(true);
+      setDisplayAll(false);
+   }
+   const toggleAll = () => {
+      setDisplayShare(false);
+      setDisplayLoan(false);
+      setDisplayCreditCard(false);
+      setDisplayAll(!displayAll);
+   }
+
+   const toggleTransfers = () => {
+      setDisplayTransfers(true);
+      setDisplayBill(false);
+   }
+
+   const toggleBill = () => {
+      setDisplayBill(true);
+      setDisplayTransfers(false);
+   }
+
+   const onSubmit = () => {
+      console.log('subbmited');
+   }
+
+   console.log('what is checking? ', cheking);
 
    return (
       <div className="Account">
@@ -31,70 +85,45 @@ const Account = () => {
                <div className="shared-classes">
                   <h3>accounts</h3>
                   <div className="btn-links">
-                     <button>shares</button>
-                     <button>loans</button>
-                     <button>credit cards</button>
-                     <button>all</button>
+                     <button  onClick={toggleShare}>shares</button>
+                     <button onClick={toggleLoans}>loans</button>
+                     <button onClick={toggleCreditCard}>credit cards</button>
+                     <button onClick={toggleAll}>all</button>
                   </div>
-                  
-                     <div className="Shares">
-                        <div className="inner-share-class">
-                           <p>primary savings <span>$0.00</span></p>
-                           <p>primary savings account <span>$.00 available</span></p>
-                        </div>
-                        <div className="inner-share-class">
-                           <p>one checking<span>$0.00</span></p>
-                           <p>one checking <span>-$5.00 available</span></p>
-                        </div>
-                        <div className="inner-share-class">
-                           <p>total balance <span>$0.00</span></p>
-                           <p>total available <span>$0.00 available</span></p>
-                        </div>                     
-                     </div>
+                  { displayShare && <Shares /> }
+                  { displayLoan && <Loans /> }
+                  { displayCreditCard && <CreditCard /> }
+                  { displayAll && <Shares /> }
                </div> 
+
                <div className="shared-classes">
-                  <h3>accounts</h3>
-                  <nav>
-                     <Link to="/account/summary/account-shares">transfers & loan payments</Link>
-                     <Link to="/account/summary/account-loans">bill payments</Link>
-                  </nav>
-                     <div className="Shares">
-                        <form className="transfer-form">
-                           <label htmlFor="transferFrom"> from
-                              <select name="transferFrom" id="transferFrom">
-                                 <option value=""></option>
-                                 <option value="checking">checking</option>
-                              </select>
-                           </label>
-                           <label htmlFor="transferTo">to
-                              <select name="transferTo" id="transferTo">
-                                 <option value=""></option>
-                                 <option value="checking">checking</option>
-                              </select>
-                           </label>
-                           <label htmlFor="transferAmount">amount
-                              <input type="text" id="transferAmount" name="transferAmount" placeholder="Amount"/>
-                           </label>
-                           <div className="btn-wrapper">
-                              <button type="submit">transfer</button>
-                           </div>
-                           
-                        </form>
-                     </div>
+                  <h3>transfers & payments</h3>
+                  <div className="btn-links">
+                     <button onClick={toggleTransfers}>transfers & loan payments</button>
+                     <button onClick={toggleBill}>bill payments</button>
+                  </div>
+
+               { displayTransfers && <TransfersLoans />}
+               { displayBill && <BillPayments /> }
+
                </div>
             </div>
             <div className="left-side">
                <div className="shared-classes">
                   <h3>account activity</h3>
-                  <form>
-                 
+                  <form onSubmit={handleSubmit(onSubmit)}>
                      <label htmlFor="selectAccount">select account
-                        <select name="selectAccount" id="selectAccount">
+                        <select name="selectAccount" id="selectAccount" ref={register}>
                            <option value=""></option>
                            <option value="checking">checking</option>
                         </select>
                      </label>
                   </form>
+
+                  { cheking && 
+                     <p className="not-found">No recent transsactions were found.</p>
+                  }
+                  
                </div>
                <div className="shared-classes">
                   <h3>bill payments</h3>
@@ -103,6 +132,14 @@ const Account = () => {
                   </div>
                </div>
             </div>
+         </div>
+         <div className="form-footer">
+            <span>One Nevada Credit Union</span>
+            <div className="more-info">
+               <a href="www.example.com">Federally Insured by NCUA</a>
+               <a href="www.example.com">Equal Housing Lender.</a>
+            </div>
+            <span>2013-2020 MeridianLink, Inc., All Rights Reserved.</span>
          </div>
       </div>
    )
