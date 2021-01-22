@@ -1,0 +1,99 @@
+.Transfers {
+  .Account {
+    border: 1px solid rgb(218, 218, 219);
+    margin: 3rem 1rem;
+    h3 {
+      background: $dark-blue;
+      color: $white;
+      font-weight: normal;
+      padding: 0.7rem 1rem;
+    }
+
+    form {
+      margin: 1rem;
+
+      label {
+        text-transform: capitalize;
+        font-weight: bold;
+        font-size: 0.9rem;
+        position: relative;
+        select {
+          display: block;
+          width: 100%;
+          padding: 0.3rem;
+          margin-top: 0.7rem;
+          border: 1px solid rgb(214, 214, 214);
+          border-radius: 4px;
+        }
+
+        .transfer-error {
+          position: absolute;
+          color: red;
+          top: 2.6rem;
+          right: 72%;
+          font-weight: normal;
+          font-size: 0.9rem;
+        }
+
+        input {
+          margin-top: 0.7rem;
+        }
+      }
+      button {
+        margin-top: 1rem;
+      }
+    }
+
+    .transfer-form {
+      //  border: 1px solid red;
+      label {
+        @include flexProps(space-between);
+        align-items: center;
+        select {
+          width: 80%;
+          margin-bottom: 0.7rem;
+        }
+
+        input {
+          width: 80%;
+          padding: 0.3rem;
+          border: 1px solid rgb(214, 214, 214);
+          border-radius: 4px;
+        }
+      }
+
+      .btn-wrapper {
+        width: 60%;
+        margin: 0.7rem auto;
+
+        button {
+          @include mainButton($dark-blue, 0.5rem 0.7rem);
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .form-footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+
+    color: $white;
+    background: $dark-blue;
+    a {
+      color: $white;
+    }
+
+    span {
+      &:first-child {
+        margin-bottom: 0.3rem;
+      }
+
+      &:last-child {
+        margin-top: 0.3rem;
+      }
+    }
+  }
+}
