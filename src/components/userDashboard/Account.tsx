@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import autoLoanImg from '../../imgs/autoloan.png';
 
 const Account = () => {
+   const [displayShare, setDisplayShare] = useState(true);
+   const [displayLoan, setDisplayLoan] = useState(false);
+   const [displayCreditCard, setDisplayCreditCard] = useState(false);
+   const [displayAll, setDisplayAll] = useState(false);
+
    return (
       <div className="Account">
          <div className="user-information">
@@ -25,12 +30,12 @@ const Account = () => {
             <div className="right-side">
                <div className="shared-classes">
                   <h3>accounts</h3>
-                  <nav>
-                     <Link to="/account/summary/account-shares">shares</Link>
-                     <Link to="/account/summary/account-loans">loans</Link>
-                     <Link to="/account/summary/account-credit-cards">credit cards</Link>
-                     <Link to="/account/summary/account-show-all">all</Link>
-                  </nav>
+                  <div className="btn-links">
+                     <button>shares</button>
+                     <button>loans</button>
+                     <button>credit cards</button>
+                     <button>all</button>
+                  </div>
                   
                      <div className="Shares">
                         <div className="inner-share-class">
@@ -47,6 +52,36 @@ const Account = () => {
                         </div>                     
                      </div>
                </div> 
+               <div className="shared-classes">
+                  <h3>accounts</h3>
+                  <nav>
+                     <Link to="/account/summary/account-shares">transfers & loan payments</Link>
+                     <Link to="/account/summary/account-loans">bill payments</Link>
+                  </nav>
+                     <div className="Shares">
+                        <form className="transfer-form">
+                           <label htmlFor="transferFrom"> from
+                              <select name="transferFrom" id="transferFrom">
+                                 <option value=""></option>
+                                 <option value="checking">checking</option>
+                              </select>
+                           </label>
+                           <label htmlFor="transferTo">to
+                              <select name="transferTo" id="transferTo">
+                                 <option value=""></option>
+                                 <option value="checking">checking</option>
+                              </select>
+                           </label>
+                           <label htmlFor="transferAmount">amount
+                              <input type="text" id="transferAmount" name="transferAmount" placeholder="Amount"/>
+                           </label>
+                           <div className="btn-wrapper">
+                              <button type="submit">transfer</button>
+                           </div>
+                           
+                        </form>
+                     </div>
+               </div>
             </div>
             <div className="left-side">
                <div className="shared-classes">
@@ -60,6 +95,12 @@ const Account = () => {
                         </select>
                      </label>
                   </form>
+               </div>
+               <div className="shared-classes">
+                  <h3>bill payments</h3>
+                  <div className="bill-payments">
+                     <p>you don't have any upcoming bill payments.</p>
+                  </div>
                </div>
             </div>
          </div>
