@@ -1,46 +1,39 @@
 .Transfers {
   .Account {
-    .change-pin-form {
-      width: 30%;
-
-      .account-number {
-        @include flexProps(space-between);
-        text-transform: capitalize;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-
-        span {
-          font-weight: normal;
-        }
-      }
+    .transfers-form {
       label {
         @include flexProps(space-between);
         align-items: center;
         position: relative;
+        select {
+          width: 80%;
+          margin-bottom: 0.7rem;
+          padding: 0.3rem;
+          margin-top: 0.7rem;
+          border: 1px solid rgb(214, 214, 214);
+          border-radius: 4px;
+        }
 
         input {
-          width: 35%;
+          width: 80%;
           padding: 0.3rem;
           border: 1px solid rgb(214, 214, 214);
           border-radius: 4px;
-          margin-bottom: 0.5rem;
         }
 
-        .pin-error {
+        .transfer-error {
           position: absolute;
           color: red;
-          top: 2.5rem;
-          left: 65%;
+          top: 2.6rem;
+          left: 20%;
           font-weight: normal;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
         }
       }
 
       .btn-wrapper {
-        width: 70%;
+        width: 60%;
         margin: 0.7rem auto;
-
-        @include flexProps(flex-end);
 
         button {
           @include mainButton($dark-blue, 0.5rem 0.7rem);

@@ -1,5 +1,4 @@
 .Account {
-  //   margin: 2rem 0;
   .user-information {
     border: 1px solid rgb(201, 201, 201);
     margin: 3rem 1rem 1rem;
@@ -9,6 +8,10 @@
     .top-row,
     .bottom-row {
       display: flex;
+
+      @media (max-width: $laptop) {
+        flex-direction: column;
+      }
 
       p {
         font-weight: bold;
@@ -40,12 +43,19 @@
   .account-information {
     @include flexProps(space-between);
 
+    @media (max-width: $md-desktop) {
+      flex-wrap: wrap;
+    }
+
     margin: 1rem;
 
     .right-side,
     .left-side {
       width: 49%;
 
+      @media (max-width: $md-desktop) {
+        width: 100%;
+      }
       .shared-classes {
         border: 1px solid rgb(218, 218, 219);
         margin-bottom: 1.5rem;

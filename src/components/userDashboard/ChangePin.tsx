@@ -16,7 +16,7 @@ const ChangePin = () => {
             
             <form className="change-pin-form" onSubmit={handleSubmit(onSubmit)}>
                <p className="account-number">account<span>***8732</span></p>
-               <label htmlFor="newPin">new PIN
+               <label htmlFor="newPin">New PIN
                   <input 
                      type="text" 
                      id="newPin" 

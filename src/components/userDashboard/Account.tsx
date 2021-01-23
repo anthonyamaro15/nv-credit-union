@@ -65,8 +65,6 @@ const Account = () => {
       console.log("subbmiting tranfers", value);
    }
 
-   console.log('what is checking? ', cheking);
-
    return (
       <div className="Account">
          <div className="user-information">
