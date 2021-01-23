@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Account from './Account';
+import ChangePin from './ChangePin';
 import Dashboard from './Dashboard';
 import DashboardNavbar from './DashboardNavbar'; 
 import Transfers from './Transfers';
@@ -19,6 +20,9 @@ const MainUserDashboard = () => {
             </Route>
             <Route path="/account/transfer" exact>
                <Transfers />
+            </Route>
+            <Route path="/account/changePin" exact>
+               <ChangePin />
             </Route>
          </div>  
       </div>

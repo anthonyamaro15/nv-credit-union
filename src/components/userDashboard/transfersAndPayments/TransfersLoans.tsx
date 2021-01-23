@@ -12,7 +12,11 @@ const TransfersLoans: React.FC<Props> = ({ onSubmitTransfers, handleSubmit, regi
       <div className="Shares">
          <form className="transfer-form" onSubmit={handleSubmit(onSubmitTransfers)}>
             <label htmlFor="transferFrom"> from
-               <select name="transferFrom" id="transferFrom" ref={register({ required: true})}>
+               <select 
+                  name="transferFrom" 
+                  id="transferFrom" 
+                  ref={register({ required: true})}
+               >
                   <option value=""></option>
                   <option value="checking">{`checking (available: $0.00)`}</option>
                   <option value="savings">{`savings (available: $0.00)`}</option>
@@ -20,7 +24,11 @@ const TransfersLoans: React.FC<Props> = ({ onSubmitTransfers, handleSubmit, regi
                <p className="error">{errors.transferFrom && "Required field"}</p>
             </label>
             <label htmlFor="transferTo">to
-               <select name="transferTo" id="transferTo" ref={register({ required: true})}>
+               <select 
+                  name="transferTo" 
+                  id="transferTo" 
+                  ref={register({ required: true})}
+               >
                   <option value=""></option>
                   <option value="checking">{`checking (available: $0.00)`}</option>
                   <option value="savings">{`savings (available: $0.00)`}</option>
@@ -28,7 +36,13 @@ const TransfersLoans: React.FC<Props> = ({ onSubmitTransfers, handleSubmit, regi
                <p className="error">{errors.transferTo && "Required field"}</p>
             </label>
             <label htmlFor="transferAmount">amount
-               <input type="text" id="transferAmount" name="transferAmount" placeholder="Amount" ref={register({ required: true})}/>
+               <input 
+                  type="text" 
+                  id="transferAmount" 
+                  name="transferAmount" 
+                  placeholder="Amount" 
+                  ref={register({ required: true})}
+               />
                <p className="error">{errors.transferAmount && "Required field"}</p>
             </label>
             <div className="btn-wrapper">

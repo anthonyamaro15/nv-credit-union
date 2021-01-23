@@ -7,7 +7,7 @@ const DashboardNavbar = () => {
          <Link to="/account/summary">accounts</Link>
          <Link to="/account/dashboard">dashboard</Link>
          <Link to="/account/transfer">transfers</Link>
-         <Link to="/account/change-pin">change PIN</Link>
+         <Link to="/account/changePin">change PIN</Link>
       </nav>
    )
 }

@@ -15,7 +15,11 @@ const Transfers = () => {
             <h3>transfers</h3>
             <form className="transfer-form" onSubmit={handleSubmit(onSubmit)}>
                <label htmlFor="componentTransferFrom"> from
-                  <select name="componentTransferFrom" id="componentTransferFrom" ref={register({ required: true})}>
+                  <select 
+                     name="componentTransferFrom" 
+                     id="componentTransferFrom" 
+                     ref={register({ required: true})}
+                  >
                      <option value=""></option>
                      <option value="checking">{`checking (available: $0.00)`}</option>
                      <option value="savings">{`savings (available: $0.00)`}</option>
@@ -23,7 +27,11 @@ const Transfers = () => {
                   <p className="transfer-error">{errors.componentTransferFrom && "Required field"}</p>
                </label>
                <label htmlFor="componentTransferTo">to
-                  <select name="componentTransferTo" id="componentTransferTo" ref={register({ required: true})}>
+                  <select 
+                     name="componentTransferTo" 
+                     id="componentTransferTo" 
+                     ref={register({ required: true})}
+                  >
                      <option value=""></option>
                      <option value="checking">{`checking (available: $0.00)`}</option>
                      <option value="savings">{`savings (available: $0.00)`}</option>
@@ -31,7 +39,13 @@ const Transfers = () => {
                   <p className="transfer-error">{errors.componentTransferTo && "Required field"}</p>
                </label>
                <label htmlFor="componentTransferAmount">amount
-                  <input type="text" id="componentTransferAmount" name="componentTransferAmount" placeholder="Amount" ref={register({ required: true})}/>
+                  <input 
+                     type="text" 
+                     id="componentTransferAmount" 
+                     name="componentTransferAmount" 
+                     placeholder="Amount" 
+                     ref={register({ required: true})}
+                  />
                   <p className="transfer-error">{errors.componentTransferAmount && "Required field"}</p>
                </label>
                <div className="btn-wrapper">
