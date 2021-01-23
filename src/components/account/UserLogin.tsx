@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import logo from '../../imgs/logo.jpg';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { HIDE_HOME_NAVBAR_AND_FOOTER } from '../../redux/actions';
 
 interface LoginProps {
    email: string;
@@ -12,10 +14,12 @@ const UserLogin = () => {
       mode: "onBlur"
    });
    const history = useHistory();
+   const dispatch = useDispatch();
 
    const onSubmit = (values: LoginProps) => {
       console.log(values);
       history.push("/account/summary");
+      dispatch({ type: HIDE_HOME_NAVBAR_AND_FOOTER, payload: false });
    }
 
    return (

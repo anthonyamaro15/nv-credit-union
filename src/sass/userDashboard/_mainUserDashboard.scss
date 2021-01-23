@@ -32,6 +32,7 @@
   .DashboardNavbar {
     background: $dark-blue;
     padding: 0 1rem;
+    @include flexProps(space-between);
 
     @media (max-width: $laptop) {
       margin-top: 1rem;
@@ -50,6 +51,10 @@
 
     .active {
       color: rgb(185, 185, 185);
+    }
+
+    .logout {
+      font-weight: 300;
     }
   }
 }

@@ -45,6 +45,7 @@ const values =  {
 
 export const initialValues = {
    isAllow: false,
+   showHomeNavbarAndFooter: true,
    contactInfoComponentAllow: false,
    employmentInfoComponentAllow: false,
    applicationDecisionComponentAllow: false,
