@@ -151,6 +151,11 @@
               right: 63%;
               font-weight: normal;
               font-size: 0.9rem;
+
+              @media (max-width: $md-desktop) {
+                left: 20%;
+                width: 100%;
+              }
             }
 
             input {
