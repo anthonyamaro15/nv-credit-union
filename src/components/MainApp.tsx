@@ -88,6 +88,8 @@ const MainApp = () => {
          <Route path="/about-us" exact>
             <AboutUs />
          </Route>
+
+
          <Route path="/loans/credit-card" exact>
             <CreditCardLoan />
          </Route>
