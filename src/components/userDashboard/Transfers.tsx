@@ -13,7 +13,7 @@ const Transfers = () => {
       <div className="Transfers">
          <div className="Account">
             <h3>transfers</h3>
-            <form className="transfer-form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="transfers-form" onSubmit={handleSubmit(onSubmit)}>
                <label htmlFor="componentTransferFrom"> from
                   <select 
                      name="componentTransferFrom" 

@@ -19,11 +19,23 @@
     max-width: 1200px;
     margin: 0 auto;
     background: white;
+
+    @media (max-width: $md-desktop) {
+      max-width: 80%;
+    }
+
+    @media (max-width: $laptop) {
+      max-width: 100%;
+    }
   }
 
   .DashboardNavbar {
     background: $dark-blue;
     padding: 0 1rem;
+
+    @media (max-width: $laptop) {
+      margin-top: 1rem;
+    }
 
     a {
       text-transform: capitalize;
@@ -34,6 +46,10 @@
       &:last-child {
         margin: 0;
       }
+    }
+
+    .active {
+      color: rgb(185, 185, 185);
     }
   }
 }

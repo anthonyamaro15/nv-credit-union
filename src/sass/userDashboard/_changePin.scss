@@ -13,28 +13,6 @@
       margin: 1rem;
 
       label {
-        text-transform: capitalize;
-        font-weight: bold;
-        font-size: 0.9rem;
-        position: relative;
-        select {
-          display: block;
-          width: 100%;
-          padding: 0.3rem;
-          margin-top: 0.7rem;
-          border: 1px solid rgb(214, 214, 214);
-          border-radius: 4px;
-        }
-
-        .transfer-error {
-          position: absolute;
-          color: red;
-          top: 2.6rem;
-          right: 72%;
-          font-weight: normal;
-          font-size: 0.9rem;
-        }
-
         input {
           margin-top: 0.7rem;
         }
@@ -44,27 +22,54 @@
       }
     }
 
-    .transfer-form {
-      //  border: 1px solid red;
+    .change-pin-form {
+      width: 40%;
+
+      @media (max-width: $laptop) {
+        width: 60%;
+      }
+
+      .account-number {
+        font-size: 0.9rem;
+        @include flexProps(space-between);
+        text-transform: capitalize;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+
+        span {
+          font-weight: normal;
+        }
+      }
       label {
         @include flexProps(space-between);
+        font-weight: bold;
+        position: relative;
+        font-size: 0.9rem;
         align-items: center;
-        select {
-          width: 80%;
-          margin-bottom: 0.7rem;
+
+        .pin-error {
+          position: absolute;
+          color: red;
+          top: 2.5rem;
+          left: 50%;
+          font-weight: normal;
+          font-size: 0.8rem;
         }
 
         input {
-          width: 80%;
+          width: 50%;
           padding: 0.3rem;
           border: 1px solid rgb(214, 214, 214);
           border-radius: 4px;
+          margin-bottom: 0.5rem;
         }
       }
 
       .btn-wrapper {
-        width: 60%;
+        width: 70%;
         margin: 0.7rem auto;
+
+        @include flexProps(flex-end);
 
         button {
           @include mainButton($dark-blue, 0.5rem 0.7rem);

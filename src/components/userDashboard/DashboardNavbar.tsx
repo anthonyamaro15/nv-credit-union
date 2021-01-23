@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const DashboardNavbar = () => {
    return (
       <nav className="DashboardNavbar">
-         <Link to="/account/summary">accounts</Link>
-         <Link to="/account/dashboard">dashboard</Link>
-         <Link to="/account/transfer">transfers</Link>
-         <Link to="/account/changePin">change PIN</Link>
+         <NavLink to="/account/summary" activeClassName="active" >accounts</NavLink>
+         <NavLink to="/account/dashboard"activeClassName="active" >dashboard</NavLink>
+         <NavLink to="/account/transfer" activeClassName="active">transfers</NavLink>
+         <NavLink to="/account/changePin" activeClassName="active">change PIN</NavLink>
       </nav>
    )
 }
