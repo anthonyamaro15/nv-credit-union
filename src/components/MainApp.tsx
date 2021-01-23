@@ -37,8 +37,13 @@ interface AllowProp {
    resultApplicationComponentAllow: boolean;
 }
 
+interface ShowHomeNavbar {
+   showHomeNavbarAndFooter: boolean;
+}
+
 interface ReducerProps {
    allowComponentReducer: AllowProp
+   showHomeNavbarReducer: ShowHomeNavbar
 }
 
 
@@ -47,6 +52,8 @@ const MainApp = () => {
    const { 
       resultApplicationComponentAllow 
    } = useSelector((state: ReducerProps) => state.allowComponentReducer);
+   const { showHomeNavbarAndFooter } = useSelector((state: ReducerProps) => state.showHomeNavbarReducer);
+
 
    useEffect(() => {
       getLocalStoreData();
@@ -74,10 +81,11 @@ const MainApp = () => {
          setApplicationData(JSON.parse(data))
       }
    }
+
    return (
       <div>
-         <Navbar />
-         <MobileNavbar />
+         { showHomeNavbarAndFooter && <Navbar /> }
+         { showHomeNavbarAndFooter && <MobileNavbar />}
          <Route path="/" exact>
             <Header />
             <Content />
@@ -154,7 +162,9 @@ const MainApp = () => {
          <Route path="/vehicle-loan/application" exact>
             <AutoLoanApplication />
          </Route>
-         <LowerContent />
+
+         { showHomeNavbarAndFooter && <LowerContent /> }
+         
          <Footer />
       </div>
    )
