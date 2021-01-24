@@ -31,6 +31,8 @@ import MotorcycleLoans from './loans/autoLoans/MotorcycleLoans';
 import RecreationalVehicleLoan from './loans/autoLoans/RecreationalVehicleLoan';
 import WatercraftLoans from './loans/autoLoans/WatercraftLoans';
 import MainUserDashboard from './userDashboard/MainUserDashboard';
+import ForgotPassword from './account/ForgotPassword';
+import ResetPassword from './account/ResetPassword';
 
 
 interface AllowProp {
@@ -153,6 +155,12 @@ const MainApp = () => {
          </Route>
          <Route path="/login" exact>
             <UserLogin />
+         </Route>
+         <Route path="/forgot-password" exact>
+            <ForgotPassword />
+         </Route>
+         <Route path="/reset-password/:token" exact>
+            <ResetPassword />
          </Route>
 
          <Route path="/account/:accType" exact>

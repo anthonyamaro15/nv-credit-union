@@ -5,6 +5,9 @@
         @include flexProps(space-between);
         align-items: center;
         position: relative;
+        text-transform: capitalize;
+        font-weight: bold;
+        font-size: 0.9rem;
         select {
           width: 80%;
           margin-bottom: 0.7rem;
