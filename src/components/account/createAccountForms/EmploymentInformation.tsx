@@ -1,25 +1,40 @@
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { serverUrl } from '../../../envVariables';
 import { 
    APPLICATION_DESICION_COMPONENT_ALLOW 
 } from '../../../redux/actions';
+import axios from 'axios';
 
 interface FormProps {
    employerName: string;
    occupation: string;
 }
 
+interface CreateAccValues {
+   createAccount: any;
+}
+
+interface ReducerProps {
+   createAccountReducer: CreateAccValues;
+}
+
 const EmploymentInformation = () => {
    const { register, handleSubmit, errors } = useForm<FormProps>();
    const history = useHistory();
    const dispatch = useDispatch();
+   const { createAccount } = useSelector((state: ReducerProps) => state.createAccountReducer);
 
-   const onSubmit = (values: FormProps) => {
-      // save values to redux state, but not needed at the moment
-      console.log(values);
-      dispatch({ type: APPLICATION_DESICION_COMPONENT_ALLOW, payload: true });
-      history.push('/open-account/register/application-decision');
+   const onSubmit = async (values: FormProps) => {
+      const userData = {...createAccount, ...values};
+      try {
+         await axios.post(`${serverUrl}/auth/register`, userData );
+         dispatch({ type: APPLICATION_DESICION_COMPONENT_ALLOW, payload: true });
+         history.push('/open-account/register/application-decision');
+      } catch (error) {
+         console.log(error.response.data);
+      }
    }
 
    return (

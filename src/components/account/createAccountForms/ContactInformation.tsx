@@ -1,8 +1,7 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { EMPLOYMENT_INFO_COMPONENT_ALLOW } from '../../../redux/actions';
+import { CREATE_ACCOUNT_USER, EMPLOYMENT_INFO_COMPONENT_ALLOW } from '../../../redux/actions';
 import { states } from '../../../seedData';
 
 interface FormProps {
@@ -17,7 +16,7 @@ interface FormProps {
    primaryPhone: string;
    cellPhone: string;
    workPhone?: string;
-   driverLincenseNumber: number;
+   driverLicenseNumber: number;
    licenseState: string;
    dateIssued: string;
    expirationDate: string;
@@ -33,6 +32,7 @@ const ContactInformation = () => {
    const onSubmit = (values: FormProps) => {
       // save this to redux state, but not needed at the moment
       console.log(values);
+      dispatch({ type: CREATE_ACCOUNT_USER, payload: values });
       dispatch({ type: EMPLOYMENT_INFO_COMPONENT_ALLOW, payload: true });
       history.push('/open-account/register/employment-information');
    }
@@ -174,20 +174,20 @@ const ContactInformation = () => {
             <p className="errors">
                {errors.workPhone && errors.workPhone.type === "pattern" && "Enter valid phone number"}
             </p>
-            <label htmlFor="driverLincenseNumber">Driver's License Number
+            <label htmlFor="driverLicenseNumber">Driver's License Number
                <input 
                   type="text" 
-                  name="driverLincenseNumber" 
-                  id="driverLincenseNumber" 
+                  name="driverLicenseNumber" 
+                  id="driverLicenseNumber" 
                   maxLength={10}
                   ref={register( { required: true, pattern: /^\d+$/ })} 
                />
             </label>
             <p className="errors">
-               {errors.driverLincenseNumber && errors.driverLincenseNumber.type === "required" && "Field require"}
+               {errors.driverLicenseNumber && errors.driverLicenseNumber.type === "required" && "Field require"}
             </p>
             <p className="errors">
-               {errors.driverLincenseNumber && errors.driverLincenseNumber.type === "pattern" && "Enter valid ID number"}
+               {errors.driverLicenseNumber && errors.driverLicenseNumber.type === "pattern" && "Enter valid ID number"}
             </p>
 
             <label htmlFor="licenseState">state

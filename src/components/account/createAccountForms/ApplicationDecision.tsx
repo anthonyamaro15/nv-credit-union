@@ -6,6 +6,7 @@ const ApplicationDecision = () => {
    const [loading, setLoading] = useState(true);
    const history = useHistory();
 
+
    // the reason of this timer is to mimic an application desicion
    useEffect(() => {
       setTimeout(() => {
