@@ -6,7 +6,7 @@ export const createAccountReducer = (state = initialValues, action: { type: any,
       case CREATE_ACCOUNT_USER:
          return {
             ...state,
-            createAccount: action.payload
+            createAccount: {...state.createAccount, ...action.payload }
          }
          default:
             return state;

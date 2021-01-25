@@ -1,25 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import logo from '../../imgs/logo.jpg';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { HIDE_HOME_NAVBAR_AND_FOOTER } from '../../redux/actions';
+import { serverUrl } from '../../envVariables';
+import axios from 'axios';
 
 interface LoginProps {
    email: string;
    password: string;
 }
 const UserLogin = () => {
+   const [errorMessage, setErrorMessage] = useState('');
    const { register, handleSubmit, errors } = useForm<LoginProps>({
       mode: "onBlur"
    });
    const history = useHistory();
    const dispatch = useDispatch();
 
-   const onSubmit = (values: LoginProps) => {
-      console.log(values);
-      history.push("/account/summary");
-      dispatch({ type: HIDE_HOME_NAVBAR_AND_FOOTER, payload: false });
+   useEffect(() => {
+      if(errorMessage) {
+         setTimeout(() => {
+            setErrorMessage('');
+         }, 3000);
+      }
+   },[errorMessage]);
+
+   const onSubmit = async (values: LoginProps) => {
+      try {
+         const { data } = await axios.post(`${serverUrl}/auth/login`, values);
+         localStorage.setItem('userToken', JSON.stringify(data.token));
+         history.push("/account/summary");
+         dispatch({ type: HIDE_HOME_NAVBAR_AND_FOOTER, payload: false });
+      } catch (error) {
+         setErrorMessage(error.response.data.errorMessage);
+         console.log(error.response.data);
+      }
    }
 
    return (
@@ -49,6 +66,7 @@ const UserLogin = () => {
                      ref={register({ required: true })} 
                   />
                   <p className="login-error">{errors.password && "Required field"}</p>
+                  <p className="login-error">{errorMessage && errorMessage}</p>
                </label>
                <div className="login-btn-wrapper">
                   <button type="submit">enter</button>
