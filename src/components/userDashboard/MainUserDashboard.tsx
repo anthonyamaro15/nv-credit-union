@@ -50,7 +50,7 @@ const MainUserDashboard = () => {
                <Transfers />
             </Route>
             <Route path="/account/changePin" exact>
-               <ChangePin />
+               <ChangePin userData={userData} />
             </Route>
          </div>  
       </div>

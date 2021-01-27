@@ -1,6 +1,10 @@
 import { useForm } from 'react-hook-form';
+import { UserData } from '../interfaces/loanApplicationInterface';
 
-const ChangePin = () => {
+interface Props {
+   userData?: UserData;
+}
+const ChangePin: React.FC<Props> = ({ userData }) => {
    const { register, handleSubmit, errors } = useForm({
       mode: 'onBlur'
    });
@@ -15,7 +19,7 @@ const ChangePin = () => {
             <h3>change PIN</h3>
             
             <form className="change-pin-form" onSubmit={handleSubmit(onSubmit)}>
-               <p className="account-number">account<span>***8732</span></p>
+               <p className="account-number">account<span>{userData?.accountNumber}</span></p>
                <label htmlFor="newPin">New PIN
                   <input 
                      type="text" 
