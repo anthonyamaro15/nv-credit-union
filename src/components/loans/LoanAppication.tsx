@@ -232,7 +232,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      id="citizenship" 
                      ref={register({ required: true})}
                   >
-                     <option value="">US Citizen</option>
+                     <option value=""></option>
                      <option value="permResident">Perm Resident</option>
                      <option value="usCitizen">US Citizen</option>
                   </select>
@@ -257,7 +257,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                </label>
                <label htmlFor="referenceEmail">email 
                   <input 
-                     type="text" 
+                     type="email" 
                      id="referenceEmail" 
                      name="referenceEmail" 
                      ref={register} 
@@ -309,7 +309,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      email
                      <span className="require">*</span> 
                      <input 
-                        type="text" 
+                        type="email" 
                         id="contactEmail" 
                         name="contactEmail" 
                         ref={register({ required: true})} 
@@ -557,9 +557,10 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      Gross Monthly Income (before taxes)
                      <span className="require">*</span>
                      <input 
-                        type="text" 
+                        type="number" 
                         id="monthlyIncome" 
-                        name="monthlyIncome" 
+                        name="monthlyIncome"
+                        
                         ref={register({ required: true})} 
                      />
                      <p className="error">{errors.monthlyIncome && "Required field"}</p>
@@ -637,7 +638,7 @@ const LoanApplication: React.FC<Props> = ({ applicationData }) => {
                      Monthly Mortgage/Rent Payment
                      <span className="require">*</span>
                   <input 
-                     type="text" 
+                     type="number" 
                      id="monthlyExpenses" 
                      name="monthlyExpenses" 
                      ref={register({ required: true})} 

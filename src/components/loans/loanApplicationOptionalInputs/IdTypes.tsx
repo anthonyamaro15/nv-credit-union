@@ -37,10 +37,30 @@ const IdTypes: React.FC<Props> = ({ register, errors }) => {
                   type="text" 
                   id="expirationMonth" 
                   name="expirationMonth" 
-                  placeholder="mm" 
-                  ref={register({ required: true })} 
+                  placeholder="mm"
+                  maxLength={2}
+                  ref={register({ 
+                     required: true,
+                     validate: (value: any) => parseInt(value) <= 12, 
+                     pattern: /^\d+$/
+                  })} 
                />
-               <p className="error">{errors.expirationMonth && "Required field"}</p>
+               <p className="error">{errors.expirationMonth && errors.expirationMonth === 'required' && "Required field"}</p>
+               <p className="error">
+                  {errors.expirationMonth && errors.expirationMonth.type === "validate" && "Enter valid month"}
+               </p>
+               <p className="error">
+                  {errors.expirationMonth && errors.expirationMonth.type === "pattern" && "Enter valid format"}
+               </p>
+               <p className="error">
+                  {errors.expirationDay && errors.expirationDay.type === "validate" && "Enter valid day"}
+               </p>
+               <p className="error">
+                  {errors.expirationDay && errors.expirationDay.type === "pattern" && "Enter valid format"}
+               </p>
+               <p className="error">
+                  {errors.expirationYear && errors.expirationYear.type === "pattern" && "Enter valid format"}
+               </p>
             </label>
             <label htmlFor="expirationDay">
                <input 
@@ -48,7 +68,12 @@ const IdTypes: React.FC<Props> = ({ register, errors }) => {
                   id="expirationDay" 
                   name="expirationDay" 
                   placeholder="dd" 
-                  ref={register({ required: true})} 
+                  maxLength={2}
+                  ref={register({ 
+                     required: true,
+                     validate: (value: any) => parseInt(value) <= 12, 
+                     pattern: /^\d+$/
+                  })} 
                />
             </label>
             <label htmlFor="expirationYear">
@@ -56,8 +81,12 @@ const IdTypes: React.FC<Props> = ({ register, errors }) => {
                   type="text" 
                   id="expirationYear" 
                   name="expirationYear" 
-                  placeholder="yyyy" 
-                  ref={register({ required: true})} 
+                  placeholder="yyyy"
+                  maxLength={4} 
+                  ref={register({ 
+                     required: true,
+                     pattern: /^\d+$/
+                  })} 
                />
             </label>
          </div>
