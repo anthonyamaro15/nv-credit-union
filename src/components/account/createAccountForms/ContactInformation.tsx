@@ -47,7 +47,7 @@ const ContactInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.addressLineOne && <p className="errors">Field require</p>}
+            {errors.addressLineOne && <p className="errors">Require field</p>}
             <label htmlFor="addressLineTwo">Address Line 2
                <input 
                   type="text" 
@@ -101,9 +101,9 @@ const ContactInformation = () => {
                      />
                   </label>
                </div>
+            <p className="errors-contact">{errors.zip && errors.zip.type === "required" && "Required field"}</p>
+            <p className="errors-contact">{errors.zip && errors.zip.type === "pattern" && "Enter valid Zipcode"}</p>
             </div>
-            <p className="errors">{errors.zip && errors.zip.type === "required" && "Required field"}</p>
-            <p className="errors">{errors.zip && errors.zip.type === "pattern" && "Enter valid Zipcode"}</p>
 
             <label htmlFor="country">Country
                <select 
@@ -115,7 +115,7 @@ const ContactInformation = () => {
                   <option value="unitedStates">United States</option>
                </select>
             </label>
-            {errors.country && <p className="errors">Field require</p>}
+            {errors.country && <p className="errors">Require field</p>}
 
             <label htmlFor="citizenshipType">Citizenship Type
                <select 
@@ -128,7 +128,7 @@ const ContactInformation = () => {
                   <option value="residentAlien">Resident Alien</option>
                </select>
             </label>
-            {errors.citizenshipType && <p className="errors">Field require</p>}
+            {errors.citizenshipType && <p className="errors">Require field</p>}
             <label htmlFor="primaryPhone">Primary Phone number
                <input 
                   type="tel" 
@@ -182,7 +182,7 @@ const ContactInformation = () => {
                />
             </label>
             <p className="errors">
-               {errors.driverLicenseNumber && errors.driverLicenseNumber.type === "required" && "Field require"}
+               {errors.driverLicenseNumber && errors.driverLicenseNumber.type === "required" && "Require field"}
             </p>
             <p className="errors">
                {errors.driverLicenseNumber && errors.driverLicenseNumber.type === "pattern" && "Enter valid ID number"}
@@ -200,7 +200,7 @@ const ContactInformation = () => {
                   ))}
                </select>
             </label>
-            {errors.licenseState && <p className="errors">Field require</p>}
+            {errors.licenseState && <p className="errors">Require field</p>}
 
             <label htmlFor="dateIssued">Date Issued 
                <input 
@@ -209,10 +209,11 @@ const ContactInformation = () => {
                   id="dateIssued" 
                   placeholder="mm/dd/yyyy"
                   maxLength={10}
-                  ref={register({ required: true })} 
+                  ref={register({ required: true, })} 
                />
             </label>
-            <p className="errors">{errors.dateIssued && "Field require"}</p>
+            <p className="errors">{errors.dateIssued && errors.dateIssued.type === 'required' && "Field require"}</p>
+
             <label htmlFor="expirationDate">Expiration Date
                <input 
                   type="text" 
@@ -223,7 +224,7 @@ const ContactInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            <p className="errors">{errors.expirationDate && "Field require"}</p>
+            <p className="errors">{errors.expirationDate && "Require field"}</p>
             <div className="btn-wrapper">
                <button type="submit">next</button>
             </div>

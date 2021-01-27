@@ -80,7 +80,7 @@ const PersonalInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.firstName && <p className="errors">Field require</p>}
+            {errors.firstName && <p className="errors">Require field</p>}
             <label htmlFor="middleName">middle name
                <input 
                   type="text" 
@@ -96,7 +96,7 @@ const PersonalInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.lastName && <p className="errors">Field require</p>}
+            {errors.lastName && <p className="errors">Require field</p>}
             <label htmlFor="SSNNumber">social security number
                <input 
                   type="password" 
@@ -145,11 +145,11 @@ const PersonalInformation = () => {
                   name="dateOfBirth" 
                   id="dateOfBirth" 
                   placeholder="mm/dd/yyyy"
-                  maxLength={9}
+                  maxLength={10}
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.dateOfBirth && <p className="errors">Field require</p>}
+            <p className="errors">{errors.dateOfBirth && errors.dateOfBirth.type === 'required' && "Require field"}</p>
             <label htmlFor="gender">gender
                <select 
                   name="gender" 
@@ -161,25 +161,25 @@ const PersonalInformation = () => {
                   <option value="female">female</option>
                </select>
             </label>
-            {errors.gender && <p className="errors">Field require</p>}
+            {errors.gender && <p className="errors">Require field</p>}
             <label htmlFor="email">e-mail address
                <input 
-                  type="text" 
+                  type="email" 
                   name="email" 
                   id="email" 
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.email && <p className="errors">Field require</p>}
+            {errors.email && <p className="errors">Require field</p>}
             <label htmlFor="confirmEmail">re-enter email address
                <input 
-                  type="text" 
+                  type="email" 
                   name="confirmEmail" 
                   id="confirmEmail" 
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.confirmEmail && <p className="errors">Field require</p>}
+            {errors.confirmEmail && <p className="errors">Require field</p>}
             <label htmlFor="password">create password
                <input 
                   type="password" 
@@ -188,7 +188,7 @@ const PersonalInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.password && <p className="errors">Field require</p>}
+            {errors.password && <p className="errors">Require field</p>}
             <label htmlFor="confirmPassword">re-enter password
                <input 
                   type="password" 
@@ -197,7 +197,7 @@ const PersonalInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.confirmPassword && <p className="errors">Field require</p>}
+            {errors.confirmPassword && <p className="errors">Require field</p>}
             <div className="btn-wrapper">
                <button type="submit">next</button>
             </div>

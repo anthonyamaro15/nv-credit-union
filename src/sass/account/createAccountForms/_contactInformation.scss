@@ -6,6 +6,7 @@
       margin-bottom: 2rem;
       border-bottom: 1px solid rgb(226, 225, 225);
       padding-bottom: 2rem;
+      position: relative;
 
       span {
         font-weight: bold;
@@ -51,4 +52,13 @@
   color: red;
   margin-left: 15rem;
   font-size: 0.9rem;
+}
+
+.errors-contact {
+  color: red;
+  margin-left: 15rem;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
 }

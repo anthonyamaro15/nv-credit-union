@@ -49,7 +49,7 @@ const EmploymentInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.employerName && <p className="errors">Field require</p>}
+            {errors.employerName && <p className="errors">Require field</p>}
             <label htmlFor="occupation">Occupation
                <input 
                   type="text" 
@@ -58,7 +58,7 @@ const EmploymentInformation = () => {
                   ref={register({ required: true })} 
                />
             </label>
-            {errors.occupation && <p className="errors">Field require</p>}
+            {errors.occupation && <p className="errors">Require field</p>}
             <div className="btn-wrapper">
                <button type="submit">next</button>
             </div>
