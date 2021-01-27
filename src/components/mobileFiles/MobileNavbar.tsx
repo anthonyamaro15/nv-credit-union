@@ -44,6 +44,9 @@ const MobileNavbar = () => {
           <NavLink onClick={closeNavMenu} to="/loans" exact activeClassName="active">
             loans
           </NavLink>
+          <NavLink onClick={closeNavMenu} to="/login" exact activeClassName="active">
+            login
+          </NavLink>
           <NavLink onClick={closeNavMenu} to="/banking/checking" exact activeClassName="active">
             open a new account
           </NavLink>
