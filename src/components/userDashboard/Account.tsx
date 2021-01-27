@@ -1,14 +1,20 @@
-import { on } from 'process';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import autoLoanImg from '../../imgs/autoloan.png';
+import { UserData } from '../interfaces/loanApplicationInterface';
 import CreditCard from './AccountInnerComponents/CreditCard';
 import Loans from './AccountInnerComponents/Loans';
 import Shares from './AccountInnerComponents/Shares';
+import DisplayUserInformationNav from './DisplayUserInformationNav';
 import BillPayments from './transfersAndPayments/BillPayments';
 import TransfersLoans from './transfersAndPayments/TransfersLoans';
 
-const Account = () => {
+
+interface Props {
+   userData?: UserData;
+}
+
+const Account: React.FC<Props> = ({ userData }) => {
    const [displayShare, setDisplayShare] = useState(true);
    const [displayLoan, setDisplayLoan] = useState(false);
    const [displayCreditCard, setDisplayCreditCard] = useState(false);
@@ -18,7 +24,7 @@ const Account = () => {
    const { handleSubmit, register, watch, errors } = useForm({
       mode: 'onBlur'
    });
-
+   
    const cheking = watch('selectAccount');
 
    const toggleShare = () => {
@@ -65,20 +71,15 @@ const Account = () => {
       console.log("subbmiting tranfers", value);
    }
 
+
+
    return (
       <div className="Account">
-         <div className="user-information">
-            <div className="top-row">
-               <p>welcome:<span>Lisa Smith</span></p>
-               <p>account #:<span>****07</span></p>
-               <p>routing number:<span>243353322</span></p>
-            </div>
-            <div className="bottom-row">
-               <p>user ID:<span>lisasmith</span></p>
-               <p>email:<span>lisasmith@gmail.com</span></p>
-               <p>address:<span>3312 pecos rd ave apt 11 las vegas nv 88929</span></p>
-            </div>
-         </div>
+         
+         {userData && (
+            <DisplayUserInformationNav userData={userData} />
+         )}
+
          <div className="img-wrapper">
             <img src={autoLoanImg} alt="auto loan description"/>
          </div>

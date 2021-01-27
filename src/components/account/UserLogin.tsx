@@ -30,7 +30,7 @@ const UserLogin = () => {
    const onSubmit = async (values: LoginProps) => {
       try {
          const { data } = await axios.post(`${serverUrl}/auth/login`, values);
-         localStorage.setItem('userToken', JSON.stringify(data.token));
+         localStorage.setItem('credentials', JSON.stringify(data));
          history.push("/account/summary");
          dispatch({ type: HIDE_HOME_NAVBAR_AND_FOOTER, payload: false });
       } catch (error) {
