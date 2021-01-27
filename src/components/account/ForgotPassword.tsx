@@ -44,34 +44,34 @@ const ForgotPassword = () => {
 
    return (
       <div className="Transfers">
-         <div className="Account">
-            <h3>password reset</h3>
-            <form onSubmit={handleSubmit(onSubmit)} className="transfers-form">
-               <label htmlFor="emailOnFile">Email Address on file
-                  <input 
-                     type="text" 
-                     id="emailOnFile" 
-                     name="emailOnFile" 
-                     placeholder="Email" 
-                     ref={register({ required: true})}
-                  />
-                  <p className="transfer-error">{errors.emailOnFile && "Required field"}</p>
-                  <p className="transfer-error">{error && error}</p>
-               </label>
-               <div className="btn-wrapper">
-                  <button type="submit">submit</button>
+         <div className="Forgot-password">
+            <div className="Reset-password">
+               <h3>password reset</h3>
+               <form onSubmit={handleSubmit(onSubmit)} className="transfers-form">
+                  <label htmlFor="emailOnFile">Email Address on file
+                     <input 
+                        type="text" 
+                        id="emailOnFile" 
+                        name="emailOnFile" 
+                        placeholder="Email" 
+                        ref={register({ required: true})}
+                     />
+                     <p className="transfer-error">{errors.emailOnFile && "Required field"}</p>
+                     <p className="transfer-error">{error && error}</p>
+                  </label>
+                  <div className="btn-wrapper">
+                     <button type="submit">submit</button>
+                  </div>
+               </form> 
+               <div className="form-footer">
+                  <span>One Nevada Credit Union</span>
+                  <div className="more-info">
+                     <a href="www.example.com">Federally Insured by NCUA</a>
+                     <a href="www.example.com">Equal Housing Lender.</a>
+                  </div>
+                  <span>2013-2020 MeridianLink, Inc., All Rights Reserved.</span>
                </div>
-               
-            </form> 
- 
-         </div>
-         <div className="form-footer">
-            <span>One Nevada Credit Union</span>
-            <div className="more-info">
-               <a href="www.example.com">Federally Insured by NCUA</a>
-               <a href="www.example.com">Equal Housing Lender.</a>
             </div>
-            <span>2013-2020 MeridianLink, Inc., All Rights Reserved.</span>
          </div>
       </div>
 
