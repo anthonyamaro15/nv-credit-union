@@ -103,3 +103,18 @@ export interface AutoLoanApplicationProps {
    vehicleMake?: string;
    vehicleModel?: string;
 }
+
+export interface UserData {
+   firstName: string;
+   lastName: string;
+   middleName?: string;
+   accountNumber: string;
+   routingNumber: number;
+   email: string;
+   addressLineOne: string;
+   addressLineTwo?: string;
+   apartmentNumber?: string;
+   city: string;
+   state: string;
+   zip: string;
+}

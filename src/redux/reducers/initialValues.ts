@@ -52,5 +52,6 @@ export const initialValues = {
    resultApplicationComponentAllow: false,
    creditCardApplication: values,
    autoLoanApplication: {},
-   createAccount: {}
+   createAccount: {},
+   accountUserData: {}
 };
