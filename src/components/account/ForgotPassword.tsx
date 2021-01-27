@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { serverUrl } from '../../envVariables';
 
 interface FormProps {
    emailOnFile: string;
@@ -7,7 +9,8 @@ interface FormProps {
 
 const ForgotPassword = () => {
    const [emailSent, setEmailSent] = useState(false);
-   const { register, handleSubmit, errors } = useForm<FormProps>({
+   const [error, setError] = useState('');
+   const { register, handleSubmit, errors, reset } = useForm<FormProps>({
       mode: 'onBlur'
    });
 
@@ -20,9 +23,23 @@ const ForgotPassword = () => {
       }
    }, [emailSent]);
 
-   const onSubmit = (value: FormProps) => {
-      setEmailSent(true);
-      console.log('submitting', value);
+   useEffect(() => {
+      if(error) {
+         setTimeout(() => setError(''), 2000);
+      }
+   },[error]);
+
+   const onSubmit = async  (value: FormProps) => {
+      const email = value.emailOnFile;
+      
+      try {
+         await axios.patch(`${serverUrl}/auth/forgot-password`, { email });
+         setEmailSent(true);
+         reset();
+      } catch (error) {
+         console.log(error.response.data);
+         setError(error.response.data.errorMessage);
+      }
    }
 
    return (
@@ -39,6 +56,7 @@ const ForgotPassword = () => {
                      ref={register({ required: true})}
                   />
                   <p className="transfer-error">{errors.emailOnFile && "Required field"}</p>
+                  <p className="transfer-error">{error && error}</p>
                </label>
                <div className="btn-wrapper">
                   <button type="submit">submit</button>
