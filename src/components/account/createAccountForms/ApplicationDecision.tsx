@@ -15,7 +15,7 @@ const ApplicationDecision = () => {
    }, []);
 
    const redirect = () => {
-      history.push("/account");
+      history.push("/login");
    }
    
    return (

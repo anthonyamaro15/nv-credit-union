@@ -30,8 +30,6 @@ const ContactInformation = () => {
    const history = useHistory();
 
    const onSubmit = (values: FormProps) => {
-      // save this to redux state, but not needed at the moment
-      console.log(values);
       dispatch({ type: CREATE_ACCOUNT_USER, payload: values });
       dispatch({ type: EMPLOYMENT_INFO_COMPONENT_ALLOW, payload: true });
       history.push('/open-account/register/employment-information');
