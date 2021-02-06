@@ -31,6 +31,14 @@ const CreditCardLoan = () => {
                      <div className="share-icons">
                         <Link to="/loans/credit-card/visa-platium-credit-card">Visa® Platinum Rewards Credit Card</Link> 
                      </div> 
+                     <div className="share-icons">
+                        <Link 
+                           to="/loans/preapprove" 
+                           className="preapprove-link"
+                        >
+                           See what cards you may qualify for with no impact to your credit
+                        </Link> 
+                     </div> 
                   </nav>
                   <p className="apr-info">
                      APRs can increase after consummation of the loan if the loan terms allow an APR to increase.
