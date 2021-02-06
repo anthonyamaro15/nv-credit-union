@@ -7,6 +7,9 @@ import { useDispatch } from 'react-redux';
 import { employmentStatus, states } from '../../../seedData';
 import { AiFillQuestionCircle } from 'react-icons/ai';
 import ReactTooltip from 'react-tooltip';
+import axios from 'axios';
+import { serverUrl } from '../../../envVariables';
+import { PRE_APPROVAL_RESULT } from '../../../redux/actions';
 
 
 interface ApprovalFormTypes {
@@ -36,9 +39,15 @@ const PreApprovalCreditCardLoan = () => {
    const history = useHistory();
    const dispatch = useDispatch();
 
-   const onSubmit = (values: ApprovalFormTypes) => {
-      console.log("values hre ", values);
-      history.push('/loans/preappove-result');
+   const onSubmit = async (values: ApprovalFormTypes) => {
+      try {
+         const { data } = await axios.post(`${serverUrl}/preapproval/application`, values);
+         dispatch({ type: PRE_APPROVAL_RESULT, payload: data });
+         history.push('/loans/preappove-result');
+
+      } catch (error) {
+         console.log(error.response);
+      }
    }
 
    const toogleSSN = () => {

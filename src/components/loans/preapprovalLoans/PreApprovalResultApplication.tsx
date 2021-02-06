@@ -3,20 +3,25 @@ import { useHistory } from 'react-router-dom';
 import LoaderComponent from '../LoaderComponent';
 import logo from '../../../imgs/logo.jpg';
 import { useSelector } from 'react-redux';
-import { FormCreditCardProps } from '../../interfaces/loanApplicationInterface';
 
-interface CreditCardReducerProps {
-   creditCardApplication: FormCreditCardProps;  
+interface PreApprovalValues {
+   firstName: string;
+   approved: boolean;
+}
+interface PreApprovalReducerProps {
+   preApprovalResult: PreApprovalValues
 }
 
 interface ReducerProps {
-   creditCardReducer: CreditCardReducerProps;
+   preApprovalReducer: PreApprovalReducerProps;
 }
 
 const PreApprovalResultApplication = () => {
 const [result, setResult] = useState(true);
-const { creditCardApplication } = useSelector((state: ReducerProps) => state.creditCardReducer);
+const { preApprovalResult } = useSelector((state: ReducerProps) => state.preApprovalReducer);
 const history = useHistory();
+
+console.log("here ", preApprovalResult);
 
    useEffect(() => {
       // this timer is just to mimic a waiting for application to be approved
@@ -26,41 +31,70 @@ const history = useHistory();
    },[]);
 
    const returnToWebsite = () => {
-      history.push('/');
+      if(preApprovalResult.approved) {
+         history.push('/loans/credit-card');
+      } else {
+         history.push('/');
+      }
+      
    }
    return (
       <div className="ResultApplication">
          {result ? (
          <div className="loading-component">
-            <h3>Processing your request...</h3>
+            <h3>Validating your information...</h3>
             <LoaderComponent />
             
             <p>This may take a few minutes.</p>
          </div>
          ) : (
-         <div className="bg-color">
-            <div className="LoanApplication">
-               <div className="review-form-header">
-                  <img src={logo} alt=""/>
-                  <h1 className="application-title">apply in 3 steps</h1>
-                  <h1>thank you</h1>
-               </div>
-               <div className="application-result">
-                  <p>{`${creditCardApplication.firstName}, thank you for submitting you loan appliation. Your application number is ${creditCardApplication.applicationNumber}. You will reveive an email notification when your application has been updated or you may login to check the status online. If you have any questions or need additional information, please contact our Member Services Contact Center at (800) 388-3000.`}</p>
-                  <div className="btn-wrapper">
-                     <button type="submit" onClick={returnToWebsite}>return to our website</button>
+            preApprovalResult.approved ? (
+               <div className="bg-color">
+                  <div className="LoanApplication">
+                     <div className="review-form-header">
+                        <img src={logo} alt=""/>
+                        <h1>{`Well Done, ${preApprovalResult.firstName}`}</h1>
+                     </div>
+                     <div className="application-result">
+                        <p>{`You can qualify for any of our credit cards, choose a card and finish applying with a few quick questions.`}</p>
+                        <div className="btn-wrapper">
+                           <button type="submit" onClick={returnToWebsite}>check our credit cards</button>
+                        </div>
+                     </div>
+                     <div className="form-footer">
+                        <span>One Nevada Credit Union</span>
+                        <div className="more-info">
+                           <a href="www.example.com">Federally Insured by NCUA</a>
+                           <a href="www.example.com">Equal Housing Lender.</a>
+                        </div>
+                        <span>2013-2020 MeridianLink, Inc., All Rights Reserved.</span>
+                     </div>
                   </div>
                </div>
-               <div className="form-footer">
-                  <span>One Nevada Credit Union</span>
-                  <div className="more-info">
-                     <a href="www.example.com">Federally Insured by NCUA</a>
-                     <a href="www.example.com">Equal Housing Lender.</a>
+            ) : (
+               <div className="bg-color">
+                  <div className="LoanApplication">
+                     <div className="review-form-header">
+                        <img src={logo} alt=""/>
+                        <h1>{`Thank you, ${preApprovalResult.firstName}`}</h1>
+                     </div>
+                     <div className="application-result">
+                        <p>{`We reviewed your information and, unfortunately, we can't pre-approve you for a Visa Signature Rewards Credit Card or Visa Platinum Rewards Credit Card at this time. Rest assured, the form you submitted was not a credit card application and your credit score was not affected.`}</p>
+                        <div className="btn-wrapper">
+                           <button type="submit" onClick={returnToWebsite}>return to our website</button>
+                        </div>
+                     </div>
+                     <div className="form-footer">
+                        <span>One Nevada Credit Union</span>
+                        <div className="more-info">
+                           <a href="www.example.com">Federally Insured by NCUA</a>
+                           <a href="www.example.com">Equal Housing Lender.</a>
+                        </div>
+                        <span>2013-2020 MeridianLink, Inc., All Rights Reserved.</span>
+                     </div>
                   </div>
-                  <span>2013-2020 MeridianLink, Inc., All Rights Reserved.</span>
                </div>
-            </div>
-         </div>
+            )
          )}
       </div>
    )

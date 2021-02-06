@@ -53,5 +53,6 @@ export const initialValues = {
    creditCardApplication: values,
    autoLoanApplication: {},
    createAccount: {},
-   accountUserData: {}
+   accountUserData: {},
+   preApprovalResult: {}
 };

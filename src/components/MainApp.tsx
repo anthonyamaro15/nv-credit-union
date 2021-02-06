@@ -138,7 +138,7 @@ const MainApp = () => {
          <Route path="/loans/preapprove" exact>
             <PreApprovalCreditCardLoan />
          </Route>
-         <Route paht="/loans/preappove-result" exact>
+         <Route path="/loans/preappove-result" exact>
             <PreApprovalResultApplication />
          </Route>
 
