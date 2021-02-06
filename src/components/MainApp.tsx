@@ -33,6 +33,8 @@ import WatercraftLoans from './loans/autoLoans/WatercraftLoans';
 import MainUserDashboard from './userDashboard/MainUserDashboard';
 import ForgotPassword from './account/ForgotPassword';
 import ResetPassword from './account/ResetPassword';
+import PreApprovalCreditCardLoan from './loans/preapprovalLoans/PreApprovalCreditCardLoan';
+import PreApprovalResultApplication from './loans/preapprovalLoans/PreApprovalResultApplication';
 
 
 interface AllowProp {
@@ -132,6 +134,12 @@ const MainApp = () => {
          </Route>
          <Route path="/loans/application/:loanType/confirmation" exact>
             <ReviewApplication getLocalStoreData={getLocalStoreData} />
+         </Route>
+         <Route path="/loans/preapprove" exact>
+            <PreApprovalCreditCardLoan />
+         </Route>
+         <Route paht="/loans/preappove-result" exact>
+            <PreApprovalResultApplication />
          </Route>
 
          <PrivateComponent
