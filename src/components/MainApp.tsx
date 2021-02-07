@@ -39,6 +39,7 @@ import PreApprovalResultApplication from './loans/preapprovalLoans/PreApprovalRe
 
 interface AllowProp {
    resultApplicationComponentAllow: boolean;
+   preApprovalResultAllow: boolean
 }
 
 interface ShowHomeNavbar {
@@ -48,16 +49,17 @@ interface ShowHomeNavbar {
 interface ReducerProps {
    allowComponentReducer: AllowProp
    showHomeNavbarReducer: ShowHomeNavbar
+
 }
 
 
 const MainApp = () => {
    const [applicationData, setApplicationData] = useState();
    const { 
-      resultApplicationComponentAllow 
+      resultApplicationComponentAllow,
+      preApprovalResultAllow 
    } = useSelector((state: ReducerProps) => state.allowComponentReducer);
    const { showHomeNavbarAndFooter } = useSelector((state: ReducerProps) => state.showHomeNavbarReducer);
-
 
    useEffect(() => {
       getLocalStoreData();
@@ -138,9 +140,12 @@ const MainApp = () => {
          <Route path="/loans/preapprove" exact>
             <PreApprovalCreditCardLoan />
          </Route>
-         <Route path="/loans/preappove-result" exact>
-            <PreApprovalResultApplication />
-         </Route>
+         <PrivateComponent 
+            path="/loans/preappove-result"
+            exact
+            isAllow={preApprovalResultAllow}
+            component={PreApprovalResultApplication}
+         />
 
          <PrivateComponent
             path="/loans/result-application"

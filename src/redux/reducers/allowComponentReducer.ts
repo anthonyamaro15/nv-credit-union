@@ -2,6 +2,7 @@ import {
    APPLICATION_DESICION_COMPONENT_ALLOW, 
    CONTACT_INFO_COMPONENT_ALLOW, 
    EMPLOYMENT_INFO_COMPONENT_ALLOW,
+   PRE_APPROVAL_RESULT_CREDIT_CARD_ALLOW,
    RESULT_APPLICATION_COMPONENT_ALLOW, 
 } from '../actions';
 import { initialValues } from './initialValues';
@@ -27,6 +28,11 @@ export const allowComponentReducer = (state = initialValues, action: { type: any
          return {
             ...state,
             resultApplicationComponentAllow: action.payload
+         }
+      case PRE_APPROVAL_RESULT_CREDIT_CARD_ALLOW:
+         return {
+            ...state,
+            preApprovalResultAllow: action.payload
          }
          default:
             return state;
