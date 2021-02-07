@@ -21,8 +21,6 @@ const [result, setResult] = useState(true);
 const { preApprovalResult } = useSelector((state: ReducerProps) => state.preApprovalReducer);
 const history = useHistory();
 
-console.log("here ", preApprovalResult);
-
    useEffect(() => {
       // this timer is just to mimic a waiting for application to be approved
       setTimeout(() => {
