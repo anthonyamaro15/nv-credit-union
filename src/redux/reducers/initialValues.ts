@@ -50,6 +50,7 @@ export const initialValues = {
    employmentInfoComponentAllow: false,
    applicationDecisionComponentAllow: false,
    resultApplicationComponentAllow: false,
+   preApprovalResultAllow: false,
    creditCardApplication: values,
    autoLoanApplication: {},
    createAccount: {},

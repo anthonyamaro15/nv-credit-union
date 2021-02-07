@@ -9,7 +9,7 @@ import { AiFillQuestionCircle } from 'react-icons/ai';
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
 import { serverUrl } from '../../../envVariables';
-import { PRE_APPROVAL_RESULT } from '../../../redux/actions';
+import { PRE_APPROVAL_RESULT, PRE_APPROVAL_RESULT_CREDIT_CARD_ALLOW } from '../../../redux/actions';
 
 
 interface ApprovalFormTypes {
@@ -32,7 +32,7 @@ interface ApprovalFormTypes {
 }
 
 const PreApprovalCreditCardLoan = () => {
-   const { register, errors, handleSubmit } = useForm<ApprovalFormTypes>({
+   const { register, errors, handleSubmit, reset } = useForm<ApprovalFormTypes>({
       mode: "onBlur",
    });
    const [toogleSsn, setToggleSsn] = useState(false);
@@ -55,9 +55,10 @@ const PreApprovalCreditCardLoan = () => {
             setAlreadyApplied(data.message);
          } else {
             dispatch({ type: PRE_APPROVAL_RESULT, payload: data });
+            dispatch({ type: PRE_APPROVAL_RESULT_CREDIT_CARD_ALLOW, payload: true });
             history.push('/loans/preappove-result');
+            reset();
          }
-
       } catch (error) {
          console.log(error.response);
       }
