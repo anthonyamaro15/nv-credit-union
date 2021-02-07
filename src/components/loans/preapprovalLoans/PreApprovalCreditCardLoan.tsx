@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaLock, FaUserAlt } from "react-icons/fa";
@@ -36,14 +36,27 @@ const PreApprovalCreditCardLoan = () => {
       mode: "onBlur",
    });
    const [toogleSsn, setToggleSsn] = useState(false);
+   const [alreadyApplied, setAlreadyApplied] = useState('');
    const history = useHistory();
    const dispatch = useDispatch();
+
+   useEffect(() => {
+      if(alreadyApplied) {
+         alert(alreadyApplied);
+      }
+      setTimeout(() => setAlreadyApplied(''), 2000);
+   }, [alreadyApplied]);
 
    const onSubmit = async (values: ApprovalFormTypes) => {
       try {
          const { data } = await axios.post(`${serverUrl}/preapproval/application`, values);
-         dispatch({ type: PRE_APPROVAL_RESULT, payload: data });
-         history.push('/loans/preappove-result');
+         // if message exists then that means user submitted an application already
+         if(data.message) {
+            setAlreadyApplied(data.message);
+         } else {
+            dispatch({ type: PRE_APPROVAL_RESULT, payload: data });
+            history.push('/loans/preappove-result');
+         }
 
       } catch (error) {
          console.log(error.response);
@@ -59,8 +72,7 @@ const PreApprovalCreditCardLoan = () => {
          <div className="LoanApplication">
             <div className="application-header">
                <img src={logo} alt=""/>
-               <h1 className="application-title">Apply in 3 Steps</h1>
-               <h1>Pre-Approval Questions</h1>
+               <h1 className="pre-approval-title">Pre-Approval Questions</h1>
                <h2>
                   <span><FaUserAlt /></span>
                   personal information
