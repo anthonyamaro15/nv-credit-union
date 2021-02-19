@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -21,11 +22,32 @@ interface FormProps {
 }
 
 const PersonalInformation = () => {
-   const { register, handleSubmit, errors } = useForm<FormProps>({
+   const { register, handleSubmit, errors, watch } = useForm<FormProps>({
       mode: "onBlur"
    });
+   const [dofError, setDofError] = useState('');
    const history = useHistory();
    const dispatch = useDispatch();
+
+   const dof = watch('dateOfBirth');
+
+   useEffect(() => {
+      if(dofError) setTimeout(() => setDofError(''), 5000);
+   }, [dofError]);
+
+   useEffect(() => {
+      let currentYear = new Date().getFullYear();
+
+      if(dof) {
+         let userDof = dof.slice(0, 4);
+         if(Number(userDof) >= currentYear) {
+            return setDofError('Enter valid date');
+         }
+         if((Number(userDof) - currentYear) < 18) {
+            return setDofError('Not old enough');
+         }
+      }
+   }, [dof]);
 
    const onSubmit = (values: FormProps) => {
       const { 
@@ -140,16 +162,17 @@ const PersonalInformation = () => {
                {errors.confirmSSN && errors.confirmSSN.type === "pattern" && "Enter valid SSN" }
             </p>
             <label htmlFor="dateOfBirth">date of birth
-               <input 
-                  type="text" 
+               <input
+                  type="date" 
                   name="dateOfBirth" 
                   id="dateOfBirth" 
-                  placeholder="mm/dd/yyyy"
                   maxLength={10}
                   ref={register({ required: true })} 
                />
             </label>
             <p className="errors">{errors.dateOfBirth && errors.dateOfBirth.type === 'required' && "Require field"}</p>
+            <p className="errors">{dofError && dofError}</p>
+
             <label htmlFor="gender">gender
                <select 
                   name="gender" 

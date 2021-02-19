@@ -32,13 +32,34 @@ interface ApprovalFormTypes {
 }
 
 const PreApprovalCreditCardLoan = () => {
-   const { register, errors, handleSubmit, reset } = useForm<ApprovalFormTypes>({
+   const { register, errors, handleSubmit, reset, watch } = useForm<ApprovalFormTypes>({
       mode: "onBlur",
    });
    const [toogleSsn, setToggleSsn] = useState(false);
    const [alreadyApplied, setAlreadyApplied] = useState('');
+   const [dofError, setDofError] = useState('');
    const history = useHistory();
    const dispatch = useDispatch();
+
+   const dof = watch('dateOfBirth');
+
+   useEffect(() => {
+      if(dofError) setTimeout(() => setDofError(''), 5000);
+   }, [dofError]);
+
+   useEffect(() => {
+      let currentYear = new Date().getFullYear();
+
+      if(dof) {
+         let userDof = dof.slice(0, 4);
+         if(Number(userDof) >= currentYear) {
+            return setDofError('Enter valid date');
+         }
+         if((Number(userDof) - currentYear) < 18) {
+            return setDofError('Not old enough');
+         }
+      }
+   }, [dof]);
 
    useEffect(() => {
       if(alreadyApplied) {
@@ -149,6 +170,8 @@ const PreApprovalCreditCardLoan = () => {
                      ref={register({ required: true })} 
                   />
                   <p className="error">{errors.dateOfBirth && "Required field"}</p>
+                  <p className="error">{dofError && dofError}</p>
+
                </label>
                <div className="ssn-wrapper">
                   <div>
